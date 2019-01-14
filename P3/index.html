@@ -1,0 +1,196 @@
+<!-- Adapted from https://www.evl.uic.edu/aej/424/ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>CS CS5331-004 Project 3</title>
+  </head>
+  <body bgcolor="white" text="black">
+   
+    
+
+    <div align="left"><font style="font-family:
+        Helvetica,Arial,sans-serif;" color="black" size="5">Project 3: Network visualization</font></div>
+
+    <div align="left"><font style="font-family:
+        Helvetica,Arial,sans-serif;" color="black" size="4">
+        <ul>
+        <li style="margin-left: 30px">  This project is <b>30%</b> of your final grade:<br>
+        <li style="margin-left: 80px"> <b>20%</b> for design and implementation.</li>
+        <li style="margin-left: 80px">  <b>5%</b> for in-class presentation.</li>
+        <li style="margin-left: 80px">  <b>5%</b> for project report on Github.</li>
+        </li>
+        <li style="margin-left: 30px">  Project screenshot (a 1200 x 600 <b>jpg</b> image of your visualization which should be named p3.&lt;your_last_name1&gt;&lt;your_last_name2&gt;&lt;your_last_name3&gt;.jpg), demo link, and github link are due at <font color="#e00">3pm Sunday, Dec 11th</font> to the <b>tommy.dang[at]ttu.edu</b>.
+        <li style="margin-left: 30px"> You can update your source code and project report uptill <font color="#e00">3pm Monday, Dec 12th</font>.<br>
+        <li style="margin-left: 30px"> Each student needs to send a peer evaluation for other teammates by <font color="#e00">3pm Tuesday, Dec 13th</font> to the <b>tommy.dang[at]ttu.edu</b>. This peer evaluation is significant to your individual project grade. One team member can get A but another can get D or Fail. The peer evaluation contains:</li>
+          <li style="margin-left: 60px"> Teammate name.</li>
+          <li style="margin-left: 60px"> Rating from 0 to 5 (5 is best).</li>
+          <li style="margin-left: 60px"> One to three sentence review.</li>
+        <ul>  
+        </font></div>
+ <center><img style="width: 90%;" src="Figure4.png" alt=""></center>
+     
+
+    <hr style="width: 100%; height: 1px;">
+    <div align="left"><font style="font-family:
+        Helvetica,Arial,sans-serif;" color="black" size="5">Project Description:</font></div>
+
+    <font style="font-family:Helvetica;" color="black" size="4">
+    <ul>
+      <li style="margin-left: 30px"> Project 3 is a group (3 or 4 students) project. 
+      Students select their group members. A leader is also nominated by team members.</li>
+      <li style="margin-left: 30px"> In this project, students will work on the protein interaction network. Here is the template code: <a href="https://github.com/iDataVisualizationLab/BioLinker" target="_blank">https://github.com/iDataVisualizationLab/BioLinker</a>  and <a href="http://www.cbioportal.org/" target="_blank">http://www.cbioportal.org/</a> 
+
+      <li style="margin-left: 30px"> This this project, students need to overlay experimental data (from cancer studies) on top of a protein network. Specific requirements for each team will be different (the instructor will work with each team separately).</a> 
+
+      </li>
+    <!--  <li style="margin-left: 30px"> Students are provided 2 datasets: The <a href="http://en.wikinews.org/wiki/Main_Page">Wikinews</a> data (roughly <a href="data/wikinews.tsv">3.3M</a>) contains 11,267 articles and the <a href="http://www.huffingtonpost.com/">Huffington Post</a> data (roughly <a href="data/huffington.tsv">29.4M</a>) contains 75,293 political blogs. Students are required to demonstrate their web applications on both datasets.</li>-->
+    </ul>
+    </font>   
+        
+<!--
+    <hr style="width: 100%; height: 1px;"> 
+    <font style="font-family:Helvetica;" color="black" size="4">
+    For a <b>C</b>, you need to visualize <b>terms</b>:
+    <ul>
+      <li> Show the top 50 popular terms (all categories) in Worldle/Tag Cloud</li>
+      <li> Show the monthly frequency of the 50 popular terms over time</li>
+      <li> Select a term and highlight its monthly frequency</li>
+      <li> Allow users to quickly zoom into a time interval for more details (daily frequencies)</li>
+    </ul>  
+    For a <b>B</b>, you need to visualize <b>relationships</b>:
+    <ul>
+      <li> Input a term and display the top 50 related terms (terms appear in the same blog)</li>
+      <li> Show relationships between terms</li>
+      <li> Mousing over a term highlight related terms (within the 50 terms)</li>
+    </ul> 
+    For a <b>A</b>, you need to make <b>discoveries</b>:
+    <ul>
+      <li> Plot locations mentioned in news/blogs on a map.</li>
+      <li> Your ideas on making visualizations for highlighting patterns within the data</li>
+      <li> Automatically highlight importants events.</li>
+      <li> Compare topics from 2 sources?</li>
+      <li> Tell your stories.</li>
+    </ul>   
+    </font> 
+-->
+
+  <hr style="width: 100%; height: 1px;">    
+     <div align="left"><font style="font-family:
+        Helvetica,Arial,sans-serif;" color="black" size="5">Advices:</font></div>
+      <ul>  
+        <li style="margin-left: 30px" >  
+        <font style="font-family:Helvetica;" size="4">
+          Don't stick with all the bullet points above, but use them as suggestions for your project. Feel free to bring in your own requirements and create your designs/solutions (be creative).
+        </font>  
+        </li> 
+        <li style="margin-left: 30px" >  
+        <font style="font-family:Helvetica;" size="4">
+          Understand the requirements thoroughly and come up the stategy (design) for the entire project.
+        </font>  
+        </li>      
+        <li style="margin-left: 30px" >  
+        <font style="font-family:Helvetica;"  size="4">
+          Sketching with pen/pencil is a good way to come up with a unified design.
+         </font>  
+        </li>
+
+        <li style="margin-left: 30px" >  
+        <font style="font-family:Helvetica;" size="4">
+          Don't stuck at some parts of the project. For example, team members should not wait until the processed data become available to start with the implementation. Instead, create a sample (smaller) processed data to perform the team works in paralell.
+         </font>  
+        </li>
+
+        <li style="margin-left: 30px" >  
+        <font style="font-family:Helvetica;" size="4">
+          We will conduct weekly updates for this project
+        </font>  
+        </li>
+
+      </ul>
+
+
+   <hr style="width: 100%; height: 1px;">    
+     <div align="left"><font style="font-family:
+        Helvetica,Arial,sans-serif;" color="black" size="5">Notes:</font></div>
+      <ul>  
+        <li style="margin-left: 30px" >  
+        <font style="font-family:Helvetica;" color="black" size="4">
+          This project is a web-based application in javascript, html, and D3 (you can use other javascript libraries).
+        </font>  
+        </li> 
+        <li style="margin-left: 30px" >  
+        <font style="font-family:Helvetica;" color="black" size="4">
+          Your code should run on all browsers (Chrome, Safari, Firefox, Explorer,...). <b> No refreshing</b>: Every refresh costs you <b>1%</b>.
+        </font>  
+        </li>      
+        <li style="margin-left: 30px" >  
+        <font style="font-family:Helvetica;" color="black" size="4">
+          Your application should start out showing some data or an overview and then allow users to add more or request details on demand. 
+         </font>  
+        </li>
+
+        <li style="margin-left: 30px" >  
+        <font style="font-family:Helvetica;" color="black" size="4">
+          Make sure your code is well commented (this is a good practice since you will work in a team). Instructor may inspect your source code.
+         </font>  
+        </li>
+      </ul>
+
+<hr style="width: 100%; height: 1px;">    
+     <div align="left"><font style="font-family:
+        Helvetica,Arial,sans-serif;" color="black" size="5">Project report on Github (readme file):</font></div>
+
+      <ul>  
+        <li style="margin-left: 30px" >  
+        <font style="font-family:Helvetica;" color="black" size="4"> 
+           Create a 3-minute video showing the use of your application with your voice over. That video should appear on the top of your github readme file.
+           The video can be used as a backup during your presentation just in case of something go wrong.      
+        </font>  
+        </li>
+
+        <li style="margin-left: 30px" >  
+        <font style="font-family:Helvetica;" color="black" size="4"> 
+           Add a link to your web-based application (right after the video). You can host it <a href="https://pages.github.com/">on your github</a> or your ttu personal page.            
+        </font>  
+        </li>
+
+        <li style="margin-left: 30px" >  
+        <font style="font-family:Helvetica;" color="black" size="4"> 
+           <b>Clearly explain the duties of each student in your group. </b>         
+        </font>  
+        </li>
+
+         <li style="margin-left: 30px" >  
+        <font style="font-family:Helvetica;" color="black" size="4"> 
+           Discrible your application and highlight your findings by screenshots.         
+        </font>  
+        </li>
+      </ul>
+<!--<font style="font-family:Helvetica;" color="black" size="4"> 
+An example github report can be found <a href="https://github.com/CreativeCodingLab/TimeArcs">here<a>.            
+</font> -->
+
+<hr style="width: 100%; height: 1px;">    
+     <div align="left"><font style="font-family:
+        Helvetica,Arial,sans-serif;" color="black" size="5">In-class presentation:</font></div>
+      
+    <ul>  
+      <li style="margin-left: 30px" >  
+      <font style="font-family:Helvetica;" color="black" size="4"> 
+         The presentation is 12 minutes per group (everyone needs to present). It is 10 minute talk and 2 minute for questions. Make sure that you are ready to talk right after the group in front of you is done.            
+      </font>  
+      </li>
+       
+       <li style="margin-left: 30px" >  
+      <font style="font-family:Helvetica;" color="black" size="4"> 
+         Please practice your talk. Show the basic functionality and emphasize on why your visualization is different.          
+      </font>  
+      </li>   
+    </ul>  
+     <hr style="width: 100%; height: 1px;">    
+      <div align="right"><font style="font-family:
+        Helvetica,Arial,sans-serif;" color="black" size="2">&copy; Last revised: Nov 28, 2016  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</font></div>
+     
+  </body>
+</html>

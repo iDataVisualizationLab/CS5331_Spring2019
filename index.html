@@ -1,0 +1,98 @@
+
+<!-- Adapted from https://www.evl.uic.edu/aej/424/ -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>CS5331-004: Visualization and Visual Analytics</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <script type="text/javascript">
+    function UpdatePageSize () {
+        var container = document.getElementById ("all");
+        var container2 = document.getElementById ("menu");
+        var newHeight = container.offsetHeight - container2.offsetHeight ;
+        var newHeightString = newHeight.toString();
+        var newWidth = container.offsetWidth;
+        var newWidthString = newWidth.toString();
+
+        document.getElementById('insideID').setAttribute("height", newHeightString+"px;");
+        document.getElementById('insideID').setAttribute("width", newWidthString+"px;");
+        document.getElementById('innerID').setAttribute("height", newHeightString+"px;");
+        document.getElementById('innerID').setAttribute("width", newWidthString+"px;");
+  }      
+
+  function ChangeifiOS () {
+    var iOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false );
+
+    if (iOS == true)
+      {
+         var anchors = document.getElementsByTagName('a');
+          for (var i = 0; i < anchors.length; i++) {
+            anchors[i].target = '_top';
+            }
+      }
+  }
+
+  window.onresize = function()
+    {
+      UpdatePageSize();
+    }
+
+   </script>
+</head>
+
+<body id="all" onload="ChangeifiOS(); UpdatePageSize()" ontouchstart="" onmouseover="">
+<div align="center"><font style="font-family:
+        Helvetica,Arial,sans-serif;" color="#555" size="5">CS5331-004:
+        Visualization and Visual Analytics - Fall 2016</font></div>
+
+<div id="menu">
+<nav>
+  <ul>
+  <li><a href="main.html" target="InsideFrame">Main</a></li>
+  <li><a href="syllabus.html" target="InsideFrame">Syllabus</a></li>
+  <li><a href="#">Lectures</a>
+    <ul>
+    <li><a href="week01.html" target="InsideFrame">Week 1: Javascripts</a></li>
+    <li><a href="week02.html" target="InsideFrame">Week 2: D3.js</a></li>
+    <li><a href="week03.html" target="InsideFrame">Week 3: Tables and Charts</a></li>
+    <li><a href="week04.html" target="InsideFrame">Week 4: Scatterplots and Paralell Coordinates</a></li>
+    <li><a href="week05.html" target="InsideFrame">Week 5: Text visualization</a></li>
+    <li><a href="week06.html" target="InsideFrame">Week 6: Arc diagrams</a></li>
+    <li><a href="week07.html" target="InsideFrame">Week 7: Fundamental units of visual communication</a></li>
+    <li><a href="week08.html" target="InsideFrame">Week 8: Geospatial visualization</a></li>
+    <li><a href="lectures/week09.html" target="_blank">Week 9: Tree Layouts</a></li>
+    <li><a href="lectures/week09.html#/16.html" target="_blank">Week 10: Hierarchical Edge Bundling</a></li>
+    <li><a href="lectures/week11.html" target="InsideFrame">Week 11: Network Visualization</a></li>
+    <li><a href="lectures/week11.html#/6" target="InsideFrame">Week 12: Adjacency Matrices</a></li>
+    <li><a href="lectures/week13.html" target="InsideFrame">Week 13: Dynamic network visualization</a></li>
+   <li><a href="http://vis.cs.brown.edu/docs/pdf/Guo-2015-RUG.pdf" target="InsideFrame">Week 14: Visualizing Uncertainty</a></li>
+    </ul>
+  </li>
+  <li><a href="#">Projects</a>
+    <ul>
+      <li><a href="P1/index.html" target="InsideFrame">Project 1</a></li>
+      <li><a href="P2/index.html" target="InsideFrame">Project 2</a></li>
+      <li><a href="P3/index.html" target="InsideFrame">Project 3</a></li>
+      <li><a href="Presentations/index.html" target="InsideFrame">Presentations</a></li>
+    </ul>
+  </li>
+  <li><a href="testJS/grades.html" target="InsideFrame">Grades</a></li>
+<!--  <li><a href="students.html" target="InsideFrame">Students</a></li>-->
+
+  <li><a href="http://www.myweb.ttu.edu/tnhondan" target="_blank">Instructor</a></li>
+<!--  <li><a href="http://www.evl.uic.edu">iDVL</a></li>  -->
+  </ul>
+</nav>
+</div>
+
+<div class="innerpage" id="innerID">
+<iframe  name="InsideFrame" id="insideID" src="main.html" type="text/html" width="0" height="0" frameBorder="0"></iframe>
+</div>
+
+</body>
+
+</html>
+

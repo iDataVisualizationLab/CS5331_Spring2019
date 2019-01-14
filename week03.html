@@ -1,0 +1,514 @@
+<!-- Adapted from https://www.evl.uic.edu/aej/424/ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>CS5331-004</title>
+  </head>
+  <body bgcolor="white" text="black">
+     <div align="left"><font style="font-family:
+        Helvetica,Arial,sans-serif;" color="black" size="5">Tables:</font></div>
+    <p style="font-family: Helvetica,Arial,sans-serif;">
+      Here is a table from the US Environmental Protection Agency from a
+      few years ago. What are the problems with this table? 
+    </p>
+    <table align="center" border="1" cellpadding="1" cellspacing="1"
+      width="100%">
+      <caption valign="TOP" align="CENTER">National Carbon_Monoxide
+        Emissions in 2002</caption> <tbody>
+        <tr>
+          <th align="center" valign="middle">Source Sector</th>
+          <th align="center" valign="middle">Total Emissions</th>
+        </tr>
+        <tr>
+          <td align="center" valign="middle">Electricity Generation</td>
+          <td align="center" valign="middle"> 652,314</td>
+        </tr>
+        <tr>
+          <td align="center" valign="middle">Fires</td>
+          <td align="center" valign="middle"> 14,520,530</td>
+        </tr>
+        <tr>
+          <td align="center" valign="middle">Fossil Fuel Combustion</td>
+          <td align="center" valign="middle"> 1,499,367</td>
+        </tr>
+        <tr>
+          <td align="center" valign="middle">Industrial Processes</td>
+          <td align="center" valign="middle"> 2,414,055</td>
+        </tr>
+        <tr>
+          <td align="center" valign="middle">Miscellaneous</td>
+          <td align="center" valign="middle"> 33,786</td>
+        </tr>
+        <tr>
+          <td align="center" valign="middle">Non Road Equipment</td>
+          <td align="center" valign="middle"> 22,414,896</td>
+        </tr>
+        <tr>
+          <td align="center" valign="middle">On Road Vehicles</td>
+          <td align="center" valign="middle"> 62,957,908</td>
+        </tr>
+        <tr>
+          <td align="center" valign="middle">Residential Wood Combustion</td>
+          <td align="center" valign="middle"> 2,704,197</td>
+        </tr>
+        <tr>
+          <td align="center" valign="middle">Road Dust</td>
+          <td align="center" valign="middle"> 0</td>
+        </tr>
+        <tr>
+          <td align="center" valign="middle">Solvent Use</td>
+          <td align="center" valign="middle"> 3,294</td>
+        </tr>
+        <tr>
+          <td align="center" valign="middle">Waste Disposal</td>
+          <td align="center" valign="middle"> 2,018,496</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-family: Helvetica,Arial,sans-serif;">
+      A better version of the table (font, background, alignment):
+    </p>
+    <div style="text-align: center;"><span style="font-family:
+        Helvetica,Arial,sans-serif;">National Carbon_Monoxide Emissions
+        in 2002</span><br>
+    </div>
+    <table style="text-align: left; margin-left: auto; margin-right:
+      auto;" border="1" cellpadding="1" cellspacing="1">
+    </table>
+    <table style="text-align: left; margin-left: auto; margin-right:
+      auto;" border="1" cellpadding="1" cellspacing="1">
+      <tbody>
+        <tr>
+          <th style="font-family: Helvetica,Arial,sans-serif;
+            background-color: rgb(160, 160, 160);" align="center"
+            valign="middle">Source Sector</th>
+          <th style="vertical-align: middle; text-align: center;
+            font-family: Helvetica,Arial,sans-serif; background-color:
+            rgb(160, 160, 160);">&nbsp;Total Emissions <br>
+          </th>
+        </tr>
+        <tr>
+          <td style="font-family: Helvetica,Arial,sans-serif;
+            text-align: left;" valign="middle">&nbsp;Electricity
+            Generation</td>
+          <td style="font-family: Helvetica,Arial,sans-serif; background-color: rgb(255, 252, 252);
+            text-align: right;" valign="middle"> 652,314&nbsp; <br>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-family: Helvetica,Arial,sans-serif;
+            text-align: left;" valign="middle">&nbsp;Fires</td>
+          <td style="font-family: Helvetica,Arial,sans-serif; background-color: rgb(255, 210, 210);
+            text-align: right;" valign="middle"> 14,520,530&nbsp; <br>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-family: Helvetica,Arial,sans-serif;
+            text-align: left;" valign="middle">&nbsp;Fossil Fuel
+            Combustion</td>
+          <td style="font-family: Helvetica,Arial,sans-serif; background-color: rgb(255, 250, 250);
+            text-align: right;" valign="middle"> 1,499,367&nbsp; <br>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-family: Helvetica,Arial,sans-serif;
+            text-align: left;" valign="middle">&nbsp;Industrial
+            Processes</td>
+          <td style="font-family: Helvetica,Arial,sans-serif; background-color: rgb(255, 248, 248);
+            text-align: right;" valign="middle"> 2,414,055&nbsp; <br>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-family: Helvetica,Arial,sans-serif;
+            text-align: left;" valign="middle">&nbsp;Miscellaneous</td>
+          <td style="font-family: Helvetica,Arial,sans-serif; ;background-color: rgb(255, 255, 255);
+            text-align: right;" valign="middle"> 33,786&nbsp; <br>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-family: Helvetica,Arial,sans-serif;
+            text-align: left;" valign="middle">&nbsp;Non Road Equipment</td>
+          <td style="font-family: Helvetica,Arial,sans-serif;background-color: rgb(255, 175, 175);
+            text-align: right;" valign="middle"> 22,414,896&nbsp; <br>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-family: Helvetica,Arial,sans-serif;
+            text-align: left;" valign="middle">&nbsp;On Road Vehicles</td>
+          <td style="font-family: Helvetica,Arial,sans-serif;background-color: rgb(255, 64, 64);
+            text-align: right;" valign="middle"> 62,957,908&nbsp; <br>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-family: Helvetica,Arial,sans-serif;
+            text-align: left;" valign="middle">&nbsp;Residential Wood
+            Combustion</td>
+          <td style="font-family: Helvetica,Arial,sans-serif;background-color: rgb(255, 248, 248);
+            text-align: right;" valign="middle"> 2,704,197&nbsp; <br>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-family: Helvetica,Arial,sans-serif;
+            text-align: left;" valign="middle">&nbsp;Road Dust</td>
+          <td style="font-family: Helvetica,Arial,sans-serif;background-color: rgb(255, 255, 255);
+            text-align: right;" valign="middle"> 0&nbsp; <br>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-family: Helvetica,Arial,sans-serif;
+            text-align: left;" valign="middle">&nbsp;Solvent Use</td>
+          <td style="font-family: Helvetica,Arial,sans-serif;background-color: rgb(255, 254, 254);
+            text-align: right;" valign="middle"> 3,294&nbsp; <br>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-family: Helvetica,Arial,sans-serif;
+            text-align: left;" valign="middle">&nbsp;Waste Disposal</td>
+          <td style="font-family: Helvetica,Arial,sans-serif; background-color: rgb(255, 247, 247);
+            text-align: right;" valign="middle"> 2,018,496&nbsp; <br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <p style="font-family: Helvetica,Arial,sans-serif;"><br>
+      Here is a sample table with two values: Yes/No. <br>
+    </p>
+    <table style="width: 400px; margin-left: auto;
+      margin-right: auto;" border="1" cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top; text-align: center;">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;">Yes<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top; text-align: center;">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;">Yes<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top; text-align: center;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;">Yes<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top; text-align: center;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;">Yes<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top; text-align: center;">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;">Yes<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-family: Helvetica,Arial,sans-serif;">
+      A better version would be:
+    </p>
+    <table style="text-align: left; width: 400px; margin-left: auto;
+      margin-right: auto;" border="1" cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">-<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">Yes<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">-<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">-<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">-<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">Yes<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">-<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">Yes<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">-<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">-<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">-<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">-<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">Yes<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">-<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">-<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">Yes<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-family: Helvetica,Arial,sans-serif;">
+      Using color to highlight the pattern (one color): </p>
+    <table style="text-align: left; width: 400px; margin-left: auto;
+      margin-right: auto;" border="1" cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif; background-color:
+            rgb(0, 200, 0);">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif; background-color:
+            rgb(0, 200, 0);">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif; background-color:
+            rgb(0, 200, 0);">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif; background-color:
+            rgb(0, 200, 0);">Yes<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif; background-color:
+            rgb(0, 200, 0);">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif; background-color:
+            rgb(0, 200, 0);">Yes<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif; background-color:
+            rgb(0, 200, 0);">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif; background-color:
+            rgb(0, 200, 0);">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif; background-color:
+            rgb(0, 200, 0);">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif; background-color:
+            rgb(0, 200, 0);">Yes<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif; background-color:
+            rgb(0, 200, 0);">Yes<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif; background-color:
+            rgb(0, 200, 0);">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif; background-color:
+            rgb(0, 200, 0);">Yes<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif;">No<br>
+          </td>
+          <td style="vertical-align: top; text-align: center;
+            font-family: Helvetica,Arial,sans-serif; background-color:
+            rgb(0, 200, 0);">Yes<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  <hr style="width: 100%; height: 1px;">    
+  <div align="left"><font style="font-family:
+        Helvetica,Arial,sans-serif;" color="black" size="5">Bar charts:</font></div>
+    
+     <p style="font-family: Helvetica,Arial,sans-serif;">This is the bar charts of the population of the USA over the last 8 years. The left chart shows how 3D hurts the visualization. The right chart is a less fancy but much more effective in 2D.</p>
+    <p style="font-family: Helvetica,Arial,sans-serif;"><img
+        style="width: 40%" alt="Overly 3D chart of US
+        population" src="https://www.evl.uic.edu/aej/424/pics/tablesandcharts/pop1.jpg">
+    <img style="width: 40%" alt="More readable 2D chart
+        of US population" src="https://www.evl.uic.edu/aej/424/pics/tablesandcharts/pop2.jpg"></p>
+    <div style="text-align: justify; font-family:
+      Helvetica,Arial,sans-serif;">Pay attentions to the y-axis on the following charts of the same data.<br>
+    </div>
+    <p style="font-family: Helvetica,Arial,sans-serif;"><img
+        style="width: 40%" alt="Vertical scale
+        suggesting slow growth" src="https://www.evl.uic.edu/aej/424/pics/tablesandcharts/pop3.jpg">
+      &nbsp; <img style="width: 40%" alt="Vertical
+        scale suggesting rapid growth"
+        src="https://www.evl.uic.edu/aej/424/pics/tablesandcharts/pop4.jpg"></p>
+    <p style="font-family: Helvetica,Arial,sans-serif;">
+    </p>
+  
+
+    <p style="font-family: Helvetica,Arial,sans-serif; text-align:
+        justify;">Here is an example how visualization lies: from Time Magazine (4/9/79) via Tufte. Please avoid this.<br>
+      </p>
+      <p style="font-family: Helvetica,Arial,sans-serif; text-align:
+        justify;"><img alt="Oil Prices Represented as Barrels"
+          src="https://www.evl.uic.edu/aej/424/pics/week2/barrel1.jpg" style="border: 0px solid ; width:
+          384px; height: 507px;"><br>
+      </p>
+
+<hr style="width: 100%; height: 1px;">    
+      
+      <div align="left"><font style="font-family:
+        Helvetica,Arial,sans-serif;" color="black" size="5">Pie charts:</font></div>
+
+     <p style="font-family: Helvetica,Arial,sans-serif;"> These examples are charts from a recent version of Excel. 3D distorts the view making it more difficult (less accurate as well) to read the visualization. <br>
+    </p>
+    <p style="font-family: Helvetica,Arial,sans-serif;"><img
+        style="width: 380px; height: 250px;" alt=""
+        src="https://www.evl.uic.edu/aej/424/pics/tablesandcharts/console1.jpg"> <img
+        src="https://www.evl.uic.edu/aej/424/pics/tablesandcharts/console2.jpg" alt="" style="width:
+        413px; height: 250px;"></p>
+    <p style="font-family: Helvetica,Arial,sans-serif; text-align:
+      justify;">A 2D version is much better.  Picking up the right colors is also helpful: we could use colors to relate consoles. For example, Playstation 2 and Playstation 3 are both in (darker and lighter) blue.<br>
+    </p>
+    <p style="font-family: Helvetica,Arial,sans-serif;"><img
+        style="width: 40%" alt=""
+        src="https://www.evl.uic.edu/aej/424/pics/tablesandcharts/console3x.jpg" ><img style="width: 35%" alt=""
+        src="https://www.evl.uic.edu/aej/424/pics/tablesandcharts/console4x.jpg" ><br>
+    </p>
+  
+  <p style="font-family: Helvetica,Arial,sans-serif; text-align:
+      justify;">Here is another <a href="http://flowingdata.com/2009/11/26/fox-news-makes-the-best-pie-chart-ever/">bad example from Fox news</a>:<br>
+      </p>
+
+    <p style="font-family: Helvetica,Arial,sans-serif; text-align:
+      justify;"><img src="https://www.evl.uic.edu/aej/424/pics/week2/foxnewspiechart.jpg" alt="">
+
+      <hr
+       style="width: 100%; height: 1px;">    
+       Some tables/images on this page were adapted from <a href="https://www.evl.uic.edu/aej/424/">Visualization and Visual Analytics class</a> at UIC by <a href="https://www.evl.uic.edu/aej/">Prof. Andrew Johnson</a>.
+       
+      <div align="right"><font style="font-family:
+        Helvetica,Arial,sans-serif;" color="black" size="2">&copy; Last revised: Sep 29th, 2016  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</font></div> 
+
+      
+      
+  </body>
+</html>
