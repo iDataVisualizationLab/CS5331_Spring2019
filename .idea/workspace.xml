@@ -2,7 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a5e300a-8f05-464a-9ae9-cb0c5718336f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Akash.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Akhila_Tumalla.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Andrew_Salopek.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Aravind_Kattamuri.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Arun_kumar_Jegarkal.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Bharath_Kumar_Kande.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Bhavya_Batra.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Brindavan.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/James_Taber.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Jeff_Sorbo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Kiran_Patrudu_Gopalasetty.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Maede_Rayatidamavandi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Manasa_Shivarudra.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Manisha_Siddartha_Nalla.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Manohar_Kotapati.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Naimisha_Manikonda.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Nikitha_Mahesh.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Paul_Cho.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Praneeth_Yerramothu.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Richard_Matovu.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Roshan_Ramprasad_Shetty.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Sai_Lakshmi_Sunanda_Perumalla.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/SaraSartoli.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Sonia_Baee.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Sreehari_Inukollu.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Supra_Jyotsna.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Upama_Nakarmi.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Venkatesh_Papineni.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Vibhuti_Gupta.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Vidya_Eswarapp.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/Vinay_Deshpande.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/students.html" beforeDir="false" afterPath="$PROJECT_DIR$/students.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,47 +50,78 @@
     <session id="-1802982879">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.0" value="1" />
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.0" value="4" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="5" />
+          <entry key="csv" value="3" />
+          <entry key="html" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="5" />
+          <entry key="CSV" value="3" />
+          <entry key="HTML" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="2" />
+          <entry key="csv" value="4" />
+          <entry key="html" value="253" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="2" />
+          <entry key="CSV" value="4" />
+          <entry key="HTML" value="253" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/week01.html">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="771">
-              <caret line="81" selection-start-line="81" selection-end-line="82" selection-end-column="46" />
+            <state relative-caret-position="682">
+              <caret line="81" column="28" selection-start-line="81" selection-start-column="28" selection-end-line="81" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/students.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="252" column="52" selection-start-line="252" selection-start-column="52" selection-end-line="252" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grade/data/StudentsMerge.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-890">
+              <caret column="47" selection-start-column="36" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grade/data/Students.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="401">
+              <caret line="23" column="75" selection-start-line="23" selection-start-column="75" selection-end-line="23" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -65,17 +129,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/syllabus.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="552">
-              <caret line="21" column="25" lean-forward="true" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+            <state relative-caret-position="504">
+              <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1526" />
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -85,13 +147,24 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>11.PNG</find>
+      <find>dhs</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>6.png</replace>
+    </replaceStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/grade/data/Students.csv" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/students.html" />
       </list>
     </option>
   </component>
@@ -108,7 +181,7 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1380" />
+    <option name="x" value="1265" />
     <option name="y" value="23" />
     <option name="width" value="1180" />
     <option name="height" value="1397" />
@@ -135,6 +208,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -145,13 +219,23 @@
             <path>
               <item name="CS5331_Spring2019" type="b2602c69:ProjectViewProjectNode" />
               <item name="CS5331_Spring2019" type="462c0819:PsiDirectoryNode" />
+              <item name="grade" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS5331_Spring2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS5331_Spring2019" type="462c0819:PsiDirectoryNode" />
+              <item name="grade" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS5331_Spring2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS5331_Spring2019" type="462c0819:PsiDirectoryNode" />
               <item name="P1" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -173,6 +257,16 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="students.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/CS5331_Spring2019/students.html">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.students.html" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -185,15 +279,18 @@
       <updated>1548724812203</updated>
       <workItem from="1548724816583" duration="681000" />
       <workItem from="1548778777319" duration="755000" />
-      <workItem from="1548788931569" duration="1134000" />
+      <workItem from="1548788931569" duration="2259000" />
+      <workItem from="1548793152188" duration="986000" />
+      <workItem from="1548794348940" duration="144000" />
+      <workItem from="1548794505089" duration="1352000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2570000" />
+    <option name="totallyTimeSpent" value="6177000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1380" y="23" width="1180" height="1397" extended-state="0" />
+    <frame x="1265" y="23" width="1180" height="1397" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23554789" />
@@ -202,7 +299,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39953452" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -222,28 +319,48 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/week01.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/grade/data/Students copy.csv" />
     <entry file="file://$PROJECT_DIR$/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1526" />
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/TeachingPlan.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/syllabus.html">
+    <entry file="file://$PROJECT_DIR$/week01.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grade/data/StudentsMerge.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="21" column="25" lean-forward="true" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+        <state relative-caret-position="-890">
+          <caret column="47" selection-start-column="36" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grade/data/Students.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="23" column="75" selection-start-line="23" selection-start-column="75" selection-end-line="23" selection-end-column="75" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="771">
-          <caret line="81" selection-start-line="81" selection-end-line="82" selection-end-column="46" />
+        <state relative-caret-position="682">
+          <caret line="81" column="28" selection-start-line="81" selection-start-column="28" selection-end-line="81" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/syllabus.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/students.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="252" column="52" selection-start-line="252" selection-start-column="52" selection-end-line="252" selection-end-column="52" />
         </state>
       </provider>
     </entry>
