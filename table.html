@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student list</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--[if !IE]><!-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font: 14px/1.4 sans-serif;
+        }
+        #page-wrap {
+            margin: 50px;
+        }
+        p {
+            margin: 20px 0;
+        }
+
+        /*
+        Generic Styling, for Desktops/Laptops
+        */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        /* Zebra striping */
+        tr:nth-of-type(even) {
+            background: #eee;
+        }
+        tr:nth-of-type(odd) {
+            background: #fff;
+        }
+        th {
+            background: #333;
+            color: white;
+            font-weight: bold;
+            cursor: s-resize;
+            background-repeat: no-repeat;
+            background-position: 3% center;
+        }
+        td, th {
+            padding: 6px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th.des:after {
+            content: "\21E9";
+        }
+
+        th.aes:after {
+            content: "\21E7";
+        }
+
+        /*
+        Max width before this PARTICULAR table gets nasty
+        This query will take effect for any screen smaller than 760px
+        and also iPads specifically.
+        */
+        @media
+        only screen and (max-width: 760px),
+        (min-device-width: 768px) and (max-device-width: 1024px)  {
+
+            /* Force table to not be like tables anymore */
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            /* Hide table headers (but not display: none;, for accessibility) */
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr { border: 1px solid #ccc; }
+
+            td {
+                /* Behave  like a "row" */
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 50%;
+            }
+
+            td:before {
+                /* Now like a table header */
+                position: absolute;
+                /* Top/left values mimic padding */
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+            }
+
+            /*
+            Label the data
+            */
+            td:before {
+                content: attr(data-th) ": ";
+                font-weight: bold;
+                width: 6.5em;
+                display: inline-block;
+            }
+        }
+
+        /* Smartphones (portrait and landscape) ----------- */
+        @media only screen
+        and (min-device-width : 320px)
+        and (max-device-width : 480px) {
+            body {
+                padding: 0;
+                margin: 0;
+                width: 320px; }
+        }
+
+        /* iPads (portrait and landscape) ----------- */
+        @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+            body {
+                width: 495px;
+            }
+        }
+
+    </style>
+    <!--<![endif]-->
+</head>
+<body>
+
+<div id="page-wrap">
+
+    <h1>Enrolled Students</h1>
+
+    <p>The table lists all students for this class</p>
+</div>
+<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript">
+    d3.csv('grade/data/Students.csv',function (error, data) {
+        if (error) throw error;
+        var data1, data2;
+        var len = data.length;
+        if (len%2) { // odd
+            data1 = data.slice(0, 1 + len/2);
+            data2 = data.slice(1+len/2);
+        }
+        else {
+            data1 = data.slice(0,len/2);
+            data2 = data.slice(len/2);
+        }
+
+        var table = d3.select('#page-wrap').append('table').append("tr");
+
+        var titles = ["No.","Photo", "Full Name", "Program" , "Project 1 Selection"];
+        var table1 = table.append("td").attr("width", "46%")
+            .attr("valign","top")
+            .append('table');
+        var index1 =  Array.from(Array(len),(x,i)=>i);
+        var photo1 = [];
+        data1.forEach((d,i) => {
+            photo1.push(d["Photoname"]);
+        });
+        console.log(photo1);
+        var headers1 = table1.append('thead').append('tr')
+            .selectAll('th')
+            .data(titles).enter()
+            .append('th')
+            .text(function (d) {
+                return d;
+            });
+
+        var rows1 = table1.append('tbody').selectAll('tr')
+            .data(data1).enter()
+            .append('tr');
+
+        rows1.selectAll('td')
+            .data(function (d,i) {
+                return titles.map(function (k,j) {
+                    if (k === "No.") {
+                        return  { 'value': i+1, 'name': k};
+                    }
+                    return { 'value': d[k], 'name': k.split(" ")[0],
+                        'link': d[titles[j+1]]};
+                });
+            }).enter()
+            .append('td')
+            .attr('data-th', function (d) {
+                return d.name;
+            })
+            .attr("class", d => d.name);
+
+        rows1.selectAll("td")
+            .text(function (d) {
+                if (d.name === "Project"){
+                    return d.value + " "
+                }
+                return d.value;
+            })
+        ;
+
+        rows1.selectAll(".Project")
+            .append("a")
+            .attr("href", "#")
+            .attr("target", "_blank")
+            .append("i")
+            .attr("class", "fa fa-external-link")
+            ;
+
+        rows1.selectAll(".Photo")
+            .data(function (d,i) {
+                    return { 'value': d["Photoname"], 'name': i};
+            })
+        .append('img')
+        .attr('src', d => 'photos/'+d.value);
+
+        table.append("td").attr("width", "3%").attr("valign","top");
+        var table2 = table.append("td").attr("width", "46%").attr("valign","top").append('table');
+        var headers2 = table2.append('thead').append('tr')
+            .selectAll('th')
+            .data(titles).enter()
+            .append('th')
+            .text(function (d) {
+                return d;
+            });
+
+        var rows2 = table2.append('tbody').selectAll('tr')
+            .data(data2).enter()
+            .append('tr');
+
+        rows2.selectAll('td')
+            .data(function (d,i) {
+                return titles.map(function (k,j) {
+                    if (k === "No.") {
+                        return  { 'value': i+1+21, 'name': k};
+                    }
+                    return { 'value': d[k], 'name': k.split(" ")[0]
+                    };
+                });
+            }).enter()
+            .append('td')
+            .attr('data-th', function (d) {
+                return d.name;
+            })
+            .attr("class", d => d.name);
+
+        rows2.selectAll("td")
+            .text(function (d) {
+                if (d.name === "Project"){
+                    return d.value + " "
+                }
+                return d.value;
+            })
+        ;
+
+        rows2.selectAll(".Project")
+            .append("a")
+            .attr("href", "#")
+            .attr("target", "_blank")
+            .append("i")
+            .attr("class", "fa fa-external-link")
+        ;
+
+        rows2.selectAll(".Photo")
+            .data(function (d,i) {
+                return { 'value': d["Photoname"], 'name': i};
+            })
+            .append('img')
+            .attr('src', d => 'photos/'+d.value);
+
+
+    });
+</script>
+</body>
+</html>
