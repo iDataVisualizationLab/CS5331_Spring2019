@@ -22,7 +22,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="64">
@@ -31,17 +31,18 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/P1/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="459" column="72" selection-start-line="459" selection-start-column="72" selection-end-line="459" selection-end-column="72" />
+            <state relative-caret-position="302">
+              <caret line="464" column="62" selection-start-line="464" selection-start-column="62" selection-end-line="464" selection-end-column="62" />
               <folding>
                 <element signature="e#264#320#0" expanded="true" />
                 <element signature="e#10354#10410#0" expanded="true" />
                 <element signature="e#12691#12721#0" expanded="true" />
                 <element signature="e#16400#16433#0" expanded="true" />
                 <element signature="e#20138#20210#0" expanded="true" />
+                <element signature="e#20275#20341#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,7 +109,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="676" />
     <option name="width" value="697" />
     <option name="height" value="735" />
@@ -182,16 +183,15 @@
       <workItem from="1548794348940" duration="144000" />
       <workItem from="1548794505089" duration="1352000" />
       <workItem from="1548828986022" duration="5044000" />
-      <workItem from="1548834217440" duration="8153000" />
+      <workItem from="1548834217440" duration="8788000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19374000" />
+    <option name="totallyTimeSpent" value="20009000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12574404" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -268,24 +268,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="81" column="33" lean-forward="true" selection-start-line="81" selection-start-column="33" selection-end-line="81" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/P1/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="459" column="72" selection-start-line="459" selection-start-column="72" selection-end-line="459" selection-end-column="72" />
+        <state relative-caret-position="302">
+          <caret line="464" column="62" selection-start-line="464" selection-start-column="62" selection-end-line="464" selection-end-column="62" />
           <folding>
             <element signature="e#264#320#0" expanded="true" />
             <element signature="e#10354#10410#0" expanded="true" />
             <element signature="e#12691#12721#0" expanded="true" />
             <element signature="e#16400#16433#0" expanded="true" />
             <element signature="e#20138#20210#0" expanded="true" />
+            <element signature="e#20275#20341#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="81" column="33" lean-forward="true" selection-start-line="81" selection-start-column="33" selection-end-line="81" selection-end-column="33" />
         </state>
       </provider>
     </entry>
