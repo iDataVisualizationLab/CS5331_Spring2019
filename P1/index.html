@@ -7,6 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script type="text/javascript" src="../lib/d3.v3.min.js"></script>
       <!--[if !IE]><!-->
       <style>
           * {
@@ -462,7 +463,6 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
     </font>
     <div id="page-wrap">
     </div>
-    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
     <script type="text/javascript">
         d3.csv('../grade/data/Students.csv',function (error, data) {
             if (error) throw error;
@@ -491,6 +491,7 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
                 photo1.push(d["Photoname"]);
             });
             console.log(photo1);
+
             var headers1 = table1.append('thead').append('tr')
                 .selectAll('th')
                 .data(titles).enter()
@@ -514,6 +515,7 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
                     });
                 }).enter()
                 .append('td')
+                .attr("height", "50px")
                 .attr('data-th', function (d) {
                     return d.name;
                 })
@@ -545,7 +547,12 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
 
             table.append("td").attr("width", "2%").attr("valign","top")  .attr("class", "newtd");
 
-            var table2 = table.append("td").attr("width", "46%").attr("valign","top")  .attr("class", "newtd").append('table');
+            var table2 = table.append("td")
+                .attr("width", "46%")
+                .attr("valign","top")
+                .attr("class", "newtd")
+                .append('table');
+
             var headers2 = table2.append('thead').append('tr')
                 .selectAll('th')
                 .data(titles).enter()
@@ -569,6 +576,7 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
                     });
                 }).enter()
                 .append('td')
+                .attr("height", "50px")
                 .attr('data-th', function (d) {
                     return d.name;
                 })
