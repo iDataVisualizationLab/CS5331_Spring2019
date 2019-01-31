@@ -7,6 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script type="text/javascript" src="../lib/d3.v3.min.js"></script>
       <!--[if !IE]><!-->
       <style>
@@ -485,13 +486,6 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
                 .attr("valign","top")
                 .append('table');
 
-            var index1 =  Array.from(Array(len),(x,i)=>i);
-            var photo1 = [];
-            data1.forEach((d,i) => {
-                photo1.push(d["Photoname"]);
-            });
-            console.log(photo1);
-
             var headers1 = table1.append('thead').append('tr')
                 .selectAll('th')
                 .data(titles).enter()
@@ -500,55 +494,28 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
                     return d;
                 });
 
-            var rows1 = table1.append('tbody').selectAll('tr')
-                .data(data1).enter()
-                .append('tr');
+            var rows1 = table1.append('tbody') .attr("id", "tb1");
 
-            rows1.selectAll('td')
-                .data(function (d,i) {
-                    return titles.map(function (k,j) {
-                        if (k === "No.") {
-                            return  { 'value': i+1, 'name': k};
-                        }
-                        return { 'value': d[k], 'name': k.split(" ")[0],
-                            'link': d[titles[j+1]]};
-                    });
-                }).enter()
-                .append('td')
-                .attr("height", "70px")
-                .attr('data-th', function (d) {
-                    return d.name;
-                })
-                .attr("class", d => d.name);
+            data1.forEach((row,index) => {
+                var photo = row.Photo != ""
+                    ?'<img alt='+row.Photo+ ' height="100" src=' + 'photos/'+ row.Photo + '></img>':'<img src="                    photos/no-image.png"/>';
 
-            rows1.selectAll("td")
-                .text(function (d) {
-                    if (d.name === "Project"){
-                        return d.value + " "
-                    }
-                    return d.value;
-                })
-            ;
+                var link = row.P1Link != ""? '<a href=' + row.P1Link + ' target=blank>' +
+                    '<i class="fa fa-external-link"></i>' + '</a>':"";
 
-            rows1.selectAll(".Project")
-                .append("a")
-                .attr("href", "#")
-                .attr("target", "_blank")
-                .append("i")
-                .attr("class", "fa fa-external-link")
-            ;
+                $("#tb1").append('<tr><td>' + (index + 1) + '</td><td style="text-align: center; vertical-align: middle;" >' + photo  + '</td><td>' + row["Fullname"] +
+                    '</td><td>'+ row["Program"] + '</td><td>' + row["P1Selection"] + " " + link+'</td></tr>' );
 
-            rows1.selectAll(".Photo")
-                .data(function (d,i) {
-                    return { 'value': d["Photoname"], 'name': i};
-                })
-                .append('img')
-                .attr('src', d => 'photos/'+d.value);
+            });
+
+
+            // ------- Middle table --------
 
             table.append("td").attr("width", "2%").attr("valign","top")  .attr("class", "newtd");
 
+            // ------- Table 2 --------
             var table2 = table.append("td")
-                .attr("width", "46%")
+                .attr("width", "50%")
                 .attr("valign","top")
                 .attr("class", "newtd")
                 .append('table');
@@ -561,57 +528,25 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
                     return d;
                 });
 
-            var rows2 = table2.append('tbody').selectAll('tr')
-                .data(data2).enter()
-                .append('tr');
+            var rows2 = table2.append('tbody') .attr("id", "tb2");
 
-            rows2.selectAll('td')
-                .data(function (d,i) {
-                    return titles.map(function (k,j) {
-                        if (k === "No.") {
-                            return  { 'value': i+1+21, 'name': k};
-                        }
-                        return { 'value': d[k], 'name': k.split(" ")[0]
-                        };
-                    });
-                }).enter()
-                .append('td')
-                .attr("height", "70px")
-                .attr('data-th', function (d) {
-                    return d.name;
-                })
-                .attr("class", d => d.name);
+            data2.forEach((row,index) => {
+                var photo = row.Photo != ""
+                    ?'<img alt='+row.Photo+ ' height="100" src=' + 'photos/'+ row.Photo + '></img>':'<img src=" photos/no-image.png"/>';
 
-            rows2.selectAll("td")
-                .text(function (d) {
-                    if (d.name === "Project"){
-                        return d.value + " "
-                    }
-                    return d.value;
-                })
-            ;
+                var link = row.P1Link != ""? '<a href=' + row.P1Link + ' target=blank>' +
+                    '<i class="fa fa-external-link"></i>' + '</a>':"";
 
-            rows2.selectAll(".Project")
-                .append("a")
-                .attr("href", "#")
-                .attr("target", "_blank")
-                .append("i")
-                .attr("class", "fa fa-external-link")
-            ;
+                $("#tb2").append('<tr><td>' + (index + 21 +1) + '</td><td style="text-align: center; vertical-align: middle;">' + photo  + '</td><td>' + row["Fullname"] +
+                    '</td><td>'+ row["Program"] + '</td><td>' + row["P1Selection"] + " " + link+'</td></tr>' );
 
-            rows2.selectAll(".Photo")
-                .data(function (d,i) {
-                    return { 'value': d["Photoname"], 'name': i};
-                })
-                .append('img')
-                .attr('src', d => 'photos/'+d.value);
-
-
+            });
         });
     </script>
 
     <div align="right"><font style="font-family:
-        Helvetica,Arial,sans-serif;" color="black" size="2">&copy; Last revised: Jan 22, 2019  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</font></div>
+        Helvetica,Arial,sans-serif;" color="black" size="2">&copy; Last revised: Jan 31, 2019  &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp;</font></div>
 
   </body>
 </html>
