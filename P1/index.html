@@ -481,7 +481,7 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
             var table = d3.select('#page-wrap').append('table').append("tr");
 
             var titles = ["No.","Photo", "Full Name", "Program" , "Project 1 Selection"];
-            var table1 = table.append("td").attr("width", "46%")
+            var table1 = table.append("td").attr("width", "48%")
                 .attr("class", "newtd")
                 .attr("valign","top")
                 .append('table');
@@ -516,7 +516,7 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
 
             // ------- Table 2 --------
             var table2 = table.append("td")
-                .attr("width", "50%")
+                .attr("width", "48%")
                 .attr("valign","top")
                 .attr("class", "newtd")
                 .append('table');
@@ -538,7 +538,7 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
                 var link = row.P1Link != ""? '<a href=' + row.P1Link + ' target=blank>' +
                     '<i class="fa fa-external-link"></i>' + '</a>':"";
 
-                $("#tb2").append('<tr><td style="text-align: center;">' + (index + 21 +1) +
+                $("#tb2").append('<tr><td style="text-align: center;">' + (index + 22 +1) +
                     '</td><td style="text-align: center; vertical-align: middle;">' + photo  + '</td><td>' + row["Fullname"] +
                     '</td><td>'+ row["Program"] + '</td><td>' + row["P1Selection"] + " " + link+'</td></tr>' );
 
@@ -547,7 +547,7 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
     </script>
 
     <div align="right"><font style="font-family:
-        Helvetica,Arial,sans-serif;" color="black" size="2">&copy; Last revised: Jan 31, 2019  &nbsp; &nbsp; &nbsp;
+        Helvetica,Arial,sans-serif;" color="black" size="2">&copy; Last revised: Feb 4, 2019  &nbsp; &nbsp; &nbsp;
         &nbsp; &nbsp;</font></div>
 
   </body>

@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a5e300a-8f05-464a-9ae9-cb0c5718336f" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/testJS/data/participations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/testJS/data/participations.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testJS/grades.html" beforeDir="false" afterPath="$PROJECT_DIR$/testJS/grades.html" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/P1/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/P1/index.html" afterDir="false" />
+>>>>>>> b7ecadab0f5c43f3aa20f89553f19a24f5388a82
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -14,17 +18,30 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1802982879">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="csv" value="15" />
+          <entry key="html" value="12" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="CSV" value="15" />
+          <entry key="HTML" value="12" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/table.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2635">
-              <caret line="155" selection-start-line="155" selection-end-line="155" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -34,11 +51,21 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
+=======
+      <file pinned="false" current-in-tab="true">
+>>>>>>> b7ecadab0f5c43f3aa20f89553f19a24f5388a82
         <entry file="file://$PROJECT_DIR$/P1/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8636">
-              <caret line="517" column="34" selection-start-line="517" selection-start-column="34" selection-end-line="517" selection-end-column="34" />
+            <state relative-caret-position="966">
+              <caret line="549" column="86" selection-start-line="549" selection-start-column="86" selection-end-line="549" selection-end-column="86" />
+              <folding>
+                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -46,8 +73,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/grade/data/Students.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="98" selection-start-line="8" selection-start-column="98" selection-end-line="8" selection-end-column="98" />
+            <state relative-caret-position="1080">
+              <caret line="43" column="28" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -55,7 +82,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/students.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1666">
+            <state relative-caret-position="1182">
               <caret line="101" column="38" selection-start-line="101" selection-start-column="28" selection-end-line="101" selection-end-column="38" />
               <folding>
                 <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -68,7 +95,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
+            <state relative-caret-position="48">
               <caret line="2" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
@@ -108,6 +135,7 @@
       <find>undefined</find>
       <find>count</find>
       <find>get</find>
+<<<<<<< HEAD
       <find>textcontribution</find>
       <find>d1</find>
       <find>d1.nickname</find>
@@ -123,6 +151,9 @@
       <find>nodes</find>
       <find>nickname</find>
       <find>date</find>
+=======
+      <find>under</find>
+>>>>>>> b7ecadab0f5c43f3aa20f89553f19a24f5388a82
     </findStrings>
     <replaceStrings>
       <replace>6.png</replace>
@@ -140,18 +171,34 @@
         <option value="$PROJECT_DIR$/table.html" />
         <option value="$PROJECT_DIR$/style.css" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$USER_HOME$/Downloads/CS5331_Spring2019-master/testJS/grades.html" />
         <option value="$PROJECT_DIR$/grade/data/Students.csv" />
         <option value="$PROJECT_DIR$/P1/index.html" />
+<<<<<<< HEAD
         <option value="$USER_HOME$/Downloads/CS5331_Spring2019-master/testJS/grades.html" />
         <option value="$PROJECT_DIR$/testJS/grades.html" />
+=======
+>>>>>>> b7ecadab0f5c43f3aa20f89553f19a24f5388a82
       </list>
     </option>
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/lectures/reveal/package.json" />
+      <path value="$PROJECT_DIR$/lectures/reveal/plugin/multiplex/package.json" />
+    </packageJsonPaths>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="234" />
-    <option name="y" value="13" />
-    <option name="width" value="1080" />
-    <option name="height" value="788" />
+    <option name="x" value="1179" />
+    <option name="y" value="23" />
+    <option name="width" value="1381" />
+    <option name="height" value="1417" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -161,7 +208,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -183,6 +229,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -207,10 +254,10 @@
     </option>
   </component>
   <component name="RunManager" selected="JavaScript Debug.index.html">
-    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/CS5331_Spring2019/P1/index.html">
+    <configuration name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/CS5331_Spring2019/P1/index.html">
       <method v="2" />
     </configuration>
-    <configuration name="table.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/CS5331_Spring2019/table.html">
+    <configuration name="table.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/CS5331_Spring2019/table.html">
       <method v="2" />
     </configuration>
     <list>
@@ -245,18 +292,26 @@
       <workItem from="1548876372405" duration="3900000" />
       <workItem from="1548955415261" duration="6059000" />
       <workItem from="1549222112652" duration="1070000" />
+<<<<<<< HEAD
       <workItem from="1549323428391" duration="5463000" />
+=======
+      <workItem from="1549317376132" duration="661000" />
+>>>>>>> b7ecadab0f5c43f3aa20f89553f19a24f5388a82
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="36501000" />
+=======
+    <option name="totallyTimeSpent" value="31699000" />
+>>>>>>> b7ecadab0f5c43f3aa20f89553f19a24f5388a82
   </component>
   <component name="ToolWindowManager">
-    <frame x="234" y="13" width="1080" height="788" extended-state="0" />
+    <frame x="1179" y="23" width="1381" height="1417" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1880998" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14632353" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -281,6 +336,9 @@
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
   </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/grade/data/Students copy.csv" />
     <entry file="file://$PROJECT_DIR$/week01.html">
@@ -303,6 +361,7 @@
     <entry file="file://$PROJECT_DIR$/lib/d3.v3.min.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/table.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2635">
@@ -318,19 +377,26 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/students.html">
+=======
+    <entry file="file://$PROJECT_DIR$/testJS/grades.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1666">
-          <caret line="101" column="38" selection-start-line="101" selection-start-column="28" selection-end-line="101" selection-end-column="38" />
-          <folding>
-            <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="2233">
+          <caret line="235" column="22" selection-start-line="235" selection-start-column="12" selection-end-line="235" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/CS5331_Spring2019-master/testJS/grades.html" />
+    <entry file="file://$PROJECT_DIR$/table.html">
+>>>>>>> b7ecadab0f5c43f3aa20f89553f19a24f5388a82
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="155" selection-start-line="155" selection-end-line="155" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
+        <state relative-caret-position="48">
           <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
@@ -341,6 +407,20 @@
     <entry file="file://$PROJECT_DIR$/TeachingPlan.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/students.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1182">
+          <caret line="101" column="38" selection-start-line="101" selection-start-column="28" selection-end-line="101" selection-end-column="38" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+>>>>>>> b7ecadab0f5c43f3aa20f89553f19a24f5388a82
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -348,8 +428,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Downloads/CS5331_Spring2019-master/testJS/grades.html">
+    <entry file="file://$PROJECT_DIR$/grade/data/Students.csv">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="43" column="28" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/P1/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="295">
           <caret line="129" column="13" lean-forward="true" selection-start-line="129" selection-start-column="13" selection-end-line="129" selection-end-column="13" />
         </state>
@@ -366,6 +454,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="98" selection-start-line="8" selection-start-column="98" selection-end-line="8" selection-end-column="98" />
+=======
+        <state relative-caret-position="966">
+          <caret line="549" column="86" selection-start-line="549" selection-start-column="86" selection-end-line="549" selection-end-column="86" />
+          <folding>
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+          </folding>
+>>>>>>> b7ecadab0f5c43f3aa20f89553f19a24f5388a82
         </state>
       </provider>
     </entry>
