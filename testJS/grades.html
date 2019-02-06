@@ -857,11 +857,11 @@ function main(){
       node.append("title")
         .text(function(d) { return d.nickname; });
       nodeP1.append("title")
-        .text(function(d) { return d.nickname; });  
+        .text(function(d) { return d.nickname; });
       nodeP2.append("title")
-        .text(function(d) { return d.nickname; });  
+        .text(function(d) { return d.nickname; });
       nodeP3.append("title")
-        .text(function(d) { return d.nickname; });      
+        .text(function(d) { return d.nickname; });
     }
       
     function mouseoverNode(d1){
@@ -968,7 +968,7 @@ function main(){
       if (document.getElementById("checkboxP1").checked){
         textP1(d1.index);
       }  
-      textContribution(d1.index);       
+      textContribution(d1.index);
     }
     function textContribution(index){
       svg.append("text")
@@ -979,7 +979,8 @@ function main(){
         .attr("fill", "#000")
         .attr("x", radius+nodes[index].x+5)
         .attr("y", nodes[index].y+3)
-        .text("Contribution: "+nodes[index].score+"%");  
+        .text("Contribution: " +nodes[index].score+"% " +nodes[index].nickname)
+
     }  
     
     function textP1(index){
