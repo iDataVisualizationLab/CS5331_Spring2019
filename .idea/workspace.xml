@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8a5e300a-8f05-464a-9ae9-cb0c5718336f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/testJS/data/participations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/testJS/data/participations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testJS/data/students2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/testJS/data/students2.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testJS/grades.html" beforeDir="false" afterPath="$PROJECT_DIR$/testJS/grades.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -35,15 +34,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$USER_HOME$/Downloads/CS5331_Spring2019-master/testJS/grades.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="131" column="13" selection-start-line="131" selection-start-column="13" selection-end-line="131" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/P1/index.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -53,7 +43,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/grade/data/Students.csv">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
@@ -117,8 +107,22 @@
       <find>groupcount</find>
       <find>undefined</find>
       <find>count</find>
-      <find>data2</find>
       <find>get</find>
+      <find>textcontribution</find>
+      <find>d1</find>
+      <find>d1.nickname</find>
+      <find>participation</find>
+      <find>data2</find>
+      <find>score</find>
+      <find>Scores</find>
+      <find>d1.index</find>
+      <find>index</find>
+      <find>node</find>
+      <find>contribution</find>
+      <find>var node</find>
+      <find>nodes</find>
+      <find>nickname</find>
+      <find>date</find>
     </findStrings>
     <replaceStrings>
       <replace>6.png</replace>
@@ -139,6 +143,7 @@
         <option value="$PROJECT_DIR$/grade/data/Students.csv" />
         <option value="$PROJECT_DIR$/P1/index.html" />
         <option value="$USER_HOME$/Downloads/CS5331_Spring2019-master/testJS/grades.html" />
+        <option value="$PROJECT_DIR$/testJS/grades.html" />
       </list>
     </option>
   </component>
@@ -240,11 +245,12 @@
       <workItem from="1548876372405" duration="3900000" />
       <workItem from="1548955415261" duration="6059000" />
       <workItem from="1549222112652" duration="1070000" />
+      <workItem from="1549323428391" duration="5463000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31038000" />
+    <option name="totallyTimeSpent" value="36501000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="234" y="13" width="1080" height="788" extended-state="0" />
@@ -311,13 +317,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grade/data/Students.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="98" selection-start-line="8" selection-start-column="98" selection-end-line="8" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/students.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1666">
@@ -342,13 +341,6 @@
     <entry file="file://$PROJECT_DIR$/TeachingPlan.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/testJS/grades.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2233">
-          <caret line="235" column="22" selection-start-line="235" selection-start-column="12" selection-end-line="235" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -358,8 +350,22 @@
     </entry>
     <entry file="file://$USER_HOME$/Downloads/CS5331_Spring2019-master/testJS/grades.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="131" column="13" selection-start-line="131" selection-start-column="13" selection-end-line="131" selection-end-column="13" />
+        <state relative-caret-position="295">
+          <caret line="129" column="13" lean-forward="true" selection-start-line="129" selection-start-column="13" selection-end-line="129" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testJS/grades.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="123" column="32" selection-start-line="123" selection-start-column="32" selection-end-line="123" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grade/data/Students.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="98" selection-start-line="8" selection-start-column="98" selection-end-line="8" selection-end-column="98" />
         </state>
       </provider>
     </entry>
