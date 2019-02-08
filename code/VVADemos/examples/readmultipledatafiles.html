@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+<script>
+    function loadData(filename){
+        return new Promise(resolve=>{
+           d3.csv(filename, (error, data)=>{
+              return resolve(data);
+           });
+        });
+    }
+    async function loadAllData(onDone){
+        let result1 = await loadData('../data/data.csv');
+        let result2 = await loadData('../data/data1.csv');
+        onDone(result1.concat(result2));
+    };
+    loadAllData(data=>{
+        console.log(data);
+    });
+</script>
+</body>
+</html>

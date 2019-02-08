@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LineGraph</title>
+    <script src="../lib/d3.v4.min.js"></script>
+    <style>
+        @import "../css/styles.css";
+    </style>
+    <style>
+        .tooltip {
+            position: absolute;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+<script>
+    const width = 800, height = 500,
+        margin = {top: 20, right: 20, bottom: 40, left: 40},
+        contentWidth = width - margin.left - margin.right,
+        contentHeight = height - margin.top - margin.bottom;
+    const svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
+    svg.append("defs").append("clipPath").attr("id", "theClipPath").append("rect").attr("x", 0).attr("y", 0).attr("width", contentWidth).attr("height", contentHeight);
+    const content = svg.append("g").attr("transform", `translate(${margin.left}, ${margin.top})`).attr("clip-path", "url(#theClipPath)");
+    //Build tooltip
+    let div = d3.select("body").append("div").attr("class", "tooltip").attr("opacity", 0);
+
+    //Read the data
+    d3.csv("../data/data.csv", row => {
+        row.date = d3.timeParse('%Y-%m-%d')(row.date);
+        row.price = +row.price;
+        return row;
+    }, (error, data) => {
+        if (error) throw error;
+        //Build the xAsis
+        const xAxisG = svg.append("g").attr("transform", `translate(${margin.left}, ${margin.top + contentHeight})`);
+        const xScale = d3.scaleTime().domain(d3.extent(data.map(d => d.date))).range([0, contentWidth]);
+        const xAxis = d3.axisBottom(xScale).tickFormat(d3.timeFormat("%b-%d")).ticks(data.length)
+        xAxisG.call(xAxis);
+
+        const yAxisG = svg.append('g').attr("transform", `translate(${margin.left}, ${margin.top})`);
+        const yScale = d3.scaleLinear().domain([0, d3.max(data.map(d => d.price))]).range([contentHeight, 0]);
+        const yAxis = d3.axisLeft(yScale);
+        yAxisG.call(yAxis);
+
+        const graph = content.append("g");
+        const lineGen = d3.line().x(d => xScale(d.date)).y(d => yScale(d.price));
+        let linePath = graph.append("path").datum(data).attr("d", lineGen).attr("fill", "none").attr("stroke", "black");
+        let circles = graph.selectAll("circle").data(data).enter().append("circle").call(createCircle);
+
+        function createCircle(theCircle) {
+            return theCircle.attr("cx", d => xScale(d.date))
+                .attr("cy", d => yScale(d.price)).attr("r", 4)
+                .attr("fill", "steelblue")
+                .on("mouseover", d => {
+                    div.style('left', d3.event.pageX + "px").style("top", d3.event.pageY + "px");
+                    div.transition().duration(1000).style("opacity", 1);
+                    div.html(d.price.toFixed(2));
+                    paused = true;
+                })
+                .on("mouseout", d=>{
+                    div.transition().duration(1000).style("opacity", 0);
+                    paused = false;
+                });
+        }
+
+        let paused = false;
+
+        function tick() {
+            if (!paused) {
+                //Generate (load) new data
+                const maxDate = d3.max(data.map(d => d.date));
+                const newDate = new Date(maxDate.getTime() + 1000 * 60 * 60 * 24);
+                const newPrice = d3.randomUniform(0, 200)();
+                data.push({date: newDate, price: newPrice});
+                //Redraw with new data.
+                yScale.domain([0, d3.max(data.map(d => d.price))]);
+                linePath.datum(data).attr("d", lineGen).attr("fill", "none").attr("stroke", "black");
+
+                circles = graph.selectAll("circle").data(data).enter().append("circle").merge(circles).call(createCircle);
+
+                circles.exit().remove();
+                //Shift the graph left
+                graph.attr("transform", null).transition().duration(1000).attr("transform", `translate(${xScale(maxDate) - xScale(newDate)})`);
+
+                data.shift();
+                xScale.domain(d3.extent(data.map(d => d.date)));
+                xAxisG.transition().duration(1000).call(xAxis);
+                yAxisG.transition().duration(1000).call(yAxis);
+            }
+
+        }
+
+        setInterval(tick, 2000);
+
+    });
+</script>
+</body>
+</html>

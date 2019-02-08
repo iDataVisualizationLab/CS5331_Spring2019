@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.3/d3.min.js"></script>
+    <style>
+        svg{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<svg width = "150" height = "150">
+    <g transform='translate(20, 20)'>
+        <circle cx='10' cy='10' r='2' fill='red' ></circle>
+        <circle cx='100' cy='100' r='3' fill='green'></circle>
+        <circle cx='20' cy='100' r='4' fill='blue'></circle>
+        <!--<line x1='10' y1='10' x2='20' y2='20' stroke='black'></line>-->
+        <path d='M10, 10L100,100L20,100Z' fill='none' stroke='black'></path>
+    </g>
+</svg>
+<script>
+    //Same as CSS selection
+    const svg = d3.select('body')
+        .append('svg')
+        .attr('width', 150)
+        .attr('height', 150);
+    const g = svg.append('g')
+        .attr('transform', 'translate(20, 20)');
+
+    const data = [{x:10, y:10, r:2},
+        {x:100, y:100, r:3},
+        {x:20, y: 100, r:4}];
+    const colors = ['red', 'green', 'blue'];
+
+    //Add circles
+    let circles = g.selectAll('circle').data(data).enter()
+        .append('circle')
+        .attr('cx', d=>d.x)
+        .attr('cy', d=>d.y)
+        .attr('r', d=>d.r)
+        .attr('fill', (d, i)=>colors[i]);
+
+    //Line generator
+    const lineGen = d3.line()
+        .x(d=>d.x)
+        .y(d=>d.y);
+
+    let line = g
+        .append('path').datum(data.concat(data[0]))
+        .attr('d', lineGen)
+        .attr('fill', 'none')
+        .attr('stroke', 'black')
+
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.3/d3.min.js"></script>
+</head>
+<body>
+<style>
+    svg {
+        border: 1px solid black;
+    }
+</style>
+<script>
+    const svg = d3.select("body").append("svg").attr("width", 200).attr("height", 200);
+    const g = svg.append("g").attr('transform', 'translate(15, 20)');
+    let data = [{x: 10, y: 10, r: 10},
+        {x: 150, y: 20, r: 5},
+        {x: 150, y: 150, r: 2}];
+    const colors = ['red', 'green', 'blue'];
+
+    let circles = g.selectAll("circle").data(data)
+        .enter().append("circle")
+        .call(setAttributes)
+        .attr("fill", (d, i) => colors[i]);
+
+    function setAttributes(theCircle){
+        theCircle.attr("cx", d => d.x).attr("cy", d => d.y).attr("r", d => d.r);
+    }
+    let newData = [
+        {x: 10, y: 10, r: 10},
+        {x: 150, y: 20, r: 5},
+        {x: 150, y: 150, r: 2},
+        {x: 15, y: 100, r: 4}
+    ];
+    let newData1 = [
+        {x: 10, y: 10, r: 10},
+        {x: 150, y: 20, r: 5},
+    ];
+    let newData2 = [
+        {x: 150, y: 20, r: 5, id: 1},
+        {x: 150, y: 150, r: 2, id: 2}
+    ];
+    let newData3 = [
+        {x: 50, y: 50, r: 15, id: 0},
+        {x: 150, y: 20, r: 5, id: 1},
+        {x: 150, y: 150, r: 2, id: 2},
+        {x: 15, y: 100, r: 4, id: 3}
+    ];
+
+    function update(newData) {
+        let newSelection = g.selectAll("circle").data(newData);
+        let enter = newSelection.enter();
+        let newCircle = enter.append("circle");
+        let exit = newSelection.exit();
+        exit.attr("opacity", 1).transition().duration(2000).attr("opacity", 0).remove();
+        circles = newCircle.merge(circles);
+        circles.transition().duration(2000)
+            .call(setAttributes);
+    }
+
+
+</script>
+</body>
+</html>
