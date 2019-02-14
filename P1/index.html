@@ -480,6 +480,8 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
     <script type="text/javascript">
         d3.csv('../grade/data/Students.csv',function (error, data) {
             if (error) throw error;
+            console.log(data)
+
             var data1, data2;
             var len = data.length;
             if (len%2) { // odd
@@ -493,7 +495,8 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
 
             var table = d3.select('#page-wrap').append('table').append("tr");
 
-            var titles = ["No.","Photo", "Full Name", "Program" , "Project 1 Selection"];
+            var titles = ["No.","Photo", "Full Name", "Program" , "Project 1 Selection","Presentation Date"];
+            var attrT = ["Fullname", "Program" , "P1Selection","Presentationdate"];
             var table1 = table.append("td").attr("width", "48%")
                 .attr("class", "newtd")
                 .attr("valign","top")
@@ -513,15 +516,24 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
                 var photo = row.Photo != ""
                     ?'<img alt='+row.Photo+ ' height="100" src=' + 'photos/'+ row.Photo + '></img>':'<img src="                    photos/no-image.png"/>';
 
-                var link = row.P1Link != ""? '<a href=' + row.P1Link + ' target=blank>' +
-                    '<i class="fa fa-external-link"></i>' + '</a>':"";
+
 
                 $("#tb1").append('<tr><td style="text-align: center;">' + (index + 1) +
-                    '</td><td style="text-align: center; vertical-align: middle;" >' + photo  + '</td><td>' + row["Fullname"] +
-                    '</td><td>'+ row["Program"] + '</td><td>' + row["P1Selection"] + " " + link+'</td></tr>' );
+                    '</td><td style="text-align: center; vertical-align: middle;" >' + photo  + '</td>' + scandata(row)+'</tr>');
 
             });
 
+            function scandata(row) {
+                return attrT.map(d => {
+                    if (d == 'P1Selection') {
+                        var link = row.P1Link != "" ? '<a href=' + row.P1Link + ' target=blank>' +
+                            '<i class="fa fa-external-link"></i>' + '</a>' : "";
+                        return '<td>' + row[d] + link + '</td>'
+                    }
+
+                    return '<td>' + row[d] + '</td>'
+                });
+            }
 
             // ------- Middle table --------
 
@@ -552,8 +564,7 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
                     '<i class="fa fa-external-link"></i>' + '</a>':"";
 
                 $("#tb2").append('<tr><td style="text-align: center;">' + (index + 22 +1) +
-                    '</td><td style="text-align: center; vertical-align: middle;">' + photo  + '</td><td>' + row["Fullname"] +
-                    '</td><td>'+ row["Program"] + '</td><td>' + row["P1Selection"] + " " + link+'</td></tr>' );
+                    '</td><td style="text-align: center; vertical-align: middle;" >' + photo  + '</td>' + scandata(row)+'</tr>');
 
             });
         });
