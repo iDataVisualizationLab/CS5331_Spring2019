@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stacked Graph</title>
+    <style>
+        svg{
+            border: 1px solid black;
+        }
+    </style>
+    <script src="../lib/d3.v4.min.js"></script>
+</head>
+<body>
+<div class="custom-select" style="width:200px;">
+    <select>
+
+    </select>
+</div>
+<script>
+    const width = 800, height = 500, margin = {left: 40, top: 20, right: 20, bottom: 40},
+        contentWidth = width - margin.left - margin.right,
+        contentHeight = height - margin.top - margin.bottom;
+    const svg = d3.select("body").append("svg").attr('width', width).attr("height", height);
+    const content = svg.append('g').attr('transform' ,`translate(${margin.left}, ${margin.top})`);
+    const chartGroup = content.append("g");
+    let data;
+    let rawData;
+
+    initlist();
+    d3.csv('../data/data2.csv', row=>{
+        row.date = d3.timeParse('%Y-%m-%d')(row.date);
+        row.price = +row.price;
+        return row;
+    }, (error, raw)=>{
+        rawData =raw;
+        data = d3.nest().key(d=>d.date).entries(rawData);
+        //Convert to the data format of form {date: ,s1: ..., s2: ..., s3: ...}
+        data = data.map(d=>{
+            const item = {date: new Date(d.key)}
+            d.values.forEach(v=>{
+                item[v.stock]= v.price;
+            });
+            return item;
+        });
+        //Create the stack layout for the data
+        const stack = d3.stack().keys(d3.keys(data[0]).splice(1))
+            .offset(d3.stackOffsetSilhouette)
+        ;
+        const stacks = stack(data);
+        //The scales
+        const xScale = d3.scaleTime().domain(d3.extent(rawData.map(d=>d.date))).range([0, contentWidth]);
+        const yScale = d3.scaleLinear().domain(d3.extent(stacks.flat().flat())).range([contentHeight, 0]);
+        //The x axis
+        const xAxisGroup = svg.append("g").attr("transform", `translate(${margin.left}, ${margin.top+contentHeight})`);
+        const xAxis = d3.axisBottom(xScale).tickFormat(d3.timeFormat('%b-%d')).ticks(stacks[0].length);
+        xAxisGroup.call(xAxis);
+        //The y Axis
+        const yAxisGroup = svg.append('g').attr("transform", `translate(${margin.left}, ${margin.top})`).attr('id','yAxis');
+        const yAxis = d3.axisLeft(yScale);
+        yAxisGroup.call(yAxis);
+        //The area function used to generate path data for the area.
+        const areaGen = d3.area()
+            .x(d=>xScale(d.data.date))
+            .y0(d=>yScale(d[0]))
+            .y1(d=>yScale(d[1]))
+            .curve(d3.curveBasis)
+        ;
+        chartGroup.selectAll("path").data(stacks).enter().append("path").attr("d", areaGen)
+            .attr("fill", (d, i)=> d3.schemeCategory10[i]);
+        console.log('done');
+        update(data)
+    });
+    function initlist(){
+        const typeOffset =['stackOffsetExpand','stackOffsetDiverging','stackOffsetNone','stackOffsetSilhouette','stackOffsetWiggle'];
+        const combolist = d3.select('.custom-select').select('select');
+        combolist
+            .selectAll('option')
+            .data(typeOffset)
+            .enter()
+            .append('option')
+            .property('value',d=>d)
+            .text(d=>d);
+        combolist.on('change',function(d){update(data,this.value)})
+    }
+    function update(data,offsetoption){
+        stack = d3.stack().keys(d3.keys(data[0]).splice(1))
+            .offset(d3[offsetoption])
+        ;
+        const stacks = stack(data);
+
+        //The scales
+        const xScale = d3.scaleTime().domain(d3.extent(rawData.map(d=>d.date))).range([0, contentWidth]);
+        const yScale = d3.scaleLinear().domain(d3.extent(stacks.flat().flat())).range([contentHeight, 0]);
+        //The y Axis
+        const yAxisGroup = svg.select('#yAxis');
+        const yAxis = d3.axisLeft(yScale);
+        yAxisGroup.call(yAxis);
+        //The area function used to generate path data for the area.
+        const areaGen = d3.area()
+            .x(d=>xScale(d.data.date))
+            .y0(d=>yScale(d[0]))
+            .y1(d=>yScale(d[1]))
+            .curve(d3.curveBasis)
+        ;
+        chartGroup.selectAll("path").data(stacks).transition().duration(1000).attr("d", areaGen)
+            .attr("fill", (d, i)=> d3.schemeCategory10[i]);
+    }
+</script>
+</body>
+</html>
