@@ -60,6 +60,17 @@
             .call(setAttributes);
     }
 
+    function updatewithJoin(newData) {
+
+        g.selectAll("circle").data(newData).join(
+            enter=> enter.append("circle"),
+            update=>update,
+            exit=>exit.attr("opacity", 1).transition().duration(2000).attr("opacity", 0).remove()
+        ).transition().duration(2000)
+            .call(setAttributes)
+
+    }
+
 
 </script>
 </body>
