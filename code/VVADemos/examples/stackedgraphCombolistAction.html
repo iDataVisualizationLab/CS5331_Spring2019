@@ -7,6 +7,7 @@
         svg{
             border: 1px solid black;
         }
+
     </style>
     <script src="../lib/d3.v4.min.js"></script>
 </head>
@@ -15,6 +16,8 @@
     <select>
 
     </select>
+</div>
+<div class="checkBox">
 </div>
 <script>
     const width = 800, height = 500, margin = {left: 40, top: 20, right: 20, bottom: 40},
@@ -25,8 +28,12 @@
     const chartGroup = content.append("g");
     let data;
     let rawData;
-
+    let filterConfig ={
+        stacktype:'stackOffsetSilhouette',
+        legend:[],
+    };
     initlist();
+    const color = d3.scaleOrdinal(d3.schemeCategory10);
     d3.csv('../data/data2.csv', row=>{
         row.date = d3.timeParse('%Y-%m-%d')(row.date);
         row.price = +row.price;
@@ -43,9 +50,11 @@
             return item;
         });
         //Create the stack layout for the data
+        filterConfig.legend =d3.keys(data[0]).splice(1);
         const stack = d3.stack().keys(d3.keys(data[0]).splice(1))
             .offset(d3.stackOffsetSilhouette)
         ;
+        initStock(d3.keys(data[0]).splice(1));
         const stacks = stack(data);
         //The scales
         const xScale = d3.scaleTime().domain(d3.extent(rawData.map(d=>d.date))).range([0, contentWidth]);
@@ -66,7 +75,7 @@
             .curve(d3.curveBasis)
         ;
         chartGroup.selectAll("path").data(stacks).enter().append("path").attr("d", areaGen)
-            .attr("fill", (d, i)=> d3.schemeCategory10[i]);
+            .attr("fill", (d, i)=> color(d.key));
         console.log('done');
         update(data)
     });
@@ -80,11 +89,38 @@
             .append('option')
             .property('value',d=>d)
             .text(d=>d);
-        combolist.on('change',function(d){update(data,this.value)})
+        combolist.on('change',function(d){
+            filterConfig.stacktype = this.value;
+            update()})
     }
-    function update(data,offsetoption){
-        stack = d3.stack().keys(d3.keys(data[0]).splice(1))
-            .offset(d3[offsetoption])
+    function initStock(liststock){
+        const combolist = d3.select('.checkBox');
+        let constent = combolist
+            .selectAll('option')
+            .data(liststock)
+            .enter()
+            .append('label')
+            .text(d=>d);
+        constent.append('input')
+            .attr('type','checkbox')
+            .attr('checked','checked')
+            .on('change',function(d){
+                if (!this.checked) {
+                    filterConfig.legend = filterConfig.legend.filter(f=>f!==d);
+                }else{
+                    filterConfig.legend.push(d);
+                    filterConfig.legend.sort();
+                }
+                update()
+            });
+        constent.append('span')
+            .attr('class','checkmark');
+
+        //combolist.on('change',function(d){update(data,this.value)})
+    }
+    function update(){
+        stack = d3.stack().keys(filterConfig.legend)
+            .offset(d3[filterConfig.stacktype])
         ;
         const stacks = stack(data);
 
@@ -102,8 +138,15 @@
             .y1(d=>yScale(d[1]))
             .curve(d3.curveBasis)
         ;
-        chartGroup.selectAll("path").data(stacks).transition().duration(1000).attr("d", areaGen)
-            .attr("fill", (d, i)=> d3.schemeCategory10[i]);
+        let newchartstack = chartGroup.selectAll("path").data(stacks,d=>d.key);
+        newchartstack.enter().append('path')
+            .attr("d", areaGen)
+            .attr("fill", (d, i)=> color(d.key));
+        newchartstack.exit().remove();
+        newchartstack
+            .transition().duration(1000).attr("d", areaGen)
+            .attr("fill", (d, i)=> color(d.key));
+
     }
 </script>
 </body>
