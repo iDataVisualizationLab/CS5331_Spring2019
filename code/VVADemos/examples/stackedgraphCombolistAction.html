@@ -34,6 +34,8 @@
     };
     initlist();
     const color = d3.scaleOrdinal(d3.schemeCategory10);
+
+
     d3.csv('../data/data2.csv', row=>{
         row.date = d3.timeParse('%Y-%m-%d')(row.date);
         row.price = +row.price;
@@ -46,7 +48,7 @@
             const item = {date: new Date(d.key)}
             d.values.forEach(v=>{
                 item[v.stock]= v.price;
-            });
+            }); 
             return item;
         });
         //Create the stack layout for the data
@@ -79,6 +81,7 @@
         console.log('done');
         update(data)
     });
+
     function initlist(){
         const typeOffset =['stackOffsetExpand','stackOffsetDiverging','stackOffsetNone','stackOffsetSilhouette','stackOffsetWiggle'];
         const combolist = d3.select('.custom-select').select('select');
