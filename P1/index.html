@@ -491,8 +491,8 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
 
             var table = d3.select('#page-wrap').append('table').append("tr");
 
-            var titles = ["No.","Photo", "Full Name", "Program" , "Project 1 Selection","Presentation Date"];
-            var attrT = ["Fullname", "Program" , "P1Selection","Presentationdate"];
+            var titles = ["No.","Photo", "Full Name", "Program" ,"Presentation Date", "Topic + Github + Demo Link", "Project Preview"];
+            var attrT = ["Fullname", "Program" , "Presentationdate", "P1Selection"];
             var table1 = table.append("td").attr("width", "48%")
                 .attr("class", "newtd")
                 .attr("valign","top")
@@ -510,21 +510,38 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
 
             data1.forEach((row,index) => {
                 var photo = row.Photo != ""
-                    ?'<img alt='+row.Photo+ ' height="100" src=' + 'photos/'+ row.Photo + '></img>':'<img src="                    photos/no-image.png"/>';
+                    ?'<img alt="'+row.Photo+ '" height="100" src="' + 'photos/'+ row.Photo + '"></img>':'<img src="photos/no-image.png"/>';
 
+                var image = '<td style="text-align: center; vertical-align: middle;" >' + (row.Image != ""
+                    ?'<img alt='+row.Image+ ' height="100" src=' + 'image/'+ row.Image + '></img>':'<img src="image/no-image.png"/>')+'</td>';
+
+                var link_project = row.ProjectLink != "" ? '<a href=' + row.ProjectLink + ' target=blank>' +
+                    '<i class="fa fa-external-link"></i>' + '</a>' : "";
+
+
+                var link_demo = row.Demo != "" ? '<a href=' + row.Demo + ' target=blank>' +
+                    '<i class="fa fa-external-link"></i>' + '</a>' : "";
 
 
                 $("#tb1").append('<tr><td style="text-align: center;">' + (index + 1) +
-                    '</td><td style="text-align: center; vertical-align: middle;" >' + photo  + '</td>' + scandata(row)+'</tr>');
+                    '<td style="text-align: center; vertical-align: middle;" >' + photo  + '</td>' + scandata(row)+ image + '</tr>');
 
             });
 
             function scandata(row) {
                 return attrT.map(d => {
                     if (d == 'P1Selection') {
-                        var link = row.P1Link != "" ? '<a href=' + row.P1Link + ' target=blank>' +
+                        // var link = row.P1Link != "" ? '<a href=' + row.P1Link + ' target=blank>':
+                        //     '<i class="fa fa-external-link"></i>' + '</a>' ;
+
+                        var link_project = row.ProjectLink != "" ? '<a href=' + row.ProjectLink + ' target=blank>' +
                             '<i class="fa fa-external-link"></i>' + '</a>' : "";
-                        return '<td>' + row[d] + link + '</td>'
+
+
+                        var link_demo = row.Demo != "" ? '<a href=' + row.Demo + ' target=blank>' +
+                            '<i class="fa fa-external-link"></i>' + '</a>' : "";
+
+                        return '<td>' + row[d] + link_project  +  link_demo +'</td>'
                     }
 
                     return '<td>' + row[d] + '</td>'
@@ -556,11 +573,18 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
                 var photo = row.Photo != ""
                     ?'<img alt='+row.Photo+ ' height="100" src=' + 'photos/'+ row.Photo + '></img>':'<img src=" photos/no-image.png"/>';
 
-                var link = row.P1Link != ""? '<a href=' + row.P1Link + ' target=blank>' +
-                    '<i class="fa fa-external-link"></i>' + '</a>':"";
+                var image = '<td style="text-align: center; vertical-align: middle;" >' + (row.Image != ""
+                    ?'<img alt='+row.Image+ ' height="100" src=' + 'image/'+ row.Image + '></img>':'<img src="photos/no-image.png"/>')+'</td>';
+
+                var link_project = row.ProjectLink != "" ? '<a href=' + row.ProjectLink + ' target=blank>' +
+                    '<i class="fa fa-external-link"></i>' + '</a>' : "";
+
+
+                var link_demo = row.Demo != "" ? '<a href=' + row.Demo + ' target=blank>' +
+                    '<i class="fa fa-external-link"></i>' + '</a>' : "";
 
                 $("#tb2").append('<tr><td style="text-align: center;">' + (index + 22 +1) +
-                    '</td><td style="text-align: center; vertical-align: middle;" >' + photo  + '</td>' + scandata(row)+'</tr>');
+                    '<td style="text-align: center; vertical-align: middle;" >' + photo  + '</td>' + scandata(row)+ image + '</tr>');
 
             });
         });
