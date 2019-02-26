@@ -474,7 +474,7 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
     <div id="page-wrap">
     </div>
     <script type="text/javascript">
-        d3.csv('../grade/data/Students.csv',function (error, data) {
+        d3.csv('../grade/data/Students1.csv',function (error, data) {
             if (error) throw error;
             console.log(data)
 
@@ -491,7 +491,7 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
 
             var table = d3.select('#page-wrap').append('table').append("tr");
 
-            var titles = ["No.","Photo", "Full Name", "Program" ,"Presentation Date", "Project_Topic Github_Link Demo_Link", "Project Preview"];
+            var titles = ["No.","Photo", "Full Name", "Program" ,"Presentation Date", " Project_Topic Github_Link Demo_Link", "Project Preview"];
             var attrT = ["Fullname", "Program" , "Presentationdate", "P1Selection"];
             var table1 = table.append("td").attr("width", "48%")
                 .attr("class", "newtd")
