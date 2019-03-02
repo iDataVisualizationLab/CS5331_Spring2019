@@ -514,7 +514,7 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
 
             var rows1 = table1.append('tbody') .attr("id", "tb1");
 
-            data1.forEach((row,index) => {
+            data1.forEach(function (row,index)  {
                 var photo = row.Photo != ""
                     ?'<img alt="'+row.Photo+ '" height="100" src="' + 'photos/'+ row.Photo + '"></img>':'<img src="photos/no-image.png"/>';
 
@@ -522,13 +522,13 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
                     ?'<img alt='+row.Image+ ' height="100" src=' + 'image/'+ row.Image + '></img>':'<img src="image/no-image.png"/>')+'</td>';
 
 
-                $("#tb1").append('<tr><td style="text-align: center;">' + (index + 1) +
+               return $("#tb1").append('<tr><td style="text-align: center;">' + (index + 1) +
                     '<td style="text-align: center; vertical-align: middle;" >' + photo  + '</td>' + scandata(row)+ image + '</tr>');
 
             });
 
             function scandata(row) {
-                return attrT.map(d => {
+                return attrT.map(function(d) {
                     if (d == 'DataLink') {
                         var link = row.P1Link != "" ? '<a href=' + row.P1Link + ' target=blank>'+
                             '<i class="fa fa-database" title="Data Link" style="font-size:18px;color:black"></i>' + '</a>':"" ;
@@ -570,7 +570,7 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
 
             var rows2 = table2.append('tbody') .attr("id", "tb2");
 
-            data2.forEach((row,index) => {
+            data2.forEach(function (row,index) {
                 var photo = row.Photo != ""
                     ?'<img alt='+row.Photo+ ' height="100" src=' + 'photos/'+ row.Photo + '></img>':'<img src=" photos/no-image.png"/>';
 
@@ -578,7 +578,7 @@ An example github report can be found <a href="http://github.com/CreativeCodingL
                     ?'<img alt='+row.Image+ ' height="100" src=' + 'image/'+ row.Image + '></img>':'<img src="photos/no-image.png"/>')+'</td>';
 
 
-                $("#tb2").append('<tr><td style="text-align: center;">' + (index + 22 +1) +
+              return  $("#tb2").append('<tr><td style="text-align: center;">' + (index + 22 +1) +
                     '<td style="text-align: center; vertical-align: middle;" >' + photo  + '</td>' + scandata(row)+ image + '</tr>');
 
             });
