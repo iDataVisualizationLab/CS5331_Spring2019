@@ -23,16 +23,79 @@ path {
   background-color: none;
 }
 
+br { display: block; line-height: 1.5em; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+ol, ul { list-style: none; }
+
+p {
+ display: block;
+ font-size: 1.0em;
+ line-height: 1.0em;
+ margin-bottom: 22px;
+}
+
+a { color: #5a9352; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.center { display: block; text-align: center; }
+
+#searchfield { display: block; width: 100%; text-align: center; margin-bottom: 35px; }
+
+#searchfield form {
+ display: inline-block;
+ background: #eeefed;
+ padding: 0;
+ margin: 0;
+ padding: 5px;
+ border-radius: 2px;
+ margin: 5px 0 0 0;
+}
+#searchfield form .biginput {
+ width: 200px;
+ height: 35px;
+ padding: 0 10px 0 10px;
+ background-color: #fff;
+ border: 1px solid #c8c8c8;
+ border-radius: 3px;
+ color: #aeaeae;
+ font-weight:normal;
+ font-size: 1.0em;
+ -webkit-transition: all 0.2s linear;
+ -moz-transition: all 0.2s linear;
+ transition: all 0.2s linear;
+}
+#searchfield form .biginput:focus {
+ color: #858585;
+}
+
+.autocomplete-suggestions { border: 10x solid #999; background: #fff; cursor: default; overflow: auto; }
+.autocomplete-suggestion { padding: 10px 5px; font-size: 1.0em; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #f0f0f0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399ff; }
+
+
 </style>
 <body bgcolor="white" text="black" id="mainBody">
 <svg width="2000" height="650"></svg>
-
 <div id="controlHolder"  class="controlHolder">
  <input type="checkbox" id="checkboxP1" value="value2" class="check" onclick="showP1()">
-<label for="checkboxP1"> Project results</label> 
-</div> 
+<label for="checkboxP1"> Project results</label>
+ <div id="searchfield">
+  <label for="searchfield">Participation Score: </label>
+  <div id="outputbox">
+   <p id="outputcontent"></p>
+  </div>
+ </div>
+</div>
 
-<!-- load the d3.js library -->    
+
+
+
+
+<!-- load the d3.js library -->
+<script src=" https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.autocomplete.min.js"></script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
 <script>
@@ -114,6 +177,7 @@ var nodeImage, nodeImageP1;
 
 // Force-directed layout
 var nodes=[];
+var nodes_search=[];
 var links=[];
 var nodesP1=[];
 var linksP1=[];
@@ -121,7 +185,7 @@ var nodesP2=[];
 var linksP2=[];
 var nodesP3=[];
 var linksP3=[];
-var today = new Date();
+var today = new Date('March 6 2019');
     
 function getCategoty(str){
   if (str=="PhD")
@@ -136,7 +200,7 @@ var data = {};
 
 function main(){
   d3.tsv("data/participations.csv", function(error, data_) {
-      console.log(data);
+      // console.log(data);
     data_.forEach(function(d) {
       if (data[d.Students]==undefined)
           data[d.Students] = {};
@@ -189,6 +253,8 @@ function main(){
       groupCount[arr.group].count++;
       groupCount[arr.group].program = data2[key].Program;
     }
+
+
      // Scale the range of the data
       x.domain([aData[0][0].date,today]);
       xNew.domain([aData[0][0].date,today]);
@@ -476,6 +542,8 @@ function main(){
       nod1.date = aData[i].date;
       nod1.image = aData[i].image;
       nodes.push(nod1);
+      nodes_search.push({'value':nod1.nickname,'data':nod1.score});
+
 
       var nod2 = {};
       nod2.name = aData[i].name;
@@ -981,8 +1049,10 @@ function main(){
         .attr("y", nodes[index].y+3)
         .text("Contribution: " +nodes[index].score+"% " +nodes[index].nickname)
 
-    }  
-    
+
+    }
+
+
     function textP1(index){
       svg.append("text")
         .attr("class", "textP1")
@@ -1531,6 +1601,19 @@ function dragended(d) {
   d.fx = null;
   d.fy = null;
 }
+
+$(function(){
+    // setup autocomplete function pulling from nodes_search data array
+    $('#autocomplete').autocomplete({
+        lookup: nodes_search,
+        onSelect: function (suggestion) {
+            var thehtml = '<strong>Score:</strong> ' + suggestion.data;
+            $('#outputcontent').html(thehtml);
+        }
+    });
+
+
+});
 
 </script>
 </body>
