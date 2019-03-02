@@ -23,15 +23,26 @@ path {
   background-color: none;
 }
 
-br { display: block; line-height: 1.5em; }
+br { display: block; line-height: 2.2em; }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
 ol, ul { list-style: none; }
 
+input, textarea {
+ -webkit-font-smoothing: antialiased;
+ -webkit-text-size-adjust: 100%;
+ -ms-text-size-adjust: 100%;
+ -webkit-box-sizing: border-box;
+ -moz-box-sizing: border-box;
+ box-sizing: border-box;
+ outline: none;
+}
+
+
 p {
  display: block;
  font-size: 1.0em;
- line-height: 1.0em;
+ line-height: 1.5em;
  margin-bottom: 22px;
 }
 
@@ -48,7 +59,7 @@ a:hover { text-decoration: underline; }
  padding: 0;
  margin: 0;
  padding: 5px;
- border-radius: 2px;
+ border-radius: 3px;
  margin: 5px 0 0 0;
 }
 #searchfield form .biginput {
@@ -69,12 +80,10 @@ a:hover { text-decoration: underline; }
  color: #858585;
 }
 
-.autocomplete-suggestions { border: 10x solid #999; background: #fff; cursor: default; overflow: auto; }
+.autocomplete-suggestions { border: 10px solid #999; background: #fff; cursor: default; overflow: auto; }
 .autocomplete-suggestion { padding: 10px 5px; font-size: 1.0em; white-space: nowrap; overflow: hidden; }
 .autocomplete-selected { background: #f0f0f0; }
-.autocomplete-suggestions strong { font-weight: normal; color: #3399ff; }
-
-
+.autocomplete-suggestions strong { font-weight: normal; color: #3399ff; font-size: 15px; }
 </style>
 <body bgcolor="white" text="black" id="mainBody">
 <svg width="2000" height="650"></svg>
@@ -83,8 +92,9 @@ a:hover { text-decoration: underline; }
 <label for="checkboxP1"> Project results</label>
  <div id="searchfield">
   <label for="searchfield">Participation Score: </label>
+  <form><input type="text" name="searchbox" class="biginput" id="autocomplete"></form>
   <div id="outputbox">
-   <p id="outputcontent"></p>
+   <p id="outputcontent" font-size="5px"></p>
   </div>
  </div>
 </div>
@@ -94,7 +104,7 @@ a:hover { text-decoration: underline; }
 
 
 <!-- load the d3.js library -->
-<script src=" https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src=" js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.autocomplete.min.js"></script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
@@ -1603,6 +1613,7 @@ function dragended(d) {
 }
 
 $(function(){
+
     // setup autocomplete function pulling from nodes_search data array
     $('#autocomplete').autocomplete({
         lookup: nodes_search,
