@@ -44,12 +44,14 @@ p {
  font-size: 1.0em;
  line-height: 1.5em;
  margin-bottom: 22px;
+ text-align: left;
 }
 
 a { color: #5a9352; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 .center { display: block; text-align: center; }
+
 
 #searchfield { display: block; width: 100%; text-align: center; margin-bottom: 35px; }
 
@@ -65,10 +67,10 @@ a:hover { text-decoration: underline; }
 #searchfield form .biginput {
  width: 200px;
  height: 35px;
- padding: 0 10px 0 10px;
+ padding: 0 5px 0 5px;
  background-color: #fff;
  border: 1px solid #c8c8c8;
- border-radius: 3px;
+ border-radius: 1px;
  color: #aeaeae;
  font-weight:normal;
  font-size: 1.0em;
@@ -80,10 +82,10 @@ a:hover { text-decoration: underline; }
  color: #858585;
 }
 
-.autocomplete-suggestions { border: 10px solid #999; background: #fff; cursor: default; overflow: auto; }
-.autocomplete-suggestion { padding: 10px 5px; font-size: 1.0em; white-space: nowrap; overflow: hidden; }
+.autocomplete-suggestions { border: 5px solid #999; background: #fff; cursor: default; overflow: auto; }
+.autocomplete-suggestion { padding: 5px 5px; font-size: 1.0em; white-space: nowrap; overflow: hidden; }
 .autocomplete-selected { background: #f0f0f0; }
-.autocomplete-suggestions strong { font-weight: normal; color: #3399ff; font-size: 15px; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399ff; font-size: 20px; }
 </style>
 <body bgcolor="white" text="black" id="mainBody">
 <svg width="2000" height="650"></svg>
@@ -91,10 +93,10 @@ a:hover { text-decoration: underline; }
  <input type="checkbox" id="checkboxP1" value="value2" class="check" onclick="showP1()">
 <label for="checkboxP1"> Project results</label>
  <div id="searchfield">
-  <label for="searchfield">Participation Score: </label>
-  <form><input type="text" name="searchbox" class="biginput" id="autocomplete"></form>
+  <label for="searchfield">Score: </label>
+  <form><input type="text" name="currency" class="biginput" id="autocomplete"></form>
   <div id="outputbox">
-   <p id="outputcontent" font-size="5px"></p>
+   <p id="outputcontent"></p>
   </div>
  </div>
 </div>
@@ -107,6 +109,7 @@ a:hover { text-decoration: underline; }
 <script src=" js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.autocomplete.min.js"></script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
+
 
 <script>
 
@@ -137,7 +140,7 @@ var yP1= d3.scaleLinear().range([height*1.7, 0]);
 
 // Define the line
 var valueline = d3.line()
-    .curve(d3.curveMonotoneX)
+    .curve(d3.curveCardinal)
     .x(function(d) { 
       if (document.getElementById("checkboxP1").checked)
         return xNew(d.date);
@@ -188,6 +191,7 @@ var nodeImage, nodeImageP1;
 // Force-directed layout
 var nodes=[];
 var nodes_search=[];
+var P1_search=[];
 var links=[];
 var nodesP1=[];
 var linksP1=[];
@@ -210,7 +214,7 @@ var data = {};
 
 function main(){
   d3.tsv("data/participations.csv", function(error, data_) {
-      // console.log(data);
+      console.log(data);
     data_.forEach(function(d) {
       if (data[d.Students]==undefined)
           data[d.Students] = {};
@@ -263,7 +267,7 @@ function main(){
       groupCount[arr.group].count++;
       groupCount[arr.group].program = data2[key].Program;
     }
-
+    console.log(aData)
 
      // Scale the range of the data
       x.domain([aData[0][0].date,today]);
@@ -552,7 +556,8 @@ function main(){
       nod1.date = aData[i].date;
       nod1.image = aData[i].image;
       nodes.push(nod1);
-      nodes_search.push({'value':nod1.nickname,'data':nod1.score});
+      nodes_search.push({'value':nod1.nickname,'data':nod1.score,'code':aData[i].P1_code,'talk':aData[i].P1_talk, 'report':aData[i].P1_report});
+      console.log(nodes_search);
 
 
       var nod2 = {};
@@ -582,6 +587,9 @@ function main(){
       nodeP11.date = aData[i].date;
       nodeP11.image = aData[i].image;
       nodesP1.push(nodeP11);
+      P1_search.push({'code':aData[i].P1_code,'talk':aData[i].P1_talk, 'report':aData[i].P1_report});
+
+
 
       var nodeP12 = {};
       nodeP12.name = aData[i].name;
@@ -1278,7 +1286,7 @@ function main(){
         return 0;
       else
         return radius+1;
-    })); 
+    }));
 
     simulationP3
       .nodes(nodesP3)
@@ -1290,7 +1298,7 @@ function main(){
         return 0;
       else
         return radius+1;
-    })); 
+    }));
 
   });
 }
@@ -1614,11 +1622,13 @@ function dragended(d) {
 
 $(function(){
 
-    // setup autocomplete function pulling from nodes_search data array
+
+    // setup autocomplete function pulling from currencies[] array
     $('#autocomplete').autocomplete({
         lookup: nodes_search,
         onSelect: function (suggestion) {
-            var thehtml = '<strong>Score:</strong> ' + suggestion.data;
+            var thehtml = '<strong>Participation:</strong> ' + suggestion.data + ' <br> <strong>P1_talk:</strong> ' + suggestion.talk
+            + ' <br> <strong>P1_code:</strong> ' + suggestion.code + ' <br> <strong>P1_report:</strong> ' + suggestion.report;
             $('#outputcontent').html(thehtml);
         }
     });
