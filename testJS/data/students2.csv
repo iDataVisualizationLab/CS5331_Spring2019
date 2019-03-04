@@ -1,51 +1,44 @@
-Fullname	Nickname	P1_code	P1_talk	P1_report	P2_group_id	P2_group_score	P2_code	P2_talk	P2_report	P2_review	P3_group	P3_code	P3_talk	P3_report	P3_review	P3_reviewReceived	Program	Level	ProgrammingYears	Email	Photoname	ResearchInterest	P1	P1_Comment
-Pablo Smith	Spunk																BS							
-Siyuan Jiang	Tim_Man																BS							No map, 1 day late submission
-Elizabeth Brooke Doyle	Bradd	12	5														BS							"Using online API, Late Demo Video, Late update readme, Incorrect image format,
-Top 20 singers for each inputted user"
-Darien Sokolov	Darien	11	4.5														BS							
-Nhat Le	Nhatmusic	11	4														MSCS							
-Van Vung Pham	vvp																PhD							
-Huyen Nguyen	JSON	9	5														PhD							Missing title, 1 single host, suing influx db, No github submission
-Ghazanfar Ali	Ghazanfar	7	4														PhD							
-Kien Trung Phan	Eric Cartman																BS							
-Indiana Cooper	Yung Garlic Knot																BS							
-Ngan Vuong Thuy Nguyen	Lucy	13	3														PhD							
-Jie Li	artlands																MSCS							
-Justin Rodriguez 	Justin																BS							No text labels for y axis, No github submission
-Andrew Kennedy	andken	12	5														BS							
-Victoria Huckabee	VH																BS							
-Roberto Gomez Pomares	Robert																BS							
-Miranda Carrillo	Mariah Carey																BS							
-Rui Wang	Rui																MSCS							
-Hanxiang Du	Credo																MSCS							
-Josephine Willgrubs	melon																BS							
-Lino Virgen	ag02																MSCS							"Had mouseover, 
-No map, no color legend
-Lines is over-flow on the left"
-Braden Lee	BL	10	5														BS							
-Hao Huy Nguyen	BeanBeen																BS							
-Mia Lyn Ward	Mia																BS							No secondary selection, no data finding, no data process
-Arturo Mora	Arturo	8	5														BS							
-Todd Robinson	Todd																BS							
-Jian Guo	ABW																MSCS							
-Reid Malone	Entervine																BS							"Have problem of using color, late change in html (70% change), No video
-Scale of the chart is incorrect, missing 1 circle"
-Fei Zhou	Fei	12	4.5														BS							
-Abraham Esparza II (A.J.)	KyloRen																BS							
-Xueyuan Ji	JI																MSCS							
-Nicholas Zulawski	Nick																BS							Github readme is empty,wrong image format
-Chase Meyer	farms	7	4														BS							
-Jason Vermillion	JV																BS							
-Noah Gomez	Noah																BS							"Focus on female and %, NOT the global trend
-Mistake on using national average color, 2 days late submission,no video"
-Adriana Holley	BDE1000	10	4.5														BS							No search box now, 2 days late submission,No video
-Alexander Tesfazgi	Alex	10	4.5														BS							Use library, 1 day late submission,
-David Cooper	Furiedsteel	12	4.5														BS							
-Pavlo Vorontsov	PV																BS							
-Joshua Johnson	Josh																BS							"Found the data online (github)
-No axis labels
-Selection on the text legends, No date filtering"
-Brandon Stehling	chaldra	9	4.5														BS							
-Matthew Hendrick	MH																BS							
-Jordan Hudgens	Jordan																MSCS							
+Fullname	Nickname	P1_code	P1_talk	P1_report	P2_group_id	P2_group_score	P2_code	P2_talk	P2_report	P2_review	P3_group	P3_code	P3_talk	P3_report	P3_review	P3_reviewReceived	Program	Level	ProgrammingYears	Email	Photoname	ResearchInterest	P1
+Pablo Smith	Spunk																BS						
+Siyuan Jiang	Tim_Man																BS						
+Elizabeth Brooke Doyle	Bradd	12	5	3													BS						
+Darien Sokolov	Darien	11	4.5	3.5													BS						
+Nhat Le	Nhatmusic	11	4	5													MSCS						
+Van Vung Pham	vvp																PhD						
+Huyen Nguyen	JSON	9	5	5													PhD						
+Ghazanfar Ali	Ghazanfar	7	4	0													PhD						
+Kien Trung Phan	Eric Cartman																BS						
+Indiana Cooper	Yung Garlic Knot																BS						
+Ngan Vuong Thuy Nguyen	Lucy	13	3	5													PhD						
+Jie Li	artlands																MSCS						
+Justin Rodriguez 	Justin																BS						
+Andrew Kennedy	andken	12	5	0													BS						
+Victoria Huckabee	VH																BS						
+Roberto Gomez Pomares	Robert																BS						
+Miranda Carrillo	Mariah Carey																BS						
+Rui Wang	Rui																MSCS						
+Hanxiang Du	Credo																MSCS						
+Josephine Willgrubs	melon																BS						
+Lino Virgen	ag02																MSCS						
+Braden Lee	BL	10	5	5													BS						
+Hao Huy Nguyen	BeanBeen																BS						
+Mia Lyn Ward	Mia																BS						
+Arturo Mora	Arturo	8	5	3													BS						
+Todd Robinson	Todd																BS						
+Jian Guo	ABW																MSCS						
+Reid Malone	Entervine																BS						
+Fei Zhou	Fei	12	4.5	2													BS						
+Abraham Esparza II (A.J.)	KyloRen																BS						
+Xueyuan Ji	JI																MSCS						
+Nicholas Zulawski	Nick																BS						
+Chase Meyer	farms	7	4	0													BS						
+Jason Vermillion	JV																BS						
+Noah Gomez	Noah																BS						
+Adriana Holley	BDE1000	10	4.5	1													BS						
+Alexander Tesfazgi	Alex	10	4.5	3													BS						
+David Cooper	Furiedsteel	12	4.5	5													BS						
+Pavlo Vorontsov	PV																BS						
+Joshua Johnson	Josh																BS						
+Brandon Stehling	chaldra	9	4.5	5													BS						
+Matthew Hendrick	MH																BS						
+Jordan Hudgens	Jordan																MSCS						
