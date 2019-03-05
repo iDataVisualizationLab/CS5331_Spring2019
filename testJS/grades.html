@@ -949,6 +949,21 @@ function main(){
       nodeP3.append("title")
         .text(function(d) { return d.nickname; });
     }
+
+      function searchNode() {
+          //searchTerm = document.getElementById('search').value;
+          var obj ={};
+          obj.nickname = document.getElementById('search').value;
+          for (var i=0;i<nodes.length;i++){
+              if (obj.nickname==nodes[i].nickname && nodes[i].index!=undefined){
+                  obj.index = nodes[i].index;
+                  obj.name = nodes[i].name;
+              }
+          }
+          mouseoutNode(obj);
+          mouseoverNode(obj);
+
+      }
       
     function mouseoverNode(d1){
       //if (d1.P1_code!=undefined && !document.getElementById("checkboxP1").checked)
