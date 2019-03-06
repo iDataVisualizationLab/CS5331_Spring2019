@@ -166,21 +166,21 @@ d3.tsv("data/students2.csv", function(error, data_) {
 // Force-directed layout
 var simulation = d3.forceSimulation()
     .force("link", d3.forceLink().id(function(d) { return d.id; }))
-    .force("link", d3.forceLink().distance(1).strength(1))
+    .force("link", d3.forceLink().distance(2).strength(1))
     .force("charge", d3.forceManyBody().strength(-0.1));
 //    .force("center", d3.forceCenter(width / 2, height / 2));
 var simulationP1 = d3.forceSimulation()
     .force("link", d3.forceLink().id(function(d) { return d.id; }))
-    .force("link", d3.forceLink().distance(1).strength(1))
+    .force("link", d3.forceLink().distance(2).strength(1))
     .force("charge", d3.forceManyBody().strength(-0.1));
-var simulationP2 = d3.forceSimulation()
-    .force("link", d3.forceLink().id(function(d) { return d.id; }))
-    .force("link", d3.forceLink().distance(1).strength(1))
-    .force("charge", d3.forceManyBody().strength(-0.1));
-var simulationP3 = d3.forceSimulation()
-    .force("link", d3.forceLink().id(function(d) { return d.id; }))
-    .force("link", d3.forceLink().distance(1).strength(1))
-    .force("charge", d3.forceManyBody().strength(-0.1));
+// var simulationP2 = d3.forceSimulation()
+//     .force("link", d3.forceLink().id(function(d) { return d.id; }))
+//     .force("link", d3.forceLink().distance(1).strength(1))
+//     .force("charge", d3.forceManyBody().strength(-0.1));
+// var simulationP3 = d3.forceSimulation()
+//     .force("link", d3.forceLink().id(function(d) { return d.id; }))
+//     .force("link", d3.forceLink().distance(1).strength(1))
+//     .force("charge", d3.forceManyBody().strength(-0.1));
 
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 var radius = 9;
@@ -278,12 +278,6 @@ function main(){
       yAxis.domain([0, 0.15]);
       yP1.domain([0, 25]);
 
-   /* groupCount.sort(function(a,b){
-      if (a.program<b.program)
-        return 1;
-      else
-        return -1;
-    })*/
 
 
       // Search student nicknam
@@ -517,8 +511,8 @@ function main(){
       .attr("text-anchor", "left")
       .attr("fill", "#000")
       .attr("x", margin.left-30)
-      .attr("y", 0)
-      .text("Class participation graph");
+      .attr("y", 0);
+      // .text("Class participation graph");
 
     // Draw Label for yAxis *******************************
      svg.append("text")
@@ -573,7 +567,7 @@ function main(){
       nod1.image = aData[i].image;
       nodes.push(nod1);
       nodes_search.push({'value':nod1.nickname,'data':nod1.score,'code':aData[i].P1_code,'talk':aData[i].P1_talk, 'report':aData[i].P1_report});
-
+      console.log(nodes_search);
 
 
       var nod2 = {};
@@ -831,7 +825,7 @@ function main(){
               .on("end", dragended));
 
     nodeP2 = svg.selectAll(".nodeP2")
-          .data(nodesP2)
+          // .data(nodesP2)
           .enter().append("circle")
             .attr("class","nodeP2")
             .attr("r", function(d,i) {
@@ -854,7 +848,7 @@ function main(){
               .on("end", dragended));
 
       nodeP3 = svg.selectAll(".nodeP3")
-          .data(nodesP3)
+          // .data(nodesP3)
           .enter().append("circle")
             .attr("class","nodeP3")
             .attr("r", function(d,i) {
@@ -885,13 +879,7 @@ function main(){
                           .attr("width", 1)
                           .attr("x", "0")
                           .attr("y", "0")
-    //
-    // catpattern.append("image")
-    //      .attr("x", 0)
-    //      .attr("y", 0)
-    //      .attr("height", radius*2)
-    //      .attr("width", radius*2)
-    //      .attr("xlink:href", "/photos/"+nodes[i].image)
+
   }
 
   var dur = 400;
@@ -1009,7 +997,7 @@ function main(){
           //  if (!document.getElementById("checkboxP1").checked) return 0;
             return d1.name==d2.name ? 1 : 0.1; });
 
-          // Project 2
+          //Project 2
           svg.selectAll(".nodeP2")
           .transition().duration(dur)
           .attr("stroke-opacity", function (d2){
@@ -1072,112 +1060,6 @@ function main(){
       }
       textContribution(d1.index);
     }
-      function mouseoverNode(d1){
-          //if (d1.P1_code!=undefined && !document.getElementById("checkboxP1").checked)
-          //   return;
-          svg.selectAll(".lineGraph")
-              .transition().duration(dur)
-              .attr("stroke-opacity", function (d2){ return d1.name==d2.name ? 1 : 0.05; });
-          svg.selectAll(".nodeImage")
-              .transition().duration(dur)
-              .attr("stroke-opacity", function (d2){ return d1.name==d2.name ? 1 : 0.05; })
-              .attr("fill-opacity", function (d2){ return d1.name==d2.name ? 1 : 0.1; });
-          if (revealIdentity){
-              svg.selectAll(".nodeImageP1")
-                  .transition().duration(dur)
-                  .attr("stroke-opacity", function (d2){
-                      if (!document.getElementById("checkboxP1").checked) return 0;
-                      return d1.name==d2.name ? 1 : 0.05; })
-                  .attr("fill-opacity", function (d2){
-                      if (!document.getElementById("checkboxP1").checked) return 0;
-                      return d1.name==d2.name ? 1 : 0.1; });
-              svg.selectAll(".nodeCircle")
-                  .transition().duration(dur)
-                  .attr("fill-opacity", 0);
-          }
-          else{
-              //debugger;
-              svg.selectAll(".nodeCircle")
-                  .transition().duration(dur)
-                  .attr("stroke-opacity", function (d2){
-                      //  if (!document.getElementById("checkboxP1").checked) return 0;
-                      return d1.name==d2.name ? 1 : 0.05; })
-                  .attr("fill-opacity", function (d2){
-                      //  if (!document.getElementById("checkboxP1").checked) return 0;
-                      return d1.name==d2.name ? 1 : 0.1; });
-              if (document.getElementById("checkboxP1").checked){
-                  svg.selectAll(".nodeP1")
-                      .transition().duration(dur)
-                      .attr("stroke-opacity", function (d2){
-                          //  if (!document.getElementById("checkboxP1").checked) return 0;
-                          return d1.name==d2.name ? 1 : 0.05; })
-                      .attr("fill-opacity", function (d2){
-                          //  if (!document.getElementById("checkboxP1").checked) return 0;
-                          return d1.name==d2.name ? 1 : 0.1; });
-
-                  // Project 2
-                  svg.selectAll(".nodeP2")
-                      .transition().duration(dur)
-                      .attr("stroke-opacity", function (d2){
-                          //  if (!document.getElementById("checkboxP1").checked) return 0;
-                          return d1.name==d2.name ? 1 : 0.05; })
-                      .attr("fill-opacity", function (d2){
-                          //  if (!document.getElementById("checkboxP1").checked) return 0;
-                          return d1.name==d2.name ? 1 : 0.1; });
-
-                  // Project 3
-                  svg.selectAll(".nodeP3")
-                      .transition().duration(dur)
-                      .attr("stroke-opacity", function (d2){
-                          //  if (!document.getElementById("checkboxP1").checked) return 0;
-                          return d1.name==d2.name ? 1 : 0.05; })
-                      .attr("fill-opacity", function (d2){
-                          //  if (!document.getElementById("checkboxP1").checked) return 0;
-                          return d1.name==d2.name ? 1 : 0.1; });
-              }
-
-          }
-
-          svg.selectAll(".links")
-              .transition().duration(dur)
-              .attr("stroke-opacity", function (d2){ return d1.name==d2.source.name ? 1 : 0.1; });
-          svg.selectAll(".linksP1")
-              .transition().duration(dur)
-              .attr("stroke-opacity", function (d2){
-                  if (!document.getElementById("checkboxP1").checked) return 0;
-                  return d1.name==d2.source.name ? 1 : 0.1; });
-          svg.selectAll(".links01")
-              .transition().duration(dur)
-              .attr("stroke-opacity", function (d2){
-                  if (!document.getElementById("checkboxP1").checked) return 0;
-                  return d1.name==d2.source.name ? 1 : 0.1; });
-
-          svg.selectAll(".linksP2")
-              .transition().duration(dur)
-              .attr("stroke-opacity", function (d2){
-                  if (!document.getElementById("checkboxP1").checked) return 0;
-                  return d1.name==d2.source.name ? 1 : 0.1; });
-          svg.selectAll(".linksP3")
-              .transition().duration(dur)
-              .attr("stroke-opacity", function (d2){
-                  if (!document.getElementById("checkboxP1").checked) return 0;
-                  return d1.name==d2.source.name ? 1 : 0.1; });
-          svg.selectAll(".links02")
-              .transition().duration(dur)
-              .attr("stroke-opacity", function (d2){
-                  if (!document.getElementById("checkboxP1").checked) return 0;
-                  return d1.name==d2.source.name ? 1 : 0.1; });
-          svg.selectAll(".links03")
-              .transition().duration(dur)
-              .attr("stroke-opacity", function (d2){
-                  if (!document.getElementById("checkboxP1").checked) return 0;
-                  return d1.name==d2.source.name ? 1 : 0.1; });
-
-          if (document.getElementById("checkboxP1").checked){
-              textP1(d1.index);
-          }
-          textContribution(d1.index);
-      }
     function textContribution(index){
       svg.append("text")
         .attr("class", "textContribution")
@@ -1222,7 +1104,7 @@ function main(){
         .attr("y", nodesP1[index].y+18)
         .text("Report: "+nodesP1[index].P1_report+"%");
 
-       // Project 2
+       //Project 2
       //  svg.append("text")
       //   .attr("class", "textP2")
       //   .style("font-size", "13px")
