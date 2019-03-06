@@ -4,7 +4,7 @@
 
 body { font: 15px Arial;}
 
-path { 
+path {
     fill: none;
 }
 .axis path,
@@ -111,19 +111,20 @@ a:hover { text-decoration: underline; }
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
 
+
 <script>
 
 // Set the dimensions of the canvas / graph
 var margin = {top: 40, right: 30, bottom: 100, left: 70};
 var revealIdentity = false;
- 
- 
+
+
 var svg = d3.select("svg"),
     width = +document.getElementById("mainBody").offsetWidth-margin.left-margin.right,
     height = +svg.attr("height")-margin.top-margin.bottom;
 
 svg = svg.append("g")
-        .attr("transform", 
+        .attr("transform",
               "translate(" + margin.left + "," + margin.top + ")");
 
 // Parse the date / time
@@ -141,21 +142,22 @@ var yP1= d3.scaleLinear().range([height*1.7, 0]);
 // Define the line
 var valueline = d3.line()
     .curve(d3.curveCardinal)
-    .x(function(d) { 
+    .x(function(d) {
       if (document.getElementById("checkboxP1").checked)
         return xNew(d.date);
-      else 
+      else
         return x(d.date); })
     .y(function(d) { return y(d.score); });
 
-// Student info data  
+// Student info data
 var data2 = {};
 var groupCount = [{},{},{}];
 d3.tsv("data/students2.csv", function(error, data_) {
   data_.forEach(function(d) {
     if (data2[d.Fullname]==undefined)
         data2[d.Fullname] = {};
-    data2[d.Fullname] =d;  
+    data2[d.Fullname] =d;
+
 
   });
   main();
@@ -200,7 +202,7 @@ var linksP2=[];
 var nodesP3=[];
 var linksP3=[];
 var today = new Date('March 6 2019');
-    
+
 function getCategoty(str){
   if (str=="PhD")
     return 0;
@@ -220,8 +222,8 @@ function main(){
           data[d.Students] = {};
       if (data[d.Students].array==undefined)
           data[d.Students].array= [];
-      
-      var object =  {}; 
+
+      var object =  {};
       object.date = parseTime(d.Date);
       object.score = +d.Scores/2;
       data[d.Students].array.push(object);
@@ -236,15 +238,15 @@ function main(){
       data[d.Students].array.P2_talk = parseFloat(data2[d.Students].P2_talk);
       data[d.Students].array.P2_report = parseFloat(data2[d.Students].P2_report);
       data[d.Students].array.P2_review = parseFloat(data2[d.Students].P2_review);
-      data[d.Students].array.P2_group_score = parseFloat(data2[d.Students].P2_group_score); 
+      data[d.Students].array.P2_group_score = parseFloat(data2[d.Students].P2_group_score);
       data[d.Students].array.P3_code = parseFloat(data2[d.Students].P3_code);
       data[d.Students].array.P3_talk = parseFloat(data2[d.Students].P3_talk);
       data[d.Students].array.P3_report = parseFloat(data2[d.Students].P3_report);
       data[d.Students].array.P3_review = parseFloat(data2[d.Students].P3_review);
-      data[d.Students].array.P3_group_score = parseFloat(data2[d.Students].P3_group_score); 
+      data[d.Students].array.P3_group_score = parseFloat(data2[d.Students].P3_group_score);
       data[d.Students].array.index = data[d.Students].array.length-1;
     });
-      
+
     // Accumulate values
     for (var key in data){
       var arr = data[key].array;
@@ -252,7 +254,7 @@ function main(){
         if (i>0)
           arr[i].score+=arr[i-1].score;
         arr.score= arr[i].score;  // Copy the final score to array
-        arr.date = arr[i].date; 
+        arr.date = arr[i].date;
       }
     }
 
@@ -263,7 +265,7 @@ function main(){
       aData.push(arr);
       // count group (students by program)
       if (groupCount[arr.group].count==undefined)
-        groupCount[arr.group].count=0;  
+        groupCount[arr.group].count=0;
       groupCount[arr.group].count++;
       groupCount[arr.group].program = data2[key].Program;
     }
@@ -274,7 +276,7 @@ function main(){
       xNew.domain([aData[0][0].date,today]);
       y.domain([0, 15]);
       yAxis.domain([0, 0.15]);
-      yP1.domain([0, 20]);
+      yP1.domain([0, 25]);
 
    /* groupCount.sort(function(a,b){
       if (a.program<b.program)
@@ -282,6 +284,20 @@ function main(){
       else
         return -1;
     })*/
+
+
+      // Search student nicknam
+      var optArray =[];
+      for (var student in data2) {
+          optArray.push(data2[student].Nickname);
+      }
+      optArray = optArray.sort();
+      $(function () {
+          $("#search").autocomplete({
+              source: optArray
+          });
+      });
+
     // Draw color legend *************************
     svg.append("line")
       .attr("class", "legendLine10")
@@ -308,8 +324,8 @@ function main(){
       .attr("cy", function(d, i){ return 30+20*i})
       .attr("r", 7)
       .on("mouseover", mouseoverLegend)
-      .on("mouseout", mouseoutLegend);  
-    
+      .on("mouseout", mouseoutLegend);
+
     svg.selectAll(".legendLine")
       .data(groupCount).enter()
       .append("line")
@@ -337,7 +353,7 @@ function main(){
         return d.program + " ("+d.count+" students)"})
       .on("mouseover", mouseoverLegend)
       .on("mouseout", mouseoutLegend);
-    
+
     function mouseoverLegend(d1){
       svg.selectAll(".legendText")
           .attr("fill-opacity", function (d2){
@@ -354,79 +370,79 @@ function main(){
            return getCategoty(d1.program)==d2.group ? 1 : 0.05; });
         svg.selectAll(".nodeImage")
           .transition().duration(dur)
-          .attr("stroke-opacity", function (d2){ 
+          .attr("stroke-opacity", function (d2){
             return getCategoty(d1.program)==d2.group ? 1 : 0.05; })
-          .attr("fill-opacity", function (d2){ 
-            return getCategoty(d1.program)==d2.group ? 1 : 0.1; });   
+          .attr("fill-opacity", function (d2){
+            return getCategoty(d1.program)==d2.group ? 1 : 0.1; });
         svg.selectAll(".nodeImageP1")
           .transition().duration(dur)
-          .attr("stroke-opacity", function (d2){ 
+          .attr("stroke-opacity", function (d2){
             if (!document.getElementById("checkboxP1").checked) return 0;
             return getCategoty(d1.program)==d2.group ? 1 : 0.05; })
-          .attr("fill-opacity", function (d2){ 
+          .attr("fill-opacity", function (d2){
             if (!document.getElementById("checkboxP1").checked) return 0;
-            return getCategoty(d1.program)==d2.group ? 1 : 0.1; });   
-        svg.selectAll(".nodeCircle")  
+            return getCategoty(d1.program)==d2.group ? 1 : 0.1; });
+        svg.selectAll(".nodeCircle")
           .transition().duration(dur)
-          .attr("fill-opacity", function (d2){ 
-            return getCategoty(d1.program)==d2.group ? 1 : 0.1; });   
+          .attr("fill-opacity", function (d2){
+            return getCategoty(d1.program)==d2.group ? 1 : 0.1; });
         if (document.getElementById("checkboxP1").checked) {
-          svg.selectAll(".nodeP1")  
+          svg.selectAll(".nodeP1")
             .transition().duration(dur)
-            .attr("stroke-opacity", function (d2){ 
+            .attr("stroke-opacity", function (d2){
               return getCategoty(d1.program)==d2.group ? 1 : 0.05; })
-            .attr("fill-opacity", function (d2){ 
-              return getCategoty(d1.program)==d2.group ? 1 : 0.1; });   
+            .attr("fill-opacity", function (d2){
+              return getCategoty(d1.program)==d2.group ? 1 : 0.1; });
 
-          svg.selectAll(".nodeP2")  
+          svg.selectAll(".nodeP2")
             .transition().duration(dur)
-            .attr("stroke-opacity", function (d2){ 
+            .attr("stroke-opacity", function (d2){
               return getCategoty(d1.program)==d2.group ? 1 : 0.05; })
-            .attr("fill-opacity", function (d2){ 
-              return getCategoty(d1.program)==d2.group ? 1 : 0.1; });   
+            .attr("fill-opacity", function (d2){
+              return getCategoty(d1.program)==d2.group ? 1 : 0.1; });
 
-          svg.selectAll(".nodeP3")  
+          svg.selectAll(".nodeP3")
             .transition().duration(dur)
-            .attr("stroke-opacity", function (d2){ 
+            .attr("stroke-opacity", function (d2){
               return getCategoty(d1.program)==d2.group ? 1 : 0.05; })
-            .attr("fill-opacity", function (d2){ 
-              return getCategoty(d1.program)==d2.group ? 1 : 0.1; });         
+            .attr("fill-opacity", function (d2){
+              return getCategoty(d1.program)==d2.group ? 1 : 0.1; });
         }
         else{
-           svg.selectAll(".nodeP1")  
+           svg.selectAll(".nodeP1")
             .transition().duration(dur)
             .attr("fill-opacity", 0);
-           svg.selectAll(".nodeP2")  
+           svg.selectAll(".nodeP2")
             .transition().duration(dur)
-            .attr("fill-opacity", 0); 
+            .attr("fill-opacity", 0);
 
-            svg.selectAll(".nodeP3")  
+            svg.selectAll(".nodeP3")
             .transition().duration(dur)
-            .attr("fill-opacity", 0);    
+            .attr("fill-opacity", 0);
         }
-        svg.selectAll(".links")  
+        svg.selectAll(".links")
           .transition().duration(dur)
           .attr("stroke-opacity", function (d2){ return getCategoty(d1.program)==d2.source.group ? 1 : 0.1; });
-        svg.selectAll(".linksP1")  
+        svg.selectAll(".linksP1")
           .transition().duration(dur)
           .attr("stroke-opacity", function (d2){ return getCategoty(d1.program)==d2.source.group ? 1 : 0.1; });
         svg.selectAll(".links01")
           .transition().duration(dur)
           .attr("stroke-opacity", function (d2){ return getCategoty(d1.program)==d2.source.group ? 1 : 0.1; });
-        svg.selectAll(".linksP2")  
+        svg.selectAll(".linksP2")
           .transition().duration(dur)
           .attr("stroke-opacity", function (d2){ return getCategoty(d1.program)==d2.source.group ? 1 : 0.1; });
         svg.selectAll(".links02")
           .transition().duration(dur)
-          .attr("stroke-opacity", function (d2){ return getCategoty(d1.program)==d2.source.group ? 1 : 0.1; });  
-        svg.selectAll(".linksP3")  
+          .attr("stroke-opacity", function (d2){ return getCategoty(d1.program)==d2.source.group ? 1 : 0.1; });
+        svg.selectAll(".linksP3")
           .transition().duration(dur)
           .attr("stroke-opacity", function (d2){ return getCategoty(d1.program)==d2.source.group ? 1 : 0.1; });
         svg.selectAll(".links03")
           .transition().duration(dur)
-          .attr("stroke-opacity", function (d2){ return getCategoty(d1.program)==d2.source.group ? 1 : 0.1; });    
-     
-    }  
+          .attr("stroke-opacity", function (d2){ return getCategoty(d1.program)==d2.source.group ? 1 : 0.1; });
+
+    }
     function mouseoutLegend(d1){
       svg.selectAll(".legendText")
           .attr("fill-opacity", 1);
@@ -440,60 +456,60 @@ function main(){
         svg.selectAll(".nodeImage")
           .transition().duration(dur)
           .attr("stroke-opacity", 1)
-          .attr("fill-opacity", 1);   
-        svg.selectAll(".links")  
+          .attr("fill-opacity", 1);
+        svg.selectAll(".links")
           .transition().duration(dur)
-          .attr("stroke-opacity", 1); 
-        svg.selectAll(".nodeCircle")  
+          .attr("stroke-opacity", 1);
+        svg.selectAll(".nodeCircle")
           .transition().duration(dur)
-          .attr("fill-opacity", 1);  
-          
-        if (document.getElementById("checkboxP1").checked){  
+          .attr("fill-opacity", 1);
+
+        if (document.getElementById("checkboxP1").checked){
           svg.selectAll(".nodeImageP1")
             .transition().duration(dur)
             .attr("stroke-opacity", 1)
-            .attr("fill-opacity", 1); 
+            .attr("fill-opacity", 1);
           svg.selectAll(".nodeP1")
             .transition().duration(dur)
             .attr("stroke-opacity", 1)
-            .attr("fill-opacity", 1); 
-          svg.selectAll(".linksP1")  
+            .attr("fill-opacity", 1);
+          svg.selectAll(".linksP1")
             .transition().duration(dur)
-            .attr("stroke-opacity", 1);  
+            .attr("stroke-opacity", 1);
           svg.selectAll(".links01")
             .transition().duration(dur)
-            .attr("stroke-opacity", 1);  
+            .attr("stroke-opacity", 1);
           svg.selectAll(".nodeImageP2")
             .transition().duration(dur)
             .attr("stroke-opacity", 1)
-            .attr("fill-opacity", 1); 
+            .attr("fill-opacity", 1);
           svg.selectAll(".nodeP2")
             .transition().duration(dur)
             .attr("stroke-opacity", 1)
-            .attr("fill-opacity", 1); 
-          svg.selectAll(".linksP2")  
+            .attr("fill-opacity", 1);
+          svg.selectAll(".linksP2")
             .transition().duration(dur)
-            .attr("stroke-opacity", 1);  
+            .attr("stroke-opacity", 1);
           svg.selectAll(".links02")
             .transition().duration(dur)
-            .attr("stroke-opacity", 1); 
+            .attr("stroke-opacity", 1);
 
           svg.selectAll(".nodeImageP3")
             .transition().duration(dur)
             .attr("stroke-opacity", 1)
-            .attr("fill-opacity", 1); 
+            .attr("fill-opacity", 1);
           svg.selectAll(".nodeP3")
             .transition().duration(dur)
             .attr("stroke-opacity", 1)
-            .attr("fill-opacity", 1); 
-          svg.selectAll(".linksP3")  
+            .attr("fill-opacity", 1);
+          svg.selectAll(".linksP3")
             .transition().duration(dur)
-            .attr("stroke-opacity", 1);  
+            .attr("stroke-opacity", 1);
           svg.selectAll(".links03")
             .transition().duration(dur)
-            .attr("stroke-opacity", 1);        
-        }    
-    }  
+            .attr("stroke-opacity", 1);
+        }
+    }
     // Draw title *******************************
      svg.append("text")
       .attr("class", "title")
@@ -503,7 +519,7 @@ function main(){
       .attr("x", margin.left-30)
       .attr("y", 0)
       .text("Class participation graph");
-    
+
     // Draw Label for yAxis *******************************
      svg.append("text")
       .attr("class", "title")
@@ -513,7 +529,7 @@ function main(){
       .attr("x", width/2-100)
       .attr("y", height+margin.top)
       .text("Date");
-          
+
     svg.selectAll(".lineGraph")
         .data(aData).enter()
        .append("path")
@@ -525,7 +541,7 @@ function main(){
         .attr("d", function(d) {
            return valueline(d);
         });
-    
+
       // Add the x Axis
       svg.append("g")
         .attr("class", "xAxis")
@@ -545,7 +561,7 @@ function main(){
         .attr("dy", ".35em")
         .attr("text-anchor", "middle")
         .attr("transform", "translate(-52,"+height/2+") rotate(-90)")
-        .text("Percentage of participations in student's final grade");    
+        .text("Percentage of participations in student's final grade");
 
     for (var i=0; i<aData.length;i++){
       var nod1 = {};
@@ -557,7 +573,7 @@ function main(){
       nod1.image = aData[i].image;
       nodes.push(nod1);
       nodes_search.push({'value':nod1.nickname,'data':nod1.score,'code':aData[i].P1_code,'talk':aData[i].P1_talk, 'report':aData[i].P1_report});
-      console.log(nodes_search);
+
 
 
       var nod2 = {};
@@ -587,7 +603,7 @@ function main(){
       nodeP11.date = aData[i].date;
       nodeP11.image = aData[i].image;
       nodesP1.push(nodeP11);
-      P1_search.push({'code':aData[i].P1_code,'talk':aData[i].P1_talk, 'report':aData[i].P1_report});
+
 
 
 
@@ -608,7 +624,7 @@ function main(){
       linP1.target = nodeP12;
       linP1.group = nodeP11.group;
       linksP1.push(linP1);
-      
+
       // PROJECT 2
       var nodeP21 = {};
       nodeP21.name = aData[i].name;
@@ -684,28 +700,28 @@ function main(){
       var p0 = nodes[i].score;
       if (p0>10)
         p0=10;
-      var p1 = nodesP1[i].P1_code+nodesP1[i].P1_talk+nodesP1[i].P1_report; 
+      var p1 = nodesP1[i].P1_code+nodesP1[i].P1_talk+nodesP1[i].P1_report;
       var p2 = nodesP2[i].P2_code+nodesP2[i].P2_talk+nodesP2[i].P2_report
-                +nodesP2[i].P2_review;          
+                +nodesP2[i].P2_review;
       var p3 = nodesP3[i].P3_code+nodesP3[i].P3_talk+nodesP3[i].P3_report
-                +nodesP3[i].P3_review;  
+                +nodesP3[i].P3_review;
       var sum= p0+p1+p2+p3;
       var finalGrade = " ";
       if (sum>=80){
         countA++;
         finalGrade = "A";
-      }  
+      }
       else if (sum>=60){
         finalGrade = "B";
         countB++;
-      }       
+      }
       else if (sum>=40){
         countC++;
         finalGrade = "C";
-      }    
-    //  console.log( finalGrade+ " name="+nodesP1[i].name+" sum="+sum);           
-    }  
-    //console.log("countA="+countA+" countB="+countB +" countC="+countC);   
+      }
+    //  console.log( finalGrade+ " name="+nodesP1[i].name+" sum="+sum);
+    }
+    //console.log("countA="+countA+" countB="+countB +" countC="+countC);
     link = svg.selectAll(".links")
       .data(links)
       .enter().append("line")
@@ -730,7 +746,7 @@ function main(){
         .attr("stroke", function(d){
           return color(d.group);
         })
-        .attr("stroke-width",0.5);  
+        .attr("stroke-width",0.5);
 
     linkP3 = svg.selectAll(".linksP3")
       .data(linksP2)
@@ -739,14 +755,14 @@ function main(){
         .attr("stroke", function(d){
           return color(d.group);
         })
-        .attr("stroke-width",0.5);        
+        .attr("stroke-width",0.5);
 
     link01 = svg.selectAll(".links01")
       .data(links)
       .enter().append("line")
         .attr("class", "links01")
         .attr("stroke", function(d){ return color(d.group);})
-        .attr("stroke-width",0.5);    
+        .attr("stroke-width",0.5);
 
     link02 = svg.selectAll(".links02")
       .data(links)
@@ -756,7 +772,7 @@ function main(){
         .attr("stroke-width", function(d){
          // console.log(d.source.name);
           return d.source.name=="Sara Sartoli" ? 0 : 0.5;
-        });   
+        });
 
     link03 = svg.selectAll(".links03")
       .data(links)
@@ -766,21 +782,21 @@ function main(){
         .attr("stroke-width", function(d){
          // console.log(d.source.name);
           return d.source.name=="Sara Sartoli" ? 0 : 0.5;
-        });           
-            
+        });
+
     node = svg.selectAll(".nodeCircle")
           .data(nodes)
           .enter().append("circle")
             .attr("class","nodeCircle")
-            .attr("r", function(d,i) { 
+            .attr("r", function(d,i) {
               if (i%2==0)
-                return 0; 
+                return 0;
               else
                 return radius+1;
            })
-            .attr("fill", function(d,i) { 
+            .attr("fill", function(d,i) {
               if (i%2==0)
-                return "#110"; 
+                return "#110";
               else
                 return color(d.group);
           })
@@ -795,15 +811,15 @@ function main(){
           .data(nodesP1)
           .enter().append("circle")
             .attr("class","nodeP1")
-            .attr("r", function(d,i) { 
+            .attr("r", function(d,i) {
               if (i%2==0)
-                return 0; 
+                return 0;
               else
                 return radius+1;
             })
-            .attr("fill", function(d,i) { 
+            .attr("fill", function(d,i) {
               if (i%2==0)
-                return "#110"; 
+                return "#110";
               else
                 return color(d.group);
             })
@@ -812,21 +828,21 @@ function main(){
             .call(d3.drag()
               .on("start", dragstarted)
               .on("drag", dragged)
-              .on("end", dragended)); 
-    
+              .on("end", dragended));
+
     nodeP2 = svg.selectAll(".nodeP2")
           .data(nodesP2)
           .enter().append("circle")
             .attr("class","nodeP2")
-            .attr("r", function(d,i) { 
+            .attr("r", function(d,i) {
               if (i%2==0)
-                return 0; 
+                return 0;
               else
                 return radius+1;
             })
-            .attr("fill", function(d,i) { 
+            .attr("fill", function(d,i) {
               if (i%2==0)
-                return "#110"; 
+                return "#110";
               else
                 return color(d.group);
             })
@@ -835,21 +851,21 @@ function main(){
             .call(d3.drag()
               .on("start", dragstarted)
               .on("drag", dragged)
-              .on("end", dragended));       
+              .on("end", dragended));
 
       nodeP3 = svg.selectAll(".nodeP3")
           .data(nodesP3)
           .enter().append("circle")
             .attr("class","nodeP3")
-            .attr("r", function(d,i) { 
+            .attr("r", function(d,i) {
               if (i%2==0)
-                return 0; 
+                return 0;
               else
                 return radius+1;
             })
-            .attr("fill", function(d,i) { 
+            .attr("fill", function(d,i) {
               if (i%2==0)
-                return "#110"; 
+                return "#110";
               else
                 return color(d.group);
             })
@@ -858,7 +874,7 @@ function main(){
             .call(d3.drag()
               .on("start", dragstarted)
               .on("drag", dragged)
-              .on("end", dragended));                        
+              .on("end", dragended));
 
   for (var i=0;i<nodes.length;i++){
     var imgurl = "http://wallpapers.androlib.com/wallicons/wallpaper.big-pqC.cs.png"
@@ -869,17 +885,17 @@ function main(){
                           .attr("width", 1)
                           .attr("x", "0")
                           .attr("y", "0")
-
-    catpattern.append("image")
-         .attr("x", 0)
-         .attr("y", 0)
-         .attr("height", radius*2)
-         .attr("width", radius*2)
-         .attr("xlink:href", "../photos/"+nodes[i].image)
+    //
+    // catpattern.append("image")
+    //      .attr("x", 0)
+    //      .attr("y", 0)
+    //      .attr("height", radius*2)
+    //      .attr("width", radius*2)
+    //      .attr("xlink:href", "/photos/"+nodes[i].image)
   }
 
   var dur = 400;
-    
+
     if (revealIdentity){
     nodeImageP1 = svg.selectAll(".nodeImageP1")
       .data(nodesP1).enter()
@@ -888,17 +904,17 @@ function main(){
       .attr("r", radius)
       .attr("cx", function(d) { return d.x; })
       .attr("cy", function(d) { return d.y; })
-      .style("fill", function(d,i) {       
+      .style("fill", function(d,i) {
           if (i%2==1)
-            return "url(#catpattern"+i+")"; 
+            return "url(#catpattern"+i+")";
           else
             return "none";
-           
+
       })
       .attr("stroke-width",2)
-      .attr("stroke", function(d,i) { 
+      .attr("stroke", function(d,i) {
           if (i%2==0)
-            return "none"; 
+            return "none";
           else
             return color(d.group);
       })
@@ -907,8 +923,8 @@ function main(){
       .call(d3.drag()
           .on("start", dragstarted)
           .on("drag", dragged)
-          .on("end", dragended));   
-    
+          .on("end", dragended));
+
     nodeImage = svg.selectAll(".nodeImage")
       .data(nodes).enter()
       .append("circle")
@@ -916,16 +932,16 @@ function main(){
       .attr("r", radius)
       .attr("cx", function(d) { return d.x; })
       .attr("cy", function(d) { return d.y; })
-      .style("fill", function(d,i) {       
+      .style("fill", function(d,i) {
           if (i%2==1)
-            return "url(#catpattern"+i+")"; 
+            return "url(#catpattern"+i+")";
           else
-            return "none";      
+            return "none";
       })
       .attr("stroke-width",2)
-      .attr("stroke", function(d,i) { 
+      .attr("stroke", function(d,i) {
           if (i%2==0)
-            return "none"; 
+            return "none";
           else
             return color(d.group);
       })
@@ -950,127 +966,218 @@ function main(){
         .text(function(d) { return d.nickname; });
     }
 
-      function searchNode() {
-          //searchTerm = document.getElementById('search').value;
-          var obj ={};
-          obj.nickname = document.getElementById('search').value;
-          for (var i=0;i<nodes.length;i++){
-              if (obj.nickname==nodes[i].nickname && nodes[i].index!=undefined){
-                  obj.index = nodes[i].index;
-                  obj.name = nodes[i].name;
-              }
-          }
-          mouseoutNode(obj);
-          mouseoverNode(obj);
-
-      }
-      
     function mouseoverNode(d1){
       //if (d1.P1_code!=undefined && !document.getElementById("checkboxP1").checked)
-      //   return; 
+      //   return;
       svg.selectAll(".lineGraph")
         .transition().duration(dur)
         .attr("stroke-opacity", function (d2){ return d1.name==d2.name ? 1 : 0.05; });
       svg.selectAll(".nodeImage")
         .transition().duration(dur)
         .attr("stroke-opacity", function (d2){ return d1.name==d2.name ? 1 : 0.05; })
-        .attr("fill-opacity", function (d2){ return d1.name==d2.name ? 1 : 0.1; });  
-      if (revealIdentity){   
+        .attr("fill-opacity", function (d2){ return d1.name==d2.name ? 1 : 0.1; });
+      if (revealIdentity){
         svg.selectAll(".nodeImageP1")
           .transition().duration(dur)
-          .attr("stroke-opacity", function (d2){ 
+          .attr("stroke-opacity", function (d2){
             if (!document.getElementById("checkboxP1").checked) return 0;
             return d1.name==d2.name ? 1 : 0.05; })
-          .attr("fill-opacity", function (d2){ 
+          .attr("fill-opacity", function (d2){
             if (!document.getElementById("checkboxP1").checked) return 0;
-            return d1.name==d2.name ? 1 : 0.1; });   
-        svg.selectAll(".nodeCircle")  
+            return d1.name==d2.name ? 1 : 0.1; });
+        svg.selectAll(".nodeCircle")
         .transition().duration(dur)
-        .attr("fill-opacity", 0);    
-      } 
+        .attr("fill-opacity", 0);
+      }
       else{
         //debugger;
         svg.selectAll(".nodeCircle")
           .transition().duration(dur)
-          .attr("stroke-opacity", function (d2){ 
+          .attr("stroke-opacity", function (d2){
           //  if (!document.getElementById("checkboxP1").checked) return 0;
             return d1.name==d2.name ? 1 : 0.05; })
-          .attr("fill-opacity", function (d2){ 
+          .attr("fill-opacity", function (d2){
           //  if (!document.getElementById("checkboxP1").checked) return 0;
-            return d1.name==d2.name ? 1 : 0.1; });   
+            return d1.name==d2.name ? 1 : 0.1; });
         if (document.getElementById("checkboxP1").checked){
           svg.selectAll(".nodeP1")
           .transition().duration(dur)
-          .attr("stroke-opacity", function (d2){ 
+          .attr("stroke-opacity", function (d2){
           //  if (!document.getElementById("checkboxP1").checked) return 0;
             return d1.name==d2.name ? 1 : 0.05; })
-          .attr("fill-opacity", function (d2){ 
+          .attr("fill-opacity", function (d2){
           //  if (!document.getElementById("checkboxP1").checked) return 0;
-            return d1.name==d2.name ? 1 : 0.1; }); 
+            return d1.name==d2.name ? 1 : 0.1; });
 
           // Project 2
           svg.selectAll(".nodeP2")
           .transition().duration(dur)
-          .attr("stroke-opacity", function (d2){ 
+          .attr("stroke-opacity", function (d2){
           //  if (!document.getElementById("checkboxP1").checked) return 0;
             return d1.name==d2.name ? 1 : 0.05; })
-          .attr("fill-opacity", function (d2){ 
+          .attr("fill-opacity", function (d2){
           //  if (!document.getElementById("checkboxP1").checked) return 0;
-            return d1.name==d2.name ? 1 : 0.1; });     
+            return d1.name==d2.name ? 1 : 0.1; });
 
           // Project 3
           svg.selectAll(".nodeP3")
           .transition().duration(dur)
-          .attr("stroke-opacity", function (d2){ 
+          .attr("stroke-opacity", function (d2){
           //  if (!document.getElementById("checkboxP1").checked) return 0;
             return d1.name==d2.name ? 1 : 0.05; })
-          .attr("fill-opacity", function (d2){ 
+          .attr("fill-opacity", function (d2){
           //  if (!document.getElementById("checkboxP1").checked) return 0;
-            return d1.name==d2.name ? 1 : 0.1; });     
-        }  
+            return d1.name==d2.name ? 1 : 0.1; });
+        }
 
-      } 
+      }
 
-      svg.selectAll(".links")  
+      svg.selectAll(".links")
         .transition().duration(dur)
         .attr("stroke-opacity", function (d2){ return d1.name==d2.source.name ? 1 : 0.1; });
-      svg.selectAll(".linksP1")  
+      svg.selectAll(".linksP1")
         .transition().duration(dur)
-        .attr("stroke-opacity", function (d2){ 
+        .attr("stroke-opacity", function (d2){
           if (!document.getElementById("checkboxP1").checked) return 0;
-          return d1.name==d2.source.name ? 1 : 0.1; }); 
-      svg.selectAll(".links01")  
+          return d1.name==d2.source.name ? 1 : 0.1; });
+      svg.selectAll(".links01")
         .transition().duration(dur)
-        .attr("stroke-opacity", function (d2){ 
+        .attr("stroke-opacity", function (d2){
           if (!document.getElementById("checkboxP1").checked) return 0;
-          return d1.name==d2.source.name ? 1 : 0.1; }); 
+          return d1.name==d2.source.name ? 1 : 0.1; });
 
-      svg.selectAll(".linksP2")  
+      svg.selectAll(".linksP2")
         .transition().duration(dur)
-        .attr("stroke-opacity", function (d2){ 
+        .attr("stroke-opacity", function (d2){
           if (!document.getElementById("checkboxP1").checked) return 0;
-          return d1.name==d2.source.name ? 1 : 0.1; }); 
-      svg.selectAll(".linksP3")  
+          return d1.name==d2.source.name ? 1 : 0.1; });
+      svg.selectAll(".linksP3")
         .transition().duration(dur)
-        .attr("stroke-opacity", function (d2){ 
+        .attr("stroke-opacity", function (d2){
           if (!document.getElementById("checkboxP1").checked) return 0;
-          return d1.name==d2.source.name ? 1 : 0.1; });   
-      svg.selectAll(".links02")  
+          return d1.name==d2.source.name ? 1 : 0.1; });
+      svg.selectAll(".links02")
         .transition().duration(dur)
-        .attr("stroke-opacity", function (d2){ 
+        .attr("stroke-opacity", function (d2){
           if (!document.getElementById("checkboxP1").checked) return 0;
-          return d1.name==d2.source.name ? 1 : 0.1; });      
-       svg.selectAll(".links03")  
+          return d1.name==d2.source.name ? 1 : 0.1; });
+       svg.selectAll(".links03")
         .transition().duration(dur)
-        .attr("stroke-opacity", function (d2){ 
+        .attr("stroke-opacity", function (d2){
           if (!document.getElementById("checkboxP1").checked) return 0;
-          return d1.name==d2.source.name ? 1 : 0.1; });            
+          return d1.name==d2.source.name ? 1 : 0.1; });
 
       if (document.getElementById("checkboxP1").checked){
         textP1(d1.index);
-      }  
+      }
       textContribution(d1.index);
     }
+      function mouseoverNode(d1){
+          //if (d1.P1_code!=undefined && !document.getElementById("checkboxP1").checked)
+          //   return;
+          svg.selectAll(".lineGraph")
+              .transition().duration(dur)
+              .attr("stroke-opacity", function (d2){ return d1.name==d2.name ? 1 : 0.05; });
+          svg.selectAll(".nodeImage")
+              .transition().duration(dur)
+              .attr("stroke-opacity", function (d2){ return d1.name==d2.name ? 1 : 0.05; })
+              .attr("fill-opacity", function (d2){ return d1.name==d2.name ? 1 : 0.1; });
+          if (revealIdentity){
+              svg.selectAll(".nodeImageP1")
+                  .transition().duration(dur)
+                  .attr("stroke-opacity", function (d2){
+                      if (!document.getElementById("checkboxP1").checked) return 0;
+                      return d1.name==d2.name ? 1 : 0.05; })
+                  .attr("fill-opacity", function (d2){
+                      if (!document.getElementById("checkboxP1").checked) return 0;
+                      return d1.name==d2.name ? 1 : 0.1; });
+              svg.selectAll(".nodeCircle")
+                  .transition().duration(dur)
+                  .attr("fill-opacity", 0);
+          }
+          else{
+              //debugger;
+              svg.selectAll(".nodeCircle")
+                  .transition().duration(dur)
+                  .attr("stroke-opacity", function (d2){
+                      //  if (!document.getElementById("checkboxP1").checked) return 0;
+                      return d1.name==d2.name ? 1 : 0.05; })
+                  .attr("fill-opacity", function (d2){
+                      //  if (!document.getElementById("checkboxP1").checked) return 0;
+                      return d1.name==d2.name ? 1 : 0.1; });
+              if (document.getElementById("checkboxP1").checked){
+                  svg.selectAll(".nodeP1")
+                      .transition().duration(dur)
+                      .attr("stroke-opacity", function (d2){
+                          //  if (!document.getElementById("checkboxP1").checked) return 0;
+                          return d1.name==d2.name ? 1 : 0.05; })
+                      .attr("fill-opacity", function (d2){
+                          //  if (!document.getElementById("checkboxP1").checked) return 0;
+                          return d1.name==d2.name ? 1 : 0.1; });
+
+                  // Project 2
+                  svg.selectAll(".nodeP2")
+                      .transition().duration(dur)
+                      .attr("stroke-opacity", function (d2){
+                          //  if (!document.getElementById("checkboxP1").checked) return 0;
+                          return d1.name==d2.name ? 1 : 0.05; })
+                      .attr("fill-opacity", function (d2){
+                          //  if (!document.getElementById("checkboxP1").checked) return 0;
+                          return d1.name==d2.name ? 1 : 0.1; });
+
+                  // Project 3
+                  svg.selectAll(".nodeP3")
+                      .transition().duration(dur)
+                      .attr("stroke-opacity", function (d2){
+                          //  if (!document.getElementById("checkboxP1").checked) return 0;
+                          return d1.name==d2.name ? 1 : 0.05; })
+                      .attr("fill-opacity", function (d2){
+                          //  if (!document.getElementById("checkboxP1").checked) return 0;
+                          return d1.name==d2.name ? 1 : 0.1; });
+              }
+
+          }
+
+          svg.selectAll(".links")
+              .transition().duration(dur)
+              .attr("stroke-opacity", function (d2){ return d1.name==d2.source.name ? 1 : 0.1; });
+          svg.selectAll(".linksP1")
+              .transition().duration(dur)
+              .attr("stroke-opacity", function (d2){
+                  if (!document.getElementById("checkboxP1").checked) return 0;
+                  return d1.name==d2.source.name ? 1 : 0.1; });
+          svg.selectAll(".links01")
+              .transition().duration(dur)
+              .attr("stroke-opacity", function (d2){
+                  if (!document.getElementById("checkboxP1").checked) return 0;
+                  return d1.name==d2.source.name ? 1 : 0.1; });
+
+          svg.selectAll(".linksP2")
+              .transition().duration(dur)
+              .attr("stroke-opacity", function (d2){
+                  if (!document.getElementById("checkboxP1").checked) return 0;
+                  return d1.name==d2.source.name ? 1 : 0.1; });
+          svg.selectAll(".linksP3")
+              .transition().duration(dur)
+              .attr("stroke-opacity", function (d2){
+                  if (!document.getElementById("checkboxP1").checked) return 0;
+                  return d1.name==d2.source.name ? 1 : 0.1; });
+          svg.selectAll(".links02")
+              .transition().duration(dur)
+              .attr("stroke-opacity", function (d2){
+                  if (!document.getElementById("checkboxP1").checked) return 0;
+                  return d1.name==d2.source.name ? 1 : 0.1; });
+          svg.selectAll(".links03")
+              .transition().duration(dur)
+              .attr("stroke-opacity", function (d2){
+                  if (!document.getElementById("checkboxP1").checked) return 0;
+                  return d1.name==d2.source.name ? 1 : 0.1; });
+
+          if (document.getElementById("checkboxP1").checked){
+              textP1(d1.index);
+          }
+          textContribution(d1.index);
+      }
     function textContribution(index){
       svg.append("text")
         .attr("class", "textContribution")
@@ -1116,83 +1223,83 @@ function main(){
         .text("Report: "+nodesP1[index].P1_report+"%");
 
        // Project 2
-       svg.append("text")
-        .attr("class", "textP2")
-        .style("font-size", "13px")
-        .attr("text-anchor", "left")
-        .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
-        .attr("fill", "#000")
-        .attr("x", radius+nodesP2[index].x+12)
-        .attr("y", nodesP2[index].y-12)
-        .text("Code: "+nodesP2[index].P2_code+"%");
-      svg.append("text")
-        .attr("class", "textP2")
-        .style("font-size", "13px")
-        .attr("text-anchor", "left")
-        .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
-        .attr("fill", "#000")
-        .attr("x", radius+nodesP2[index].x+20)
-        .attr("y", nodesP2[index].y+3)
-        .text("Talk: "+nodesP2[index].P2_talk+"%");
-      svg.append("text")
-        .attr("class", "textP2")
-        .style("font-size", "13px")
-        .attr("text-anchor", "left")
-        .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
-        .attr("fill", "#000")
-        .attr("x", radius+nodesP2[index].x+5)
-        .attr("y", nodesP2[index].y+18)
-        .text("Report: "+nodesP2[index].P2_report+"%");  
-      svg.append("text")
-        .attr("class", "textP2")
-        .style("font-size", "13px")
-        .attr("text-anchor", "left")
-        .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
-        .attr("fill", "#000")
-        .attr("x", radius+nodesP2[index].x+5)
-        .attr("y", nodesP2[index].y+33)
-        .text("Review: "+nodesP2[index].P2_review+"%");   
-
-
-       // Project 3
-       svg.append("text")
-        .attr("class", "textP3")
-        .style("font-size", "13px")
-        .attr("text-anchor", "left")
-        .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
-        .attr("fill", "#000")
-        .attr("x", radius+nodesP3[index].x+12)
-        .attr("y", nodesP3[index].y-12)
-        .text("Code: "+nodesP3[index].P3_code+"%");
-      svg.append("text")
-        .attr("class", "textP3")
-        .style("font-size", "13px")
-        .attr("text-anchor", "left")
-        .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
-        .attr("fill", "#000")
-        .attr("x", radius+nodesP3[index].x+20)
-        .attr("y", nodesP3[index].y+3)
-        .text("Talk: "+nodesP3[index].P3_talk+"%");
-      svg.append("text")
-        .attr("class", "textP3")
-        .style("font-size", "13px")
-        .attr("text-anchor", "left")
-        .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
-        .attr("fill", "#000")
-        .attr("x", radius+nodesP3[index].x+5)
-        .attr("y", nodesP3[index].y+18)
-        .text("Report: "+nodesP3[index].P3_report+"%");  
-      svg.append("text")
-        .attr("class", "textP3")
-        .style("font-size", "13px")
-        .attr("text-anchor", "left")
-        .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
-        .attr("fill", "#000")
-        .attr("x", radius+nodesP3[index].x+5)
-        .attr("y", nodesP3[index].y+33)
-        .text("Review: "+nodesP3[index].P3_review+"%");             
+      //  svg.append("text")
+      //   .attr("class", "textP2")
+      //   .style("font-size", "13px")
+      //   .attr("text-anchor", "left")
+      //   .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
+      //   .attr("fill", "#000")
+      //   .attr("x", radius+nodesP2[index].x+12)
+      //   .attr("y", nodesP2[index].y-12)
+      //   .text("Code: "+nodesP2[index].P2_code+"%");
+      // svg.append("text")
+      //   .attr("class", "textP2")
+      //   .style("font-size", "13px")
+      //   .attr("text-anchor", "left")
+      //   .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
+      //   .attr("fill", "#000")
+      //   .attr("x", radius+nodesP2[index].x+20)
+      //   .attr("y", nodesP2[index].y+3)
+      //   .text("Talk: "+nodesP2[index].P2_talk+"%");
+      // svg.append("text")
+      //   .attr("class", "textP2")
+      //   .style("font-size", "13px")
+      //   .attr("text-anchor", "left")
+      //   .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
+      //   .attr("fill", "#000")
+      //   .attr("x", radius+nodesP2[index].x+5)
+      //   .attr("y", nodesP2[index].y+18)
+      //   .text("Report: "+nodesP2[index].P2_report+"%");
+      // svg.append("text")
+      //   .attr("class", "textP2")
+      //   .style("font-size", "13px")
+      //   .attr("text-anchor", "left")
+      //   .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
+      //   .attr("fill", "#000")
+      //   .attr("x", radius+nodesP2[index].x+5)
+      //   .attr("y", nodesP2[index].y+33)
+      //   .text("Review: "+nodesP2[index].P2_review+"%");
+      //
+      //
+      //  // Project 3
+      //  svg.append("text")
+      //   .attr("class", "textP3")
+      //   .style("font-size", "13px")
+      //   .attr("text-anchor", "left")
+      //   .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
+      //   .attr("fill", "#000")
+      //   .attr("x", radius+nodesP3[index].x+12)
+      //   .attr("y", nodesP3[index].y-12)
+      //   .text("Code: "+nodesP3[index].P3_code+"%");
+      // svg.append("text")
+      //   .attr("class", "textP3")
+      //   .style("font-size", "13px")
+      //   .attr("text-anchor", "left")
+      //   .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
+      //   .attr("fill", "#000")
+      //   .attr("x", radius+nodesP3[index].x+20)
+      //   .attr("y", nodesP3[index].y+3)
+      //   .text("Talk: "+nodesP3[index].P3_talk+"%");
+      // svg.append("text")
+      //   .attr("class", "textP3")
+      //   .style("font-size", "13px")
+      //   .attr("text-anchor", "left")
+      //   .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
+      //   .attr("fill", "#000")
+      //   .attr("x", radius+nodesP3[index].x+5)
+      //   .attr("y", nodesP3[index].y+18)
+      //   .text("Report: "+nodesP3[index].P3_report+"%");
+      // svg.append("text")
+      //   .attr("class", "textP3")
+      //   .style("font-size", "13px")
+      //   .attr("text-anchor", "left")
+      //   .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
+      //   .attr("fill", "#000")
+      //   .attr("x", radius+nodesP3[index].x+5)
+      //   .attr("y", nodesP3[index].y+33)
+      //   .text("Review: "+nodesP3[index].P3_review+"%");
     }
-    
+
     function mouseoutNode(d1){
       svg.selectAll(".lineGraph")
         .transition().duration(dur)
@@ -1200,71 +1307,71 @@ function main(){
       svg.selectAll(".nodeImage")
         .transition().duration(dur)
         .attr("stroke-opacity", 1)
-        .attr("fill-opacity", 1); ;  
+        .attr("fill-opacity", 1); ;
       svg.selectAll(".nodeCircle")
         .transition().duration(dur)
         .attr("stroke-opacity", 1)
-        .attr("fill-opacity", 1); 
+        .attr("fill-opacity", 1);
 
       if (document.getElementById("checkboxP1").checked){
         svg.selectAll(".nodeP1")
           .transition().duration(dur)
           .attr("stroke-opacity", 1)
-          .attr("fill-opacity", 1);  
+          .attr("fill-opacity", 1);
         svg.selectAll(".nodeP2")
           .transition().duration(dur)
           .attr("stroke-opacity", 1)
-          .attr("fill-opacity", 1);    
+          .attr("fill-opacity", 1);
         svg.selectAll(".nodeP3")
           .transition().duration(dur)
           .attr("stroke-opacity", 1)
-          .attr("fill-opacity", 1);        
-      }  
-      svg.selectAll(".links")  
+          .attr("fill-opacity", 1);
+      }
+      svg.selectAll(".links")
         .transition().duration(dur)
         .attr("stroke-opacity", 1);
       if (document.getElementById("checkboxP1").checked){
-        svg.selectAll(".linksP1")  
+        svg.selectAll(".linksP1")
           .transition().duration(dur)
-          .attr("stroke-opacity", 1);  
-        svg.selectAll(".linksP2")  
+          .attr("stroke-opacity", 1);
+        svg.selectAll(".linksP2")
           .transition().duration(dur)
-          .attr("stroke-opacity", 1);  
-        svg.selectAll(".linksP3")  
+          .attr("stroke-opacity", 1);
+        svg.selectAll(".linksP3")
           .transition().duration(dur)
-          .attr("stroke-opacity", 1); 
+          .attr("stroke-opacity", 1);
 
-        svg.selectAll(".nodeImageP1") 
+        svg.selectAll(".nodeImageP1")
           .transition().duration(400)
-          .attr("fill-opacity",function(d){ 
+          .attr("fill-opacity",function(d){
             return (d.name.indexOf("Manasa")<0 && d.name.indexOf("Paul")<0)? 1 : 0;})
-          .attr("stroke-opacity",function(d){ 
-            return (d.name.indexOf("Manasa")<0 && d.name.indexOf("Paul")<0)? 1 : 0;});  
+          .attr("stroke-opacity",function(d){
+            return (d.name.indexOf("Manasa")<0 && d.name.indexOf("Paul")<0)? 1 : 0;});
         svg.selectAll(".links01")
           .transition().duration(400)
-          .attr("stroke-opacity",function(d){ 
+          .attr("stroke-opacity",function(d){
             return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
-          });    
+          });
         svg.selectAll(".links02")
           .transition().duration(400)
-          .attr("stroke-opacity",function(d){ 
+          .attr("stroke-opacity",function(d){
             return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
-          });  
+          });
         svg.selectAll(".links03")
           .transition().duration(400)
-          .attr("stroke-opacity",function(d){ 
+          .attr("stroke-opacity",function(d){
             return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
-          });             
-      }  
+          });
+      }
       svg.selectAll(".textP1").remove();
       svg.selectAll(".textP2").remove();
       svg.selectAll(".textP3").remove();
       svg.selectAll(".textContribution").remove();
     }
 
-    fadeP1();  
-      
-    
+    fadeP1();
+
+
     simulation
       .nodes(nodes)
       .on("tick", ticked);
@@ -1275,10 +1382,10 @@ function main(){
         return 0;
       else
         return radius+1;
-    }));  
+    }));
     simulation.alpha(0.25);
 
-     
+
     simulationP1
       .nodes(nodesP1)
       .on("tick", tickedP1);
@@ -1289,43 +1396,43 @@ function main(){
         return 0;
       else
         return radius+1;
-    }));  
-     
-    simulationP2
-      .nodes(nodesP2)
-      .on("tick", tickedP2);
-    simulationP2.force("link")
-        .links(linksP2);
-    simulationP2.force("collide", d3.forceCollide(function(d,i){
-      if (i%2==0)
-        return 0;
-      else
-        return radius+1;
     }));
 
-    simulationP3
-      .nodes(nodesP3)
-      .on("tick", tickedP3);
-    simulationP3.force("link")
-        .links(linksP3);
-    simulationP3.force("collide", d3.forceCollide(function(d,i){
-      if (i%2==0)
-        return 0;
-      else
-        return radius+1;
-    }));
+    // simulationP2
+    //   .nodes(nodesP2)
+    //   .on("tick", tickedP2);
+    // simulationP2.force("link")
+    //     .links(linksP2);
+    // simulationP2.force("collide", d3.forceCollide(function(d,i){
+    //   if (i%2==0)
+    //     return 0;
+    //   else
+    //     return radius+1;
+    // }));
+    //
+    // simulationP3
+    //   .nodes(nodesP3)
+    //   .on("tick", tickedP3);
+    // simulationP3.force("link")
+    //     .links(linksP3);
+    // simulationP3.force("collide", d3.forceCollide(function(d,i){
+    //   if (i%2==0)
+    //     return 0;
+    //   else
+    //     return radius+1;
+    // }));
 
   });
 }
 
 function ticked() {
     for (var i=0;i<nodes.length;i=i+2){
-      if (document.getElementById("checkboxP1").checked && 
+      if (document.getElementById("checkboxP1").checked &&
         nodes[i].name.indexOf("Manasa")<0 && nodes[i].name.indexOf("Paul")<0)
         nodes[i].x = xNew(today);
       else
-        nodes[i].x = x(nodes[i].date);       
-      nodes[i].y = y(nodes[i].score); 
+        nodes[i].x = x(nodes[i].date);
+      nodes[i].y = y(nodes[i].score);
     }
     link
         .attr("x1", function(d) { return d.source.x; })
@@ -1335,46 +1442,47 @@ function ticked() {
     node
         .attr("cx", function(d) { return d.x; })
         .attr("cy", function(d) { return d.y; });
-    if (revealIdentity){    
+    if (revealIdentity){
       nodeImage
         .attr("cx", function(d) { return d.x; })
         .attr("cy", function(d) { return d.y; });
-    }    
+    }
   }
 
 function tickedP1() {
     for (var i=0;i<nodesP1.length;i=i+2){
-      if (document.getElementById("checkboxP1").checked){
-        nodesP1[i].x = width*0.63;
-        nodesP1[i].y = yP1(nodesP1[i].P1_code+nodesP1[i].P1_talk+nodesP1[i].P1_report); 
-      }
-      else{
-        nodesP1[i].x = x(nodesP1[i].date);  
-        nodesP1[i].y = y(nodesP1[i].score);      
-      }
-      
+        if (document.getElementById("checkboxP1").checked){
+            nodesP1[i].x = width*0.63;
+            nodesP1[i].y = yP1(nodesP1[i].P1_code+nodesP1[i].P1_talk+nodesP1[i].P1_report);
+        }
+        else{
+            nodesP1[i].x = x(nodesP1[i].date);
+            nodesP1[i].y = y(nodesP1[i].score);
+        }
+
     }
     linkP1
         .attr("x1", function(d) { return d.source.x; })
         .attr("y1", function(d) { return d.source.y; })
         .attr("x2", function(d) { return d.target.x; })
         .attr("y2", function(d) { return d.target.y; });
-    link01  
+    link01
         .attr("x1", function(d,i) { return nodes[i*2+1].x; })
         .attr("y1", function(d,i) { return nodes[i*2+1].y; })
         .attr("x2", function(d,i) { return nodesP1[i*2+1].x; })
-        .attr("y2", function(d,i) { return nodesP1[i*2+1].y; });  
+        .attr("y2", function(d,i) { return nodesP1[i*2+1].y; });
 
     nodeP1
         .attr("cx", function(d) { return d.x; })
         .attr("cy", function(d) { return d.y; });
 
-    if (revealIdentity){    
-      nodeImageP1
-        .attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; });
-    }    
+    if (revealIdentity){
+        nodeImageP1
+            .attr("cx", function(d) { return d.x; })
+            .attr("cy", function(d) { return d.y; });
+    }
 }
+
 
 function tickedP2() {
     for (var i=0;i<nodesP2.length;i=i+2){
@@ -1386,21 +1494,21 @@ function tickedP2() {
      //   nodesP2[i].y = (nodesP2[i].y)/3;
       }
       else{
-        nodesP2[i].x = x(nodesP2[i].date);  
-        nodesP2[i].y = y(nodesP2[i].score);   
+        nodesP2[i].x = x(nodesP2[i].date);
+        nodesP2[i].y = y(nodesP2[i].score);
       }
-      
+
     }
     linkP2
         .attr("x1", function(d) { return d.source.x; })
         .attr("y1", function(d) { return d.source.y; })
         .attr("x2", function(d) { return d.target.x; })
         .attr("y2", function(d) { return d.target.y; });
-    link02 
+    link02
         .attr("x1", function(d,i) { return nodesP1[i*2+1].x; })
         .attr("y1", function(d,i) { return nodesP1[i*2+1].y; })
         .attr("x2", function(d,i) { return nodesP2[i*2+1].x; })
-        .attr("y2", function(d,i) { return nodesP2[i*2+1].y; });  
+        .attr("y2", function(d,i) { return nodesP2[i*2+1].y; });
 
     nodeP2
         .attr("cx", function(d) { return d.x; })
@@ -1417,21 +1525,21 @@ function tickedP3() {
      //   nodesP2[i].y = (nodesP2[i].y)/3;
       }
       else{
-        nodesP3[i].x = x(nodesP3[i].date);  
-        nodesP3[i].y = y(nodesP3[i].score);   
+        nodesP3[i].x = x(nodesP3[i].date);
+        nodesP3[i].y = y(nodesP3[i].score);
       }
-      
+
     }
     linkP3
         .attr("x1", function(d) { return d.source.x; })
         .attr("y1", function(d) { return d.source.y; })
         .attr("x2", function(d) { return d.target.x; })
         .attr("y2", function(d) { return d.target.y; });
-    link03 
+    link03
         .attr("x1", function(d,i) { return nodesP2[i*2+1].x; })
         .attr("y1", function(d,i) { return nodesP2[i*2+1].y; })
         .attr("x2", function(d,i) { return nodesP3[i*2+1].x; })
-        .attr("y2", function(d,i) { return nodesP3[i*2+1].y; });  
+        .attr("y2", function(d,i) { return nodesP3[i*2+1].y; });
 
     nodeP3
         .attr("cx", function(d) { return d.x; })
@@ -1440,13 +1548,20 @@ function tickedP3() {
 
 
 function showP1(){
+    // This is to make sure that all object are reset to opacity =1
+    // var obj ={};
+    // obj.nickname = nodes[0].nickname;
+    // obj.index = nodes[0].index;
+    // obj.name = nodes[0].name;
+    // mouseoutNode(obj);
+
   // Add the x Axis
   if (document.getElementById("checkboxP1").checked){
     svg.selectAll(".xAxis").remove();
     svg.selectAll(".legendLine10")
       .attr("stroke-opacity", 0);
     svg.selectAll(".lineGraph")
-      .attr("stroke-width",0.5);      
+      .attr("stroke-width",0.5);
     svg.append("g")
       .attr("class", "xAxis")
       .style("font-size", "14px")
@@ -1455,35 +1570,35 @@ function showP1(){
     svg.selectAll(".nodeImageP1")
       .transition().duration(400)
       .attr("fill-opacity",1)
-      .attr("stroke-opacity",1); 
-    
-    svg.selectAll(".nodeImageP1") 
+      .attr("stroke-opacity",1);
+
+    svg.selectAll(".nodeImageP1")
       .transition().duration(400)
-      .attr("fill-opacity",function(d){ 
+      .attr("fill-opacity",function(d){
         return (d.name.indexOf("Manasa")<0 && d.name.indexOf("Paul")<0)? 1 : 0;})
-      .attr("stroke-opacity",function(d){ 
-        return (d.name.indexOf("Manasa")<0 && d.name.indexOf("Paul")<0)? 1 : 0;});  
+      .attr("stroke-opacity",function(d){
+        return (d.name.indexOf("Manasa")<0 && d.name.indexOf("Paul")<0)? 1 : 0;});
     svg.selectAll(".links01")
       .transition().duration(400)
-      .attr("stroke-opacity",function(d){ 
+      .attr("stroke-opacity",function(d){
         return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
       });
 
-    // Project 2  
+    // Project 2
     svg.selectAll(".links02")
       .transition().duration(400)
-      .attr("stroke-opacity",function(d){ 
+      .attr("stroke-opacity",function(d){
         return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
       });
 
     // Project 3
     svg.selectAll(".links03")
       .transition().duration(400)
-      .attr("stroke-opacity",function(d){ 
+      .attr("stroke-opacity",function(d){
         return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
       });
 
-      
+
 
     if (!revealIdentity){
       svg.selectAll(".nodeP1")
@@ -1494,8 +1609,8 @@ function showP1(){
         .attr("fill-opacity",1);
       svg.selectAll(".nodeP3")
         .transition().duration(400)
-        .attr("fill-opacity",1);    
-    }  
+        .attr("fill-opacity",1);
+    }
 
 
 
@@ -1503,54 +1618,53 @@ function showP1(){
     var aGrades = [20, 16, 12, 8];
     var aText = ["A", "B", "C", "D", "F"];
     for (var i=0; i<aGrades.length-1;i++){
-      svg.append("line")
-        .attr("class", "lineGradeP1")
-        .attr("stroke", "#000")
-        .attr("stroke-width", 1)
-        .attr("x1", width*0.99)
-        .attr("y1", yP1(aGrades[i]))
-        .attr("x2", width*0.99)
-        .attr("y2", yP1(aGrades[i+1]+0.3));
-       svg.append("line")
-        .attr("class", "lineGradeP1")
-        .attr("stroke", "#000")
-        .attr("stroke-width", 1)
-        .attr("x1", width*0.98)
-        .attr("y1", yP1(aGrades[i]))
-        .attr("x2", width*0.99)
-        .attr("y2", yP1(aGrades[i])); 
-      svg.append("line")
-        .attr("class", "lineGradeP1")
-        .attr("stroke", "#000")
-        .attr("stroke-width", 1)
-        .attr("x1", width*0.98)
-        .attr("y1", yP1(aGrades[i+1]+0.3))
-        .attr("x2", width*0.99)
-        .attr("y2", yP1(aGrades[i+1]+0.3));    
-      svg.append("text")
-        .attr("class", "textGradeP1")
-        .style("font-size", "18px")
-        .attr("text-anchor", "start")
-        .attr("fill", "#000")
-        .attr("x", width*0.99+4)
-        .attr("y", (yP1(aGrades[i])+yP1(aGrades[i+1]))/2)
-        .text(aText[i]);   
-    }             
+        svg.append("line")
+            .attr("class", "lineGradeP1")
+            .attr("stroke", "#000")
+            .attr("stroke-width", 1)
+            .attr("x1", width*0.99)
+            .attr("y1", yP1(aGrades[i])-80)
+            .attr("x2", width*0.99)
+            .attr("y2", yP1(aGrades[i+1]+0.3)-80);
+        svg.append("line")
+            .attr("class", "lineGradeP1")
+            .attr("stroke", "#000")
+            .attr("stroke-width", 1)
+            .attr("x1", width*0.98)
+            .attr("y1", yP1(aGrades[i])-80)
+            .attr("x2", width*0.99)
+            .attr("y2", yP1(aGrades[i])-80);
+        svg.append("line")
+            .attr("class", "lineGradeP1")
+            .attr("stroke", "#000")
+            .attr("stroke-width", 1)
+            .attr("x1", width*0.98)
+            .attr("y1", yP1(aGrades[i+1]+0.3)-80)
+            .attr("x2", width*0.99)
+            .attr("y2", yP1(aGrades[i+1]+0.3)-80);
+        svg.append("text")
+            .attr("class", "textGradeP1")
+            .style("font-size", "18px")
+            .attr("text-anchor", "start")
+            .attr("fill", "#000")
+            .attr("x", width*0.99+4)
+            .attr("y", (yP1(aGrades[i])+yP1(aGrades[i+1]))/2-80)
+            .text(aText[i]);
+    }
   }
   else{
       fadeP1();
-  }    
+  }
 
   simulation.restart();
   simulation.alpha(0.3);
   simulationP1.restart();
   simulationP1.alpha(0.3);
-  simulationP2.restart();
-  simulationP2.alpha(0.3);
-  simulationP3.restart();
-  simulationP3.alpha(0.3);
-
-  svg.selectAll(".lineGraph")
+  // simulationP2.restart();
+  // simulationP2.alpha(0.3);
+  // simulationP3.restart();
+  // simulationP3.alpha(0.3);
+    svg.selectAll(".lineGraph")
       .transition().duration(300)
       .attr("d", function(d) {
         return valueline(d);
@@ -1558,61 +1672,61 @@ function showP1(){
 }
 
 function fadeP1(){
-  svg.selectAll(".xAxis").remove();
-  svg.selectAll(".legendLine10")
-      .attr("stroke-opacity", 1);
-  svg.selectAll(".lineGraph")
-    .attr("stroke-width",1.25);      
-  svg.append("g")
-    .attr("class", "xAxis")
-    .style("font-size", "14px")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
-  svg.selectAll(".nodeImageP1")
-    .transition().duration(1500)
-    .attr("fill-opacity",0)
-    .attr("stroke-opacity",0);  
-  svg.selectAll(".nodeP1") 
-    .transition().duration(1500)
-    .attr("fill-opacity",0); 
-  svg.selectAll(".linksP1")
-    .transition().duration(1500)
-    .attr("stroke-opacity",0); 
-  svg.selectAll(".lineGradeP1")
-    .transition().duration(1500)
-    .remove(); 
-   svg.selectAll(".textGradeP1")
-    .transition().duration(1500)
-    .remove();     
-  // Project 2
-  svg.selectAll(".nodeImageP2")
-    .transition().duration(1500)
-    .attr("fill-opacity",0)
-    .attr("stroke-opacity",0);  
-  svg.selectAll(".nodeP2") 
-    .transition().duration(1500)
-    .attr("fill-opacity",0); 
-  svg.selectAll(".linksP2")
-    .transition().duration(1500)
-    .attr("stroke-opacity",0); 
-  svg.selectAll(".lineGradeP2")
-    .transition().duration(1500)
-    .remove(); 
+    svg.selectAll(".xAxis").remove();
+    svg.selectAll(".legendLine10")
+        .attr("stroke-opacity", 1);
+    svg.selectAll(".lineGraph")
+        .attr("stroke-width",1);
+    svg.append("g")
+        .attr("class", "xAxis")
+        .style("font-size", "14px")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+    svg.selectAll(".nodeImageP1")
+        .transition().duration(1500)
+        .attr("fill-opacity",0)
+        .attr("stroke-opacity",0);
+    svg.selectAll(".nodeP1")
+        .transition().duration(1500)
+        .attr("fill-opacity",0);
+    svg.selectAll(".linksP1")
+        .transition().duration(1500)
+        .attr("stroke-opacity",0);
+    svg.selectAll(".lineGradeP1")
+        .transition().duration(1500)
+        .remove();
+    svg.selectAll(".textGradeP1")
+        .transition().duration(1500)
+        .remove();
+    // Project 2
+    svg.selectAll(".nodeImageP2")
+        .transition().duration(1500)
+        .attr("fill-opacity",0)
+        .attr("stroke-opacity",0);
+    svg.selectAll(".nodeP2")
+        .transition().duration(1500)
+        .attr("fill-opacity",0);
+    svg.selectAll(".linksP2")
+        .transition().duration(1500)
+        .attr("stroke-opacity",0);
+    svg.selectAll(".lineGradeP2")
+        .transition().duration(1500)
+        .remove();
 
     // Project 3
-  svg.selectAll(".nodeImageP3")
-    .transition().duration(1500)
-    .attr("fill-opacity",0)
-    .attr("stroke-opacity",0);  
-  svg.selectAll(".nodeP3") 
-    .transition().duration(1500)
-    .attr("fill-opacity",0); 
-  svg.selectAll(".linksP3")
-    .transition().duration(1500)
-    .attr("stroke-opacity",0); 
-  svg.selectAll(".lineGradeP3")
-    .transition().duration(1500)
-    .remove();              
+    svg.selectAll(".nodeImageP3")
+        .transition().duration(1500)
+        .attr("fill-opacity",0)
+        .attr("stroke-opacity",0);
+    svg.selectAll(".nodeP3")
+        .transition().duration(1500)
+        .attr("fill-opacity",0);
+    svg.selectAll(".linksP3")
+        .transition().duration(1500)
+        .attr("stroke-opacity",0);
+    svg.selectAll(".lineGradeP3")
+        .transition().duration(1500)
+        .remove();
 }
 
 
