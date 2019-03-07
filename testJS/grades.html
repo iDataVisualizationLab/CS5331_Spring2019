@@ -93,7 +93,7 @@ a:hover { text-decoration: underline; }
  <input type="checkbox" id="checkboxP1" value="value2" class="check" onclick="showP1()">
 <label for="checkboxP1"> Project results</label>
  <div id="searchfield">
-  <label for="searchfield">Score: </label>
+  <label for="searchfield">Contribution Score: </label>
   <form><input type="text" name="currency" class="biginput" id="autocomplete"></form>
   <div id="outputbox">
    <p id="outputcontent"></p>
@@ -1638,8 +1638,7 @@ $(function(){
     $('#autocomplete').autocomplete({
         lookup: nodes_search,
         onSelect: function (suggestion) {
-            var thehtml = '<strong>Participation:</strong> ' + suggestion.data + ' <br> <strong>P1_talk:</strong> ' + suggestion.talk
-            + ' <br> <strong>P1_code:</strong> ' + suggestion.code + ' <br> <strong>P1_report:</strong> ' + suggestion.report;
+            var thehtml = '<strong>Score:</strong> ' + suggestion.data;
             $('#outputcontent').html(thehtml);
         }
     });
