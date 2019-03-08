@@ -220,6 +220,7 @@ var linksP2=[];
 var nodesP3=[];
 var linksP3=[];
 var today = new Date('March 6 2019');
+var data = {};
 
 function getCategoty(str){
   if (str=="PhD")
@@ -229,8 +230,6 @@ function getCategoty(str){
   else (str=="MSCS")
     return 1;
 }
-var data = {};
-
 
 function main(){
   d3.tsv("data/participations.csv", function(error, data_) {
@@ -1154,6 +1153,7 @@ function textP1(index){
     //   .attr("y", nodesP3[index].y+33)
     //   .text("Review: "+nodesP3[index].P3_review+"%");
 }
+
 function searchNode() {
     //searchTerm = document.getElementById('search').value;
     var obj ={};
@@ -1168,6 +1168,183 @@ function searchNode() {
     mouseoverNode(obj);
 
 }
+
+function mouseoverNode(d1){
+    //if (d1.P1_code!=undefined && !document.getElementById("checkboxP1").checked)
+    //   return;
+    svg.selectAll(".lineGraph")
+        .transition().duration(dur)
+        .attr("stroke-opacity", function (d2){ return d1.name==d2.name ? 1 : 0.05; });
+    svg.selectAll(".nodeImage")
+        .transition().duration(dur)
+        .attr("stroke-opacity", function (d2){ return d1.name==d2.name ? 1 : 0.05; })
+        .attr("fill-opacity", function (d2){ return d1.name==d2.name ? 1 : 0.1; });
+    if (revealIdentity){
+        svg.selectAll(".nodeImageP1")
+            .transition().duration(dur)
+            .attr("stroke-opacity", function (d2){
+                if (!document.getElementById("checkboxP1").checked) return 0;
+                return d1.name==d2.name ? 1 : 0.05; })
+            .attr("fill-opacity", function (d2){
+                if (!document.getElementById("checkboxP1").checked) return 0;
+                return d1.name==d2.name ? 1 : 0.1; });
+        svg.selectAll(".nodeCircle")
+            .transition().duration(dur)
+            .attr("fill-opacity", 0);
+    }
+    else{
+        //debugger;
+        svg.selectAll(".nodeCircle")
+            .transition().duration(dur)
+            .attr("stroke-opacity", function (d2){
+                //  if (!document.getElementById("checkboxP1").checked) return 0;
+                return d1.name==d2.name ? 1 : 0.05; })
+            .attr("fill-opacity", function (d2){
+                //  if (!document.getElementById("checkboxP1").checked) return 0;
+                return d1.name==d2.name ? 1 : 0.1; });
+        if (document.getElementById("checkboxP1").checked){
+            svg.selectAll(".nodeP1")
+                .transition().duration(dur)
+                .attr("stroke-opacity", function (d2){
+                    //  if (!document.getElementById("checkboxP1").checked) return 0;
+                    return d1.name==d2.name ? 1 : 0.05; })
+                .attr("fill-opacity", function (d2){
+                    //  if (!document.getElementById("checkboxP1").checked) return 0;
+                    return d1.name==d2.name ? 1 : 0.1; });
+
+            //Project 2
+            svg.selectAll(".nodeP2")
+                .transition().duration(dur)
+                .attr("stroke-opacity", function (d2){
+                    //  if (!document.getElementById("checkboxP1").checked) return 0;
+                    return d1.name==d2.name ? 1 : 0.05; })
+                .attr("fill-opacity", function (d2){
+                    //  if (!document.getElementById("checkboxP1").checked) return 0;
+                    return d1.name==d2.name ? 1 : 0.1; });
+
+            // Project 3
+            svg.selectAll(".nodeP3")
+                .transition().duration(dur)
+                .attr("stroke-opacity", function (d2){
+                    //  if (!document.getElementById("checkboxP1").checked) return 0;
+                    return d1.name==d2.name ? 1 : 0.05; })
+                .attr("fill-opacity", function (d2){
+                    //  if (!document.getElementById("checkboxP1").checked) return 0;
+                    return d1.name==d2.name ? 1 : 0.1; });
+        }
+
+    }
+
+    svg.selectAll(".links")
+        .transition().duration(dur)
+        .attr("stroke-opacity", function (d2){ return d1.name==d2.source.name ? 1 : 0.1; });
+    svg.selectAll(".linksP1")
+        .transition().duration(dur)
+        .attr("stroke-opacity", function (d2){
+            if (!document.getElementById("checkboxP1").checked) return 0;
+            return d1.name==d2.source.name ? 1 : 0.1; });
+    svg.selectAll(".links01")
+        .transition().duration(dur)
+        .attr("stroke-opacity", function (d2){
+            if (!document.getElementById("checkboxP1").checked) return 0;
+            return d1.name==d2.source.name ? 1 : 0.1; });
+
+    svg.selectAll(".linksP2")
+        .transition().duration(dur)
+        .attr("stroke-opacity", function (d2){
+            if (!document.getElementById("checkboxP1").checked) return 0;
+            return d1.name==d2.source.name ? 1 : 0.1; });
+    svg.selectAll(".linksP3")
+        .transition().duration(dur)
+        .attr("stroke-opacity", function (d2){
+            if (!document.getElementById("checkboxP1").checked) return 0;
+            return d1.name==d2.source.name ? 1 : 0.1; });
+    svg.selectAll(".links02")
+        .transition().duration(dur)
+        .attr("stroke-opacity", function (d2){
+            if (!document.getElementById("checkboxP1").checked) return 0;
+            return d1.name==d2.source.name ? 1 : 0.1; });
+    svg.selectAll(".links03")
+        .transition().duration(dur)
+        .attr("stroke-opacity", function (d2){
+            if (!document.getElementById("checkboxP1").checked) return 0;
+            return d1.name==d2.source.name ? 1 : 0.1; });
+
+    if (document.getElementById("checkboxP1").checked){
+        textP1(d1.index);
+    }
+    textContribution(d1.index);
+}
+
+function mouseoutNode(d1){
+    svg.selectAll(".lineGraph")
+        .transition().duration(dur)
+        .attr("stroke-opacity", 1);
+    svg.selectAll(".nodeImage")
+        .transition().duration(dur)
+        .attr("stroke-opacity", 1)
+        .attr("fill-opacity", 1); ;
+    svg.selectAll(".nodeCircle")
+        .transition().duration(dur)
+        .attr("stroke-opacity", 1)
+        .attr("fill-opacity", 1);
+
+    if (document.getElementById("checkboxP1").checked){
+        svg.selectAll(".nodeP1")
+            .transition().duration(dur)
+            .attr("stroke-opacity", 1)
+            .attr("fill-opacity", 1);
+        svg.selectAll(".nodeP2")
+            .transition().duration(dur)
+            .attr("stroke-opacity", 1)
+            .attr("fill-opacity", 1);
+        svg.selectAll(".nodeP3")
+            .transition().duration(dur)
+            .attr("stroke-opacity", 1)
+            .attr("fill-opacity", 1);
+    }
+    svg.selectAll(".links")
+        .transition().duration(dur)
+        .attr("stroke-opacity", 1);
+    if (document.getElementById("checkboxP1").checked){
+        svg.selectAll(".linksP1")
+            .transition().duration(dur)
+            .attr("stroke-opacity", 1);
+        svg.selectAll(".linksP2")
+            .transition().duration(dur)
+            .attr("stroke-opacity", 1);
+        svg.selectAll(".linksP3")
+            .transition().duration(dur)
+            .attr("stroke-opacity", 1);
+
+        svg.selectAll(".nodeImageP1")
+            .transition().duration(400)
+            .attr("fill-opacity",function(d){
+                return (d.name.indexOf("Manasa")<0 && d.name.indexOf("Paul")<0)? 1 : 0;})
+            .attr("stroke-opacity",function(d){
+                return (d.name.indexOf("Manasa")<0 && d.name.indexOf("Paul")<0)? 1 : 0;});
+        svg.selectAll(".links01")
+            .transition().duration(400)
+            .attr("stroke-opacity",function(d){
+                return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
+            });
+        svg.selectAll(".links02")
+            .transition().duration(400)
+            .attr("stroke-opacity",function(d){
+                return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
+            });
+        svg.selectAll(".links03")
+            .transition().duration(400)
+            .attr("stroke-opacity",function(d){
+                return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
+            });
+    }
+    svg.selectAll(".textP1").remove();
+    svg.selectAll(".textP2").remove();
+    svg.selectAll(".textP3").remove();
+    svg.selectAll(".textContribution").remove();
+}
+
 function ticked() {
     for (var i=0;i<nodes.length;i=i+2){
       if (document.getElementById("checkboxP1").checked &&
@@ -1494,196 +1671,8 @@ function dragended(d) {
   d.fy = null;
 }
 
-// $(function(){
-//
-//
-//     // setup autocomplete function pulling from currencies[] array
-//     $('#autocomplete').autocomplete({
-//         lookup: nodes_search,
-//         onSelect: function (suggestion) {
-//             var thehtml = '<strong>Score:</strong> ' + suggestion.data;
-//             $('#outputcontent').html(thehtml);
-//         }
-//     });
-//
-//
-// });
 
-function mouseoverNode(d1){
-    //if (d1.P1_code!=undefined && !document.getElementById("checkboxP1").checked)
-    //   return;
-    svg.selectAll(".lineGraph")
-        .transition().duration(dur)
-        .attr("stroke-opacity", function (d2){ return d1.name==d2.name ? 1 : 0.05; });
-    svg.selectAll(".nodeImage")
-        .transition().duration(dur)
-        .attr("stroke-opacity", function (d2){ return d1.name==d2.name ? 1 : 0.05; })
-        .attr("fill-opacity", function (d2){ return d1.name==d2.name ? 1 : 0.1; });
-    if (revealIdentity){
-        svg.selectAll(".nodeImageP1")
-            .transition().duration(dur)
-            .attr("stroke-opacity", function (d2){
-                if (!document.getElementById("checkboxP1").checked) return 0;
-                return d1.name==d2.name ? 1 : 0.05; })
-            .attr("fill-opacity", function (d2){
-                if (!document.getElementById("checkboxP1").checked) return 0;
-                return d1.name==d2.name ? 1 : 0.1; });
-        svg.selectAll(".nodeCircle")
-            .transition().duration(dur)
-            .attr("fill-opacity", 0);
-    }
-    else{
-        //debugger;
-        svg.selectAll(".nodeCircle")
-            .transition().duration(dur)
-            .attr("stroke-opacity", function (d2){
-                //  if (!document.getElementById("checkboxP1").checked) return 0;
-                return d1.name==d2.name ? 1 : 0.05; })
-            .attr("fill-opacity", function (d2){
-                //  if (!document.getElementById("checkboxP1").checked) return 0;
-                return d1.name==d2.name ? 1 : 0.1; });
-        if (document.getElementById("checkboxP1").checked){
-            svg.selectAll(".nodeP1")
-                .transition().duration(dur)
-                .attr("stroke-opacity", function (d2){
-                    //  if (!document.getElementById("checkboxP1").checked) return 0;
-                    return d1.name==d2.name ? 1 : 0.05; })
-                .attr("fill-opacity", function (d2){
-                    //  if (!document.getElementById("checkboxP1").checked) return 0;
-                    return d1.name==d2.name ? 1 : 0.1; });
 
-            //Project 2
-            svg.selectAll(".nodeP2")
-                .transition().duration(dur)
-                .attr("stroke-opacity", function (d2){
-                    //  if (!document.getElementById("checkboxP1").checked) return 0;
-                    return d1.name==d2.name ? 1 : 0.05; })
-                .attr("fill-opacity", function (d2){
-                    //  if (!document.getElementById("checkboxP1").checked) return 0;
-                    return d1.name==d2.name ? 1 : 0.1; });
-
-            // Project 3
-            svg.selectAll(".nodeP3")
-                .transition().duration(dur)
-                .attr("stroke-opacity", function (d2){
-                    //  if (!document.getElementById("checkboxP1").checked) return 0;
-                    return d1.name==d2.name ? 1 : 0.05; })
-                .attr("fill-opacity", function (d2){
-                    //  if (!document.getElementById("checkboxP1").checked) return 0;
-                    return d1.name==d2.name ? 1 : 0.1; });
-        }
-
-    }
-
-    svg.selectAll(".links")
-        .transition().duration(dur)
-        .attr("stroke-opacity", function (d2){ return d1.name==d2.source.name ? 1 : 0.1; });
-    svg.selectAll(".linksP1")
-        .transition().duration(dur)
-        .attr("stroke-opacity", function (d2){
-            if (!document.getElementById("checkboxP1").checked) return 0;
-            return d1.name==d2.source.name ? 1 : 0.1; });
-    svg.selectAll(".links01")
-        .transition().duration(dur)
-        .attr("stroke-opacity", function (d2){
-            if (!document.getElementById("checkboxP1").checked) return 0;
-            return d1.name==d2.source.name ? 1 : 0.1; });
-
-    svg.selectAll(".linksP2")
-        .transition().duration(dur)
-        .attr("stroke-opacity", function (d2){
-            if (!document.getElementById("checkboxP1").checked) return 0;
-            return d1.name==d2.source.name ? 1 : 0.1; });
-    svg.selectAll(".linksP3")
-        .transition().duration(dur)
-        .attr("stroke-opacity", function (d2){
-            if (!document.getElementById("checkboxP1").checked) return 0;
-            return d1.name==d2.source.name ? 1 : 0.1; });
-    svg.selectAll(".links02")
-        .transition().duration(dur)
-        .attr("stroke-opacity", function (d2){
-            if (!document.getElementById("checkboxP1").checked) return 0;
-            return d1.name==d2.source.name ? 1 : 0.1; });
-    svg.selectAll(".links03")
-        .transition().duration(dur)
-        .attr("stroke-opacity", function (d2){
-            if (!document.getElementById("checkboxP1").checked) return 0;
-            return d1.name==d2.source.name ? 1 : 0.1; });
-
-    if (document.getElementById("checkboxP1").checked){
-        textP1(d1.index);
-    }
-    textContribution(d1.index);
-}
-
-function mouseoutNode(d1){
-    svg.selectAll(".lineGraph")
-        .transition().duration(dur)
-        .attr("stroke-opacity", 1);
-    svg.selectAll(".nodeImage")
-        .transition().duration(dur)
-        .attr("stroke-opacity", 1)
-        .attr("fill-opacity", 1); ;
-    svg.selectAll(".nodeCircle")
-        .transition().duration(dur)
-        .attr("stroke-opacity", 1)
-        .attr("fill-opacity", 1);
-
-    if (document.getElementById("checkboxP1").checked){
-        svg.selectAll(".nodeP1")
-            .transition().duration(dur)
-            .attr("stroke-opacity", 1)
-            .attr("fill-opacity", 1);
-        svg.selectAll(".nodeP2")
-            .transition().duration(dur)
-            .attr("stroke-opacity", 1)
-            .attr("fill-opacity", 1);
-        svg.selectAll(".nodeP3")
-            .transition().duration(dur)
-            .attr("stroke-opacity", 1)
-            .attr("fill-opacity", 1);
-    }
-    svg.selectAll(".links")
-        .transition().duration(dur)
-        .attr("stroke-opacity", 1);
-    if (document.getElementById("checkboxP1").checked){
-        svg.selectAll(".linksP1")
-            .transition().duration(dur)
-            .attr("stroke-opacity", 1);
-        svg.selectAll(".linksP2")
-            .transition().duration(dur)
-            .attr("stroke-opacity", 1);
-        svg.selectAll(".linksP3")
-            .transition().duration(dur)
-            .attr("stroke-opacity", 1);
-
-        svg.selectAll(".nodeImageP1")
-            .transition().duration(400)
-            .attr("fill-opacity",function(d){
-                return (d.name.indexOf("Manasa")<0 && d.name.indexOf("Paul")<0)? 1 : 0;})
-            .attr("stroke-opacity",function(d){
-                return (d.name.indexOf("Manasa")<0 && d.name.indexOf("Paul")<0)? 1 : 0;});
-        svg.selectAll(".links01")
-            .transition().duration(400)
-            .attr("stroke-opacity",function(d){
-                return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
-            });
-        svg.selectAll(".links02")
-            .transition().duration(400)
-            .attr("stroke-opacity",function(d){
-                return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
-            });
-        svg.selectAll(".links03")
-            .transition().duration(400)
-            .attr("stroke-opacity",function(d){
-                return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
-            });
-    }
-    svg.selectAll(".textP1").remove();
-    svg.selectAll(".textP2").remove();
-    svg.selectAll(".textP3").remove();
-    svg.selectAll(".textContribution").remove();
-}
 
 
 </script>
