@@ -83,11 +83,52 @@
       <li> Compare topics from 2 sources?</li>
       <li> Tell your stories.</li>
     </ul>   
-    </font> 
+    </font>
 
+    <hr style="width: 100%; height: 1px;">
+    <div align="left"><font style="font-family: Helvetica,Arial,sans-serif;" color="black" size="5">Data:</font></div>
+    <font style="font-family:Helvetica;" color="black" size="4">
+        By <b>11:59pm Friday 3/8</b>, you will need to send the <b>nhat.le@ttu.edu</b> (and cc the instructor)
+    </font>
+    <font style="font-family:Helvetica;" color="black" size="4">
+        <br/>
+        The dataset must satisfy the requirement:<br/>
+        <li style="margin-left: 30px" >
+            <font style="font-family:Helvetica;" color="black" size="4">
+                Can not be too simple
+            </font>
+        </li>
+        <li style="margin-left: 30px" >
+            <font style="font-family:Helvetica;" color="black" size="4">
+                Can have more than 1 elements of Text, Network, and Geospatial.
+            </font>
+        </li>
 
-    
-   <hr style="width: 100%; height: 1px;">    
+        <br>
+    </font>
+    <font style="font-family:Helvetica;" color="black" size="4">
+        Example data:
+    </font>
+
+    <li style="margin-left: 30px" >
+        <font style="font-family:Helvetica;" color="black" size="4">
+            UFO reports: http://www.nuforc.org/
+        </font>
+    </li>
+
+    <li style="margin-left: 30px" >
+        <font style="font-family:Helvetica;" color="black" size="4">
+            Transcripts of the six seasons of Futurama episodes: <a href="http://theinfosphere.org/Episode_Transcript_Listing">http://theinfosphere.org/Episode_Transcript_Listing</a>
+        </font>
+    </li>
+
+    <li style="margin-left: 30px" >
+        <font style="font-family:Helvetica;" color="black" size="4">
+            Air quality around the US <a href="https://aqs.epa.gov/aqsweb/airdata/download_files.html">https://aqs.epa.gov/aqsweb/airdata/download_files.html</a>
+        </font>
+    </li>
+
+    <hr style="width: 100%; height: 1px;">
      <div align="left"><font style="font-family:
         Helvetica,Arial,sans-serif;" color="black" size="5">Notes:</font></div>
 
@@ -178,6 +219,7 @@ An example github report can be found <a href="https://github.com/CreativeCoding
                 <td width="15%">Members</td>
                 <td width="50%">Abstract</td>
                 <td>Screenshot</td>
+                <td>Team Photo</td>
                 <td>GitHub</td>
                 <td>Presented Date</td>
                 <td>Evaluation link</td>
@@ -196,11 +238,19 @@ An example github report can be found <a href="https://github.com/CreativeCoding
                     t.order = +t.order;
                     t.group = +t.group;
                 });
+
                 var localdata = rawdata.sort(function (a, b) {
                     return a.order - b.order;
                 });
                 localdata.forEach(function (row, index) {
-                    $('#tbl_assiged').append('<tr><td align="center" >' + row.group + '</td><td>' + row.names + '</td><td>' + row.abstract + '</td><td><img style="width:150px;height: 100px" src="' + row.thumbnail + '" ></td><td><a href="' + row.github + '" target="_blank">Link</a> </td>' +
+                    var thumbnails = row.thumbnails != ""
+                        ?'<img alt='+row.thumbnails+ ' height="100" src=' + 'thumbnails/'+ row.thumbnails + '></img>':'<img style="width:100px;height:100px;" src=" thumbnails/no-image.png"/>'+'</td>';
+                    var photo=[];
+                    row.Photo.split(",").forEach((data)=>{
+                        photo.push('<img width="100px" height="100px" src='+ '../P1/photos/'+data+'/> ');
+                    })
+                    console.log(photo)
+                    $('#tbl_assiged').append('<tr><td align="center" >' + row.group + '</td><td>' + row.names + '</td><td>' + row.abstract + '<td style="text-align: center; vertical-align: middle;" >'+ thumbnails +'</td>'+ '<td style="text-align: center; vertical-align: middle;" >' + photo + '</td>' +'</td><td><a href="' + row.github + '" target="_blank">Link</a> </td>' +
                         '<td>' + row.presented_date + '</td>' +
                         '<td><a href="' + row.evaluation_link + '">Evaluate</a> </td> <td><a href="'+row.response+'">Result</a></td></tr>')
                 });
@@ -211,55 +261,6 @@ An example github report can be found <a href="https://github.com/CreativeCoding
         init();
     </script>
    
-
-<div align="left"><font style="font-family: Helvetica,Arial,sans-serif;" color="black" size="5">Data:</font></div>
-      <font style="font-family:Helvetica;" color="black" size="4"> 
-         By <b>11:59pm Friday 3/8</b>, you will need to send the <b>nhat.le@ttu.edu</b> (and cc the instructor) 
-      </font>  
-     <font style="font-family:Helvetica;" color="black" size="4"> 
-       <br/>
-         The dataset must satisfy the requirement:<br/>
-      <li style="margin-left: 30px" >  
-      <font style="font-family:Helvetica;" color="black" size="4"> 
-        Can not be too simple
-       </font>  
-      </li>
-     <li style="margin-left: 30px" >  
-      <font style="font-family:Helvetica;" color="black" size="4"> 
-        Can have more than 1 elements of Text, Network, and Geospatial.
-       </font>  
-      </li>
-
-      <br>
-      </font> 
-      <font style="font-family:Helvetica;" color="black" size="4"> 
-         Example data: 
-      </font> 
- 
-      <li style="margin-left: 30px" >  
-      <font style="font-family:Helvetica;" color="black" size="4"> 
-         UFO reports: http://www.nuforc.org/
-      </font>  
-      </li>
-     
-      <li style="margin-left: 30px" >  
-      <font style="font-family:Helvetica;" color="black" size="4"> 
-         Transcripts of the six seasons of Futurama episodes: <a href="http://theinfosphere.org/Episode_Transcript_Listing">http://theinfosphere.org/Episode_Transcript_Listing</a> 
-      </font>  
-      </li>
-
-      <li style="margin-left: 30px" >  
-      <font style="font-family:Helvetica;" color="black" size="4"> 
-          Air quality around the US <a href="https://aqs.epa.gov/aqsweb/airdata/download_files.html">https://aqs.epa.gov/aqsweb/airdata/download_files.html</a>
-      </font>  
-      </li>
-
-
-      
-
-     
-
-  
 
  <hr style="width: 100%; height: 1px;">
       <div align="right"><font style="font-family:
