@@ -23,69 +23,6 @@ path {
   background-color: none;
 }
 
-/*br { display: block; line-height: 2.2em; }*/
-
-/*article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }*/
-/*ol, ul { list-style: none; }*/
-
-/*input, textarea {*/
- /*-webkit-font-smoothing: antialiased;*/
- /*-webkit-text-size-adjust: 100%;*/
- /*-ms-text-size-adjust: 100%;*/
- /*-webkit-box-sizing: border-box;*/
- /*-moz-box-sizing: border-box;*/
- /*box-sizing: border-box;*/
- /*outline: none;*/
-/*}*/
-
-
-/*p {*/
- /*display: block;*/
- /*font-size: 1.0em;*/
- /*line-height: 1.5em;*/
- /*margin-bottom: 22px;*/
- /*text-align: left;*/
-/*}*/
-
-/*a { color: #5a9352; text-decoration: none; }*/
-/*a:hover { text-decoration: underline; }*/
-
-/*.center { display: block; text-align: center; }*/
-
-
-/*#searchfield { display: block; width: 100%; text-align: center; margin-bottom: 35px; }*/
-
-/*#searchfield form {*/
- /*display: inline-block;*/
- /*background: #eeefed;*/
- /*padding: 0;*/
- /*margin: 0;*/
- /*padding: 5px;*/
- /*border-radius: 3px;*/
- /*margin: 5px 0 0 0;*/
-/*}*/
-/*#searchfield form .biginput {*/
- /*width: 200px;*/
- /*height: 35px;*/
- /*padding: 0 5px 0 5px;*/
- /*background-color: #fff;*/
- /*border: 1px solid #c8c8c8;*/
- /*border-radius: 1px;*/
- /*color: #aeaeae;*/
- /*font-weight:normal;*/
- /*font-size: 1.0em;*/
- /*-webkit-transition: all 0.2s linear;*/
- /*-moz-transition: all 0.2s linear;*/
- /*transition: all 0.2s linear;*/
-/*}*/
-/*#searchfield form .biginput:focus {*/
- /*color: #858585;*/
-/*}*/
-
-/*.autocomplete-suggestions { border: 5px solid #999; background: #fff; cursor: default; overflow: auto; }*/
-/*.autocomplete-suggestion { padding: 5px 5px; font-size: 1.0em; white-space: nowrap; overflow: hidden; }*/
-/*.autocomplete-selected { background: #f0f0f0; }*/
-/*.autocomplete-suggestions strong { font-weight: normal; color: #3399ff; font-size: 20px; }*/
 #searchHolder {
  position:absolute;
  z-index: 0;
@@ -101,13 +38,6 @@ path {
 <div id="controlHolder"  class="controlHolder">
  <input type="checkbox" id="checkboxP1" value="value2" class="check" onclick="showP1()">
 <label for="checkboxP1"> Project results</label>
-
- <!--<div id="searchfield">-->
-  <!--<button type="button" onclick="searchNode()">Search</button>-->
-  <!--<label for="searchfield">Contribution Score: </label>-->
-  <!--<form><input type="text" name="currency" class="biginput" id="autocomplete"></form>-->
-  <!--<div id="outputbox">-->
-   <!--<p id="outputcontent"></p>-->
   </div>
 
   <div id="searchHolder"  class="searchHolder">
@@ -116,16 +46,11 @@ path {
   </div>
 
 
-
-
-
-
-
 <!-- load the d3.js library -->
-<script src="jquery.min.js"></script>
-<script type='text/javascript' src="jquery-ui.min.js"> </script>
+<script src="./js/jquery.min.js"></script>
+<script type='text/javascript' src="./js/jquery-ui.min.js"> </script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
-<link href="jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="./js/jquery-ui.css" rel="stylesheet" type="text/css" />
 
 
 
