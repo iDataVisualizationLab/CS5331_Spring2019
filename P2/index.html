@@ -237,11 +237,14 @@ An example github report can be found <a href="https://github.com/CreativeCoding
                     t.order = +t.order;
                     t.group = +t.group;
                 });
+
                 var localdata = rawdata.sort(function (a, b) {
                     return a.order - b.order;
                 });
                 localdata.forEach(function (row, index) {
-                    $('#tbl_assiged').append('<tr><td align="center" >' + row.group + '</td><td>' + row.names + '</td><td>' + row.abstract + '</td><td><img style="width:150px;height: 100px" src="' + row.thumbnail + '" ></td><td><a href="' + row.github + '" target="_blank">Link</a> </td>' +
+                    var photo = row.Photo != ""
+                        ?'<img alt='+row.Photo+ ' height="100" src=' + 'thumbnails/'+ row.Photo + '></img>':'<img style="width:100px;height:100px;" src=" thumbnails/no-image.png"/>'+'</td>';
+                    $('#tbl_assiged').append('<tr><td align="center" >' + row.group + '</td><td>' + row.names + '</td><td>' + row.abstract + '<td style="text-align: center; vertical-align: middle;" >'+ photo +'</td>'+ '</td><td><a href="' + row.github + '" target="_blank">Link</a> </td>' +
                         '<td>' + row.presented_date + '</td>' +
                         '<td><a href="' + row.evaluation_link + '">Evaluate</a> </td> <td><a href="'+row.response+'">Result</a></td></tr>')
                 });
