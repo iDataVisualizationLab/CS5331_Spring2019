@@ -219,6 +219,7 @@ An example github report can be found <a href="https://github.com/CreativeCoding
                 <td width="15%">Members</td>
                 <td width="50%">Abstract</td>
                 <td>Screenshot</td>
+                <td>Team Photo</td>
                 <td>GitHub</td>
                 <td>Presented Date</td>
                 <td>Evaluation link</td>
@@ -242,9 +243,14 @@ An example github report can be found <a href="https://github.com/CreativeCoding
                     return a.order - b.order;
                 });
                 localdata.forEach(function (row, index) {
-                    var photo = row.Photo != ""
-                        ?'<img alt='+row.Photo+ ' height="100" src=' + 'thumbnails/'+ row.Photo + '></img>':'<img style="width:100px;height:100px;" src=" thumbnails/no-image.png"/>'+'</td>';
-                    $('#tbl_assiged').append('<tr><td align="center" >' + row.group + '</td><td>' + row.names + '</td><td>' + row.abstract + '<td style="text-align: center; vertical-align: middle;" >'+ photo +'</td>'+ '</td><td><a href="' + row.github + '" target="_blank">Link</a> </td>' +
+                    var thumbnails = row.thumbnails != ""
+                        ?'<img alt='+row.thumbnails+ ' height="100" src=' + 'thumbnails/'+ row.thumbnails + '></img>':'<img style="width:100px;height:100px;" src=" thumbnails/no-image.png"/>'+'</td>';
+                    var photo=[];
+                    row.Photo.split(",").forEach((data)=>{
+                        photo.push('<img width="100px" height="100px" src='+ 'photos/'+data+'/> ');
+                    })
+                    console.log(photo)
+                    $('#tbl_assiged').append('<tr><td align="center" >' + row.group + '</td><td>' + row.names + '</td><td>' + row.abstract + '<td style="text-align: center; vertical-align: middle;" >'+ thumbnails +'</td>'+ '<td style="text-align: center; vertical-align: middle;" >' + photo + '</td>' +'</td><td><a href="' + row.github + '" target="_blank">Link</a> </td>' +
                         '<td>' + row.presented_date + '</td>' +
                         '<td><a href="' + row.evaluation_link + '">Evaluate</a> </td> <td><a href="'+row.response+'">Result</a></td></tr>')
                 });
