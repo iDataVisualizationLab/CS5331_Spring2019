@@ -9,7 +9,8 @@ group,names,order,abstract,Dataset,presented_date,evaluation_link,thumbnails,res
 8,"Brandon Stehling, Elizabeth Brooke Doyle,Matthew Hendrick",,"Game of Throne Books Dataset. We will be visualizing the text in the book showing the most frequent words used in the series using a word cloud. We are also considering adding a geospatial element showing some of the locations that are most used in the books. Notes: Since it mainly based on text, It is ok if you take 1 additional requirement: Apply 1 of the NLP package such as Spacy, LDA, sentiment analysis in your text and relationship visualization",,,,,,Brandon.png
 9,"Ghazanfar Ali, Braden Lee,",,HPC monitoring data which includes health and quantitative data of HPC infrastructure,,,,,,Ghazan.png
 10,Josephine Willgrubs,,Notes: Improve P1 as the Professor's requested,,,,,,Josephine.png
-11," Noah Gomez, Hangxi Du",,No project is proposed as of March 10,,,,,,no-image.png
+11," Noah Gomez, Hangxi Du",,"Tweet Data. We plan on using the tweet data from 2018-2019, on both President Trump & Former President Obama.
+We plan on doing a geo map of where each one of them tweeted from & what time of the day, and how that affected interactions (retweets/favorites). Notes: Please make sure to include the relationship network as you describe ""We are interested in the amount of interactions (retweets/favorites) each one of them gets, based on where they sent the tweet and when""",,,,,,no-image.png
 12,"Reid Malone, Todd Robinson, Victoria Huckabee",, Ufo data,http://www.nuforc.org/,,,,,no-image.png
 13,"Jason Vermillion, Mia Lyn Ward, Pavlo Vorontsov",,Notes: No project is proposed as of March 10,,,,,,Jason.png
 14,"Chase Meyer, Arturo Mora,  Fei Zhou",,"Dataset: Video Games Sales. Notes: Good data, I can see texts and time series. You may also want to think in terms of networks (relationships) as well",https://www.kaggle.com/gregorut/videogamesales,,,,,no-image.png
