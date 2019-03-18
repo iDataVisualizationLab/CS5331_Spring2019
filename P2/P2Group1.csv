@@ -12,7 +12,8 @@ group,names,order,abstract,Dataset,presented_date,evaluation_link,thumbnails,res
 11," Noah Gomez, Hangxi Du",,"Tweet Data. We plan on using the tweet data from 2018-2019, on both President Trump & Former President Obama.
 We plan on doing a geo map of where each one of them tweeted from & what time of the day, and how that affected interactions (retweets/favorites). Notes: Please make sure to include the relationship network as you describe ""We are interested in the amount of interactions (retweets/favorites) each one of them gets, based on where they sent the tweet and when""",,,,,,no-image.png
 12,"Reid Malone, Todd Robinson, Victoria Huckabee",, Ufo data,http://www.nuforc.org/,,,,,no-image.png
-13,"Jason Vermillion, Mia Lyn Ward, Pavlo Vorontsov",,Notes: No project is proposed as of March 10,,,,,,Jason.png
+13,"Jason Vermillion, Mia Lyn Ward, Pavlo Vorontsov",,"We have determined that we will be using imsdb website as our source for all the Marvel movie scripts since they have the largest database of movie scripts on the internet. For project 2, we would like to make a Word Cloud of the 50 most popular terms from all current Marvel movie scripts, display the relationships between these terms as they relate to each movie, and possibly construct a map of Earth with points of where scenes from the movies take place
+","https://www.imsdb.com/scripts/Avengers,-The-(2012).html",,,,,Jason.png
 14,"Chase Meyer, Arturo Mora,  Fei Zhou",,"Dataset: Video Games Sales. Notes: Good data, I can see texts and time series. You may also want to think in terms of networks (relationships) as well",https://www.kaggle.com/gregorut/videogamesales,,,,,no-image.png
-15,Jian Guo,,No project is proposed as of March 10,,,,,,no-image.png
+15,Jian Guo,,,,,,,,no-image.png
 16,Nicholas Zulawsk,,No project is proposed as of March 10,,,,,,no-image.png
