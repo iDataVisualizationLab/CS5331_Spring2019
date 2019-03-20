@@ -86,7 +86,7 @@ var yP1= d3.scaleLinear().range([height*1.7, 0]);
 
 // Define the line
 var valueline = d3.line()
-    .curve(d3.curveCardinal)
+    .curve(d3.curveBasis)
     .x(function(d) {
       if (document.getElementById("checkboxP1").checked)
         return xNew(d.date);
