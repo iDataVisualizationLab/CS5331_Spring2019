@@ -81,7 +81,7 @@ var xNew = d3.scaleTime().range([0, width/2-margin.left]);
 
 var y = d3.scaleLinear().range([height, 0]);
 var yAxis= d3.scaleLinear().range([height, 0]);
-var yP1= d3.scaleLinear().range([height*1.7, 0]);
+var yP1= d3.scaleLinear().range([height*1.5, 0]);
 
 
 // Define the line
@@ -450,13 +450,13 @@ function main(){
     }
     // Draw title *******************************
      svg.append("text")
-      .attr("class", "title")
+      .attr("class", "title1")
       .style("font-size", "22px")
       .attr("text-anchor", "left")
       .attr("fill", "#000")
       .attr("x", margin.left-30)
-      .attr("y", 0);
-      // .text("Class participation graph");
+      .attr("y", 0)
+      .text("Class scores");
 
     // Draw Label for yAxis *******************************
      svg.append("text")
@@ -1337,7 +1337,7 @@ function tickedP2() {
         nodesP2[i].x = width*0.8;
         var yy = nodesP2[i].P2_code+nodesP2[i].P2_talk+nodesP2[i].P2_report
                 +nodesP2[i].P2_review;
-        nodesP2[i].y = yP1(yy*20/35);  // 35% compared to 20%
+        nodesP2[i].y = yP1(yy*26/35);  // 35% compared to 20%
      //   nodesP2[i].y = (nodesP2[i].y)/3;
       }
       else{
@@ -1462,7 +1462,7 @@ function showP1(){
 
 
     // Draw grade axis ***********
-    var aGrades = [20, 16, 12, 8];
+    var aGrades = [22, 17, 12, 7];
     var aText = ["A", "B", "C", "D", "F"];
     for (var i=0; i<aGrades.length-1;i++){
         svg.append("line")
