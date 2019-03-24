@@ -1300,7 +1300,12 @@ function tickedP1() {
     for (var i=0;i<nodesP1.length;i=i+2){
         if (document.getElementById("checkboxP1").checked){
             nodesP1[i].x = width*0.63;
-            nodesP1[i].y = yP1(nodesP1[i].P1_code+nodesP1[i].P1_talk+nodesP1[i].P1_report);
+            if ((nodesP1[i].P1_code+nodesP1[i].P1_talk+nodesP1[i].P1_report)<12){
+                nodesP1[i].y = yP1((nodesP1[i].P1_code+nodesP1[i].P1_talk+nodesP1[i].P1_report)+7)
+            }
+            else {
+                nodesP1[i].y = yP1(nodesP1[i].P1_code + nodesP1[i].P1_talk + nodesP1[i].P1_report);
+            }
         }
         else{
             nodesP1[i].x = x(nodesP1[i].date);
