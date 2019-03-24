@@ -2,276 +2,306 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
+<head>
     <title>CS CS5331-004 Project 2</title>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <script src="https://d3js.org/d3.v4.min.js"></script>
-      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-      <script>
-          $(function () {
-              $(document).tooltip();
-          });
-      </script>
-      <style type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $(document).tooltip();
+        });
+    </script>
+    <style type="text/css">
 
-      </style>
-  </head>
-  <body bgcolor="white" text="black">
-   
-    
+    </style>
+</head>
+<body bgcolor="white" text="black">
 
-    <div align="left"><font style="font-family:
-        Helvetica,Arial,sans-serif;" color="black" size="5">Project 2: Text, Network, and Geospatial visualization</font></div>
 
-    <div align="left"><font style="font-family:
+<div align="left"><font style="font-family:
+        Helvetica,Arial,sans-serif;" color="black" size="5">Project 2: Text, Network, and Geospatial
+    visualization</font></div>
+
+<div align="left"><font style="font-family:
         Helvetica,Arial,sans-serif;" color="black" size="4">
-        <ul>
-        <li style="margin-left: 30px">  Project screenshot (a 1200 x 600 <b>gif</b> image of your visualization which should be named p1.&lt;your_last_name1&gt;&lt;your_last_name2&gt;&lt;your_last_name3&gt;.gif), demo link, and github link are due at <font color="#e00">11:59pm Monday, April 8th</font> to the <b>nhat.le@ttu.edu</b> . Nhat will make an html table with your group projects.
-        <li style="margin-left: 30px"> You can update your source code and project report uptill <font color="#e00">11:59pm Sunday, April 7th</font>.<br>
-        <li style="margin-left: 30px">  This project is <b>30%</b> of your final grade:<br>
-        <li style="margin-left: 60px"> <b>20%</b> for design and implementation.</li>
-        <li style="margin-left: 60px">  <b>5%</b> for in-class presentation.</li>
-        <li style="margin-left: 60px">  <b>5%</b> for project report on Github.</li>
+    <ul>
+        <li style="margin-left: 30px"> Project screenshot (a 1200 x 600 <b>gif</b> image of your visualization which
+            should be named p1.&lt;your_last_name1&gt;&lt;your_last_name2&gt;&lt;your_last_name3&gt;.gif), demo link,
+            and github link are due at <font color="#e00">11:59pm Monday, April 8th</font> to the <b>nhat.le@ttu.edu</b>
+            . Nhat will make an html table with your group projects.
+        <li style="margin-left: 30px"> You can update your source code and project report uptill <font color="#e00">11:59pm
+            Sunday, April 7th</font>.<br>
+        <li style="margin-left: 30px"> This project is <b>30%</b> of your final grade:<br>
+        <li style="margin-left: 60px"><b>20%</b> for design and implementation.</li>
+        <li style="margin-left: 60px"><b>5%</b> for in-class presentation.</li>
+        <li style="margin-left: 60px"><b>5%</b> for project report on Github.</li>
         </li>
-        <li style="margin-left: 30px"> Each student needs to send a peer evaluation for other teammates by <font color="#e00">11:59pm Tuesday, April 9th</font> to the <b>nhat.le@ttu.edu</b> . This peer evaluation is significant to your individual project grade. One team member can get A but another can get D or Fail. The peer evaluation contains:</li>
-          <li style="margin-left: 60px"> Teammate name.</li>
-          <li style="margin-left: 60px"> Rating from 0 to 5 (5 is best).</li>
-          <li style="margin-left: 60px"> Less than 3-sentence review.</li>
-        <ul>  
-        </font></div>
+        <li style="margin-left: 30px"> Each student needs to send a peer evaluation for other teammates by <font
+                color="#e00">11:59pm Tuesday, April 9th</font> to the <b>nhat.le@ttu.edu</b> . This peer evaluation is
+            significant to your individual project grade. One team member can get A but another can get D or Fail. The
+            peer evaluation contains:
+        </li>
+        <li style="margin-left: 60px"> Teammate name.</li>
+        <li style="margin-left: 60px"> Rating from 0 to 5 (5 is best).</li>
+        <li style="margin-left: 60px"> Less than 3-sentence review.</li>
+        <ul>
+</font></div>
 
- <center><img style="width: 100%;" src="figures/map1.png" alt=""></center>
-     
+<center><img style="width: 100%;" src="figures/map1.png" alt=""></center>
 
-    <hr style="width: 100%; height: 1px;">
-    <div align="left"><font style="font-family:
+
+<hr style="width: 100%; height: 1px;">
+<div align="left"><font style="font-family:
         Helvetica,Arial,sans-serif;" color="black" size="5">Project Description:</font></div>
 
-    <font style="font-family:Helvetica;" color="black" size="4">
+<font style="font-family:Helvetica;" color="black" size="4">
     <ul>
-      <li style="margin-left: 30px"> Project 2 is a group (2 or 3 students) project. A leader is also selected by the instructor.</li>
+        <li style="margin-left: 30px"> Project 2 is a group (2 or 3 students) project. A leader is also selected by the
+            instructor.
+        </li>
 
-      <b>Example Project:</b>
-      <li style="margin-left: 30px"> In this project, students will work on the texts extracted from news/blogs and classified into 4 categories: people names, locations, organizations, and miscellaneous. Each entry also contains the published time/date of the article/blog.
-      </li>
-      <li style="margin-left: 30px"> Students are provided 2 datasets: The <a href="http://en.wikinews.org/wiki/Main_Page">Wikinews</a> data (roughly <a href="data/wikinews.tsv">3.3M</a>) contains 11,267 articles and the <a href="http://www.huffingtonpost.com/">Huffington Post</a> data (roughly <a href="data/huffington.tsv">29.4M</a>) contains 75,293 political blogs. Students are required to demonstrate their web applications on both datasets.</li>
+        <b>Example Project:</b>
+        <li style="margin-left: 30px"> In this project, students will work on the texts extracted from news/blogs and
+            classified into 4 categories: people names, locations, organizations, and miscellaneous. Each entry also
+            contains the published time/date of the article/blog.
+        </li>
+        <li style="margin-left: 30px"> Students are provided 2 datasets: The <a
+                href="http://en.wikinews.org/wiki/Main_Page">Wikinews</a> data (roughly <a
+                href="data/wikinews.tsv">3.3M</a>) contains 11,267 articles and the <a
+                href="http://www.huffingtonpost.com/">Huffington Post</a> data (roughly <a href="data/huffington.tsv">29.4M</a>)
+            contains 75,293 political blogs. Students are required to demonstrate their web applications on both
+            datasets.
+        </li>
     </ul>
-    </font>   
-        
+</font>
 
-    <hr style="width: 100%; height: 1px;"> 
-    <font style="font-family:Helvetica;" color="black" size="4">
+
+<hr style="width: 100%; height: 1px;">
+<font style="font-family:Helvetica;" color="black" size="4">
     For a <b>C</b>, you need to visualize <b>terms</b>:
     <ul>
-      <li> Show the top 50 popular terms (all categories) in Worldle/Tag Cloud</li>
-      <li> Show the monthly frequency of the 50 popular terms over time</li>
-      <li> Select a term and highlight its monthly frequency</li>
-      <li> Allow users to quickly zoom into a time interval for more details (daily frequencies)</li>
-    </ul>  
+        <li> Show the top 50 popular terms (all categories) in Worldle/Tag Cloud</li>
+        <li> Show the monthly frequency of the 50 popular terms over time</li>
+        <li> Select a term and highlight its monthly frequency</li>
+        <li> Allow users to quickly zoom into a time interval for more details (daily frequencies)</li>
+    </ul>
     For a <b>B</b>, you need to visualize <b>relationships</b>:
     <ul>
-      <li> Input a term and display the top 50 related terms (terms appear in the same blog)</li>
-      <li> Show relationships between terms</li>
-      <li> Mousing over a term highlight related terms (within the 50 terms)</li>
-    </ul> 
+        <li> Input a term and display the top 50 related terms (terms appear in the same blog)</li>
+        <li> Show relationships between terms</li>
+        <li> Mousing over a term highlight related terms (within the 50 terms)</li>
+    </ul>
     For a <b>A</b>, you need to make <b>discoveries</b>:
     <ul>
-      <li> Plot locations mentioned in news/blogs on a map.</li>
-      <li> Your ideas on making visualizations for highlighting patterns within the data</li>
-      <li> Automatically highlight importants events.</li>
-      <li> Compare topics from 2 sources?</li>
-      <li> Tell your stories.</li>
-    </ul>   
-    </font>
+        <li> Plot locations mentioned in news/blogs on a map.</li>
+        <li> Your ideas on making visualizations for highlighting patterns within the data</li>
+        <li> Automatically highlight importants events.</li>
+        <li> Compare topics from 2 sources?</li>
+        <li> Tell your stories.</li>
+    </ul>
+</font>
 
-    <hr style="width: 100%; height: 1px;">
-    <div align="left"><font style="font-family: Helvetica,Arial,sans-serif;" color="black" size="5">Data:</font></div>
-    <font style="font-family:Helvetica;" color="black" size="4">
-        By <b>11:59pm Friday 3/8</b>, you will need to send the <b>nhat.le@ttu.edu</b> (and cc the instructor)
-    </font>
-    <font style="font-family:Helvetica;" color="black" size="4">
-        <br/>
-        The dataset must satisfy the requirement:<br/>
-        <li style="margin-left: 30px" >
-            <font style="font-family:Helvetica;" color="black" size="4">
-                Can not be too simple
-            </font>
-        </li>
-        <li style="margin-left: 30px" >
-            <font style="font-family:Helvetica;" color="black" size="4">
-                Can have more than 1 elements of Text, Network, and Geospatial.
-            </font>
-        </li>
-
-        <br>
-    </font>
-    <font style="font-family:Helvetica;" color="black" size="4">
-        Example data:
-    </font>
-
-    <li style="margin-left: 30px" >
+<hr style="width: 100%; height: 1px;">
+<div align="left"><font style="font-family: Helvetica,Arial,sans-serif;" color="black" size="5">Data:</font></div>
+<font style="font-family:Helvetica;" color="black" size="4">
+    By <b>11:59pm Friday 3/8</b>, you will need to send the <b>nhat.le@ttu.edu</b> (and cc the instructor)
+</font>
+<font style="font-family:Helvetica;" color="black" size="4">
+    <br/>
+    The dataset must satisfy the requirement:<br/>
+    <li style="margin-left: 30px">
         <font style="font-family:Helvetica;" color="black" size="4">
-            UFO reports: http://www.nuforc.org/
+            Can not be too simple
+        </font>
+    </li>
+    <li style="margin-left: 30px">
+        <font style="font-family:Helvetica;" color="black" size="4">
+            Can have more than 1 elements of Text, Network, and Geospatial.
         </font>
     </li>
 
-    <li style="margin-left: 30px" >
-        <font style="font-family:Helvetica;" color="black" size="4">
-            Transcripts of the six seasons of Futurama episodes: <a href="http://theinfosphere.org/Episode_Transcript_Listing">http://theinfosphere.org/Episode_Transcript_Listing</a>
-        </font>
-    </li>
+    <br>
+</font>
+<font style="font-family:Helvetica;" color="black" size="4">
+    Example data:
+</font>
 
-    <li style="margin-left: 30px" >
-        <font style="font-family:Helvetica;" color="black" size="4">
-            Air quality around the US <a href="https://aqs.epa.gov/aqsweb/airdata/download_files.html">https://aqs.epa.gov/aqsweb/airdata/download_files.html</a>
-        </font>
-    </li>
+<li style="margin-left: 30px">
+    <font style="font-family:Helvetica;" color="black" size="4">
+        UFO reports: http://www.nuforc.org/
+    </font>
+</li>
 
-    <hr style="width: 100%; height: 1px;">
-     <div align="left"><font style="font-family:
+<li style="margin-left: 30px">
+    <font style="font-family:Helvetica;" color="black" size="4">
+        Transcripts of the six seasons of Futurama episodes: <a
+            href="http://theinfosphere.org/Episode_Transcript_Listing">http://theinfosphere.org/Episode_Transcript_Listing</a>
+    </font>
+</li>
+
+<li style="margin-left: 30px">
+    <font style="font-family:Helvetica;" color="black" size="4">
+        Air quality around the US <a href="https://aqs.epa.gov/aqsweb/airdata/download_files.html">https://aqs.epa.gov/aqsweb/airdata/download_files.html</a>
+    </font>
+</li>
+
+<hr style="width: 100%; height: 1px;">
+<div align="left"><font style="font-family:
         Helvetica,Arial,sans-serif;" color="black" size="5">Notes:</font></div>
 
-      <li style="margin-left: 30px" >  
-      <font style="font-family:Helvetica;" color="black" size="4">
+<li style="margin-left: 30px">
+    <font style="font-family:Helvetica;" color="black" size="4">
         This project is a web-based application in javascript, html, and D3 (you can use other javascript libraries).
-      </font>  
-      </li> 
-      <li style="margin-left: 30px" >  
-      <font style="font-family:Helvetica;" color="black" size="4">
-        Your code should run on all browsers (Chrome, Safari, Firefox, Explorer,...). <b> No refreshing</b>: Every refresh costs you <b>1%</b>.
-      </font>  
-      </li>      
-      <li style="margin-left: 30px" >  
-      <font style="font-family:Helvetica;" color="black" size="4">
-        Your application should start out showing some data or an overview and then allow users to add more or request details on demand. Do not start with an empty screen and do not overwhelm viewers by showing a lot of the data right away.
-       </font>  
-      </li>
+    </font>
+</li>
+<li style="margin-left: 30px">
+    <font style="font-family:Helvetica;" color="black" size="4">
+        Your code should run on all browsers (Chrome, Safari, Firefox, Explorer,...). <b> No refreshing</b>: Every
+        refresh costs you <b>1%</b>.
+    </font>
+</li>
+<li style="margin-left: 30px">
+    <font style="font-family:Helvetica;" color="black" size="4">
+        Your application should start out showing some data or an overview and then allow users to add more or request
+        details on demand. Do not start with an empty screen and do not overwhelm viewers by showing a lot of the data
+        right away.
+    </font>
+</li>
 
-      <li style="margin-left: 30px" >  
-      <font style="font-family:Helvetica;" color="black" size="4">
-        Do not write the application at the last minute to avoid mistakes. Make sure that your code runs and that you have enough time to design intuitive interfaces.
-       </font>  
-      </li>
+<li style="margin-left: 30px">
+    <font style="font-family:Helvetica;" color="black" size="4">
+        Do not write the application at the last minute to avoid mistakes. Make sure that your code runs and that you
+        have enough time to design intuitive interfaces.
+    </font>
+</li>
 
-      <li style="margin-left: 30px" >  
-      <font style="font-family:Helvetica;" color="black" size="4">
-        Make sure your code is well commented (this is a good practice since you will work in a team). Instructor may inspect your source code.
-       </font>  
-      </li>
+<li style="margin-left: 30px">
+    <font style="font-family:Helvetica;" color="black" size="4">
+        Make sure your code is well commented (this is a good practice since you will work in a team). Instructor may
+        inspect your source code.
+    </font>
+</li>
 
-<hr style="width: 100%; height: 1px;">    
-     <div align="left"><font style="font-family:
+<hr style="width: 100%; height: 1px;">
+<div align="left"><font style="font-family:
         Helvetica,Arial,sans-serif;" color="black" size="5">Project report on Github (readme file):</font></div>
 
-      <li style="margin-left: 30px" >  
-      <font style="font-family:Helvetica;" color="black" size="4"> 
-         Create a 3-minute video showing the use of your application with your voice over. That video should appear on the top of your github readme file.
-         The video is a good way to show your interactive application in a short amount of time. If you submit a paper to a visualization conference, a video is very useful. It can be also a backup during your presentation just in case of something go wrong.      
-      </font>  
-      </li>
+<li style="margin-left: 30px">
+    <font style="font-family:Helvetica;" color="black" size="4">
+        Create a 3-minute video showing the use of your application with your voice over. That video should appear on
+        the top of your github readme file.
+        The video is a good way to show your interactive application in a short amount of time. If you submit a paper to
+        a visualization conference, a video is very useful. It can be also a backup during your presentation just in
+        case of something go wrong.
+    </font>
+</li>
 
-      <li style="margin-left: 30px" >  
-      <font style="font-family:Helvetica;" color="black" size="4"> 
-         Add a link to your web-based application (right after the video). You can host it <a href="https://pages.github.com/">on your github</a> or your ttu personal page.            
-      </font>  
-      </li>
+<li style="margin-left: 30px">
+    <font style="font-family:Helvetica;" color="black" size="4">
+        Add a link to your web-based application (right after the video). You can host it <a
+            href="https://pages.github.com/">on your github</a> or your ttu personal page.
+    </font>
+</li>
 
-      <li style="margin-left: 30px" >  
-      <font style="font-family:Helvetica;" color="black" size="4"> 
-         <b>Clearly explain the duties of each student in your group. </b>         
-      </font>  
-      </li>
+<li style="margin-left: 30px">
+    <font style="font-family:Helvetica;" color="black" size="4">
+        <b>Clearly explain the duties of each student in your group. </b>
+    </font>
+</li>
 
-       <li style="margin-left: 30px" >  
-      <font style="font-family:Helvetica;" color="black" size="4"> 
-         Discrible your application and highlight your findings by screenshots.         
-      </font>  
-      </li>
+<li style="margin-left: 30px">
+    <font style="font-family:Helvetica;" color="black" size="4">
+        Discrible your application and highlight your findings by screenshots.
+    </font>
+</li>
 <!--<font style="font-family:Helvetica;" color="black" size="4"> 
 An example github report can be found <a href="https://github.com/CreativeCodingLab/TimeArcs">here<a>.            
 </font> -->
 
-<hr style="width: 100%; height: 1px;">    
-     <div align="left"><font style="font-family:
+<hr style="width: 100%; height: 1px;">
+<div align="left"><font style="font-family:
         Helvetica,Arial,sans-serif;" color="black" size="5">In-class presentation:</font></div>
-      
 
-      <li style="margin-left: 30px" >  
-      <font style="font-family:Helvetica;" color="black" size="4"> 
-         The presentation is 10 minutes per group (everyone needs to present). It is 8 minute talk and 2 minute for questions. Make sure that you are ready to talk right after the group in front of you is done.            
-      </font>  
-      </li>
-       
-       <li style="margin-left: 30px" >  
-      <font style="font-family:Helvetica;" color="black" size="4"> 
-         Please practice your talk. Show the basic functionality and emphasize on why your visualization is different.          
-      </font>  
-      </li>
 
+<li style="margin-left: 30px">
+    <font style="font-family:Helvetica;" color="black" size="4">
+        The presentation is 10 minutes per group (everyone needs to present). It is 8 minute talk and 2 minute for
+        questions. Make sure that you are ready to talk right after the group in front of you is done.
+    </font>
+</li>
+
+<li style="margin-left: 30px">
+    <font style="font-family:Helvetica;" color="black" size="4">
+        Please practice your talk. Show the basic functionality and emphasize on why your visualization is different.
+    </font>
+</li>
+
+<hr style="width: 100%; height: 1px;">
+<div id="students">
+    <div style="font-size:20px">Group Assigned</div>
+
+    <table style="width:98%;" border="1" cellpadding="3" cellspacing="0" id="tbl_assiged">
+        <tr bgcolor="#aaa">
+            <td>Team</td>
+            <td width="15%">Members</td>
+            <td width="50%">Abstract</td>
+            <td>Screenshot</td>
+            <td>Team Photo</td>
+            <td>Dataset</td>
+            <td>Presented Date</td>
+            <td>Evaluation link</td>
+            <td>Result</td>
+        </tr>
+    </table>
     <hr style="width: 100%; height: 1px;">
-    <div id="students">
-        <div style= "font-size:20px">Group Assigned</div>
 
-        <table style="width:98%;" border="1" cellpadding="3" cellspacing="0" id="tbl_assiged">
-            <tr bgcolor="#aaa">
-                <td>Team</td>
-                <td width="15%">Members</td>
-                <td width="50%">Abstract</td>
-                <td>Screenshot</td>
-                <td>Team Photo</td>
-                <td>Dataset</td>
-                <td>Presented Date</td>
-                <td>Evaluation link</td>
-                <td>Result</td>
-            </tr>
-        </table>
-        <hr style="width: 100%; height: 1px;">
-
-    </div>
-   
-
-    <script>
-        function init() {
-            d3.csv('P2Group1.csv', function (rawdata) {
-                rawdata.forEach(function (t) {
-                    t.order = +t.order;
-                    t.group = +t.group;
-                });
-
-                var localdata = rawdata.sort(function (a, b) {
-                    return a.order - b.order;
-                });
-                localdata.forEach(function (row, index) {
-                    var thumbnails = row.thumbnails != ""
-                        ?'<img alt='+row.thumbnails+ ' height="100" src=' + 'thumbnails/'+ row.thumbnails + '></img>':'<img style="width:100px;height:100px;" src=" thumbnails/no-image.png"/>'+'</td>';
-                    var photo=[];
-                    row.Photo.split(",").forEach((data)=>{
-                        photo.push('<img width="100px" height="100px" src='+ '../P1/photos/'+data+'> ');
-                    })
-                    var abstract=[];
-                    row.abstract.split(".").forEach((data)=>{
-                        abstract.push(data+'<br>')
+</div>
 
 
-                    })
+<script>
+    function init() {
+        d3.csv('P2Group1.csv', function (rawdata) {
+            rawdata.forEach(function (t) {
+                t.order = +t.order;
+                t.group = +t.group;
+            });
 
-                    abstract=abstract.join("-");
+            var localdata = rawdata.sort(function (a, b) {
+                return a.order - b.order;
+            });
+            localdata.forEach(function (row, index) {
+                var thumbnails = row.thumbnails != ""
+                    ? '<img alt=' + row.thumbnails + ' height="100" src=' + 'thumbnails/' + row.thumbnails + '></img>' : '<img style="width:100px;height:100px;" src=" thumbnails/no-image.png"/>' + '</td>';
+                var photo = [];
+                row.Photo.split(",").forEach((data) => {
+                    photo.push('<img width="100px" height="100px" src=' + '../P1/photos/' + data + '> ');
+                })
+                var abstract = [];
+                row.abstract.split(".").forEach((data) => {
+                    abstract.push(data + '<br>')
 
-                    $('#tbl_assiged').append('<tr><td align="center" >' + row.group + '</td><td>' + row.names + '<td style="text-align: left; width: 1000; vertical-align: middle;" >' + abstract + '</td>' + '<td style="text-align: center; vertical-align: middle;" >'+ thumbnails +'</td>'+ '<td style="text-align: center; vertical-align: middle; width:100" >' + photo + '</td>' +'</td><td><a href="' + row.Dataset + '" target="_blank">Link</a> </td>' +
-                        '<td>' + row.presented_date + '</td>' +
-                        '<td><a href="' + row.evaluation_link + '">Evaluate</a> </td> <td><a href="'+row.response+'">Result</a></td></tr>')
-                });
 
-            })
-        }
+                })
 
-        init();
-    </script>
-   
+                abstract = abstract.join("-");
 
- <hr style="width: 100%; height: 1px;">
-      <div align="right"><font style="font-family:
-        Helvetica,Arial,sans-serif;" color="black" size="2">&copy; Last revised: March 5, 2019  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</font></div>
-  </body>
+                $('#tbl_assiged').append('<tr><td align="center" >' + row.group + '</td><td>' + row.names + '<td style="text-align: left; width: 1000; vertical-align: middle;" >' + abstract + '</td>' + '<td style="text-align: center; vertical-align: middle;" >' + thumbnails + '</td>' + '<td style="text-align: center; vertical-align: middle; width:100" >' + photo.join('') + '</td>' + '</td><td><a href="' + row.Dataset + '" target="_blank">Link</a> </td>' +
+                    '<td>' + row.presented_date + '</td>' +
+                    '<td><a href="' + row.evaluation_link + '">Evaluate</a> </td> <td><a href="' + row.response + '">Result</a></td></tr>')
+            });
+
+        })
+    }
+
+    init();
+</script>
+
+
+<hr style="width: 100%; height: 1px;">
+<div align="right"><font style="font-family:
+        Helvetica,Arial,sans-serif;" color="black" size="2">&copy; Last revised: March 5, 2019 &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp;</font></div>
+</body>
 </html>
