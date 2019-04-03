@@ -34,7 +34,7 @@ path {
 </style>
 
 <body bgcolor="white" text="black" id="mainBody">
-<svg width="2000" height="650"></svg>
+<svg width="2500" height="700"></svg>
 <div id="controlHolder"  class="controlHolder">
  <input type="checkbox" id="checkboxP1" value="value2" class="check" onclick="showP1()">
 <label for="checkboxP1"> Project results</label>
@@ -472,7 +472,7 @@ function main(){
         .data(aData).enter()
        .append("path")
        .attr("class", "lineGraph")
-       .attr("stroke-width", 1.25)
+       .attr("stroke-width", 1)
        .attr("stroke", function(d) {
           return color(d.group);
         })
@@ -667,7 +667,7 @@ function main(){
         .attr("stroke", function(d){
           return color(d.group);
         })
-        .attr("stroke-width",0.5);
+        .attr("stroke-width",1.5);
     linkP1 = svg.selectAll(".linksP1")
       .data(linksP1)
       .enter().append("line")
@@ -675,7 +675,7 @@ function main(){
         .attr("stroke", function(d){
           return color(d.group);
         })
-        .attr("stroke-width",0.5);
+        .attr("stroke-width",1.5);
 
     linkP2 = svg.selectAll(".linksP2")
       .data(linksP2)
@@ -684,7 +684,7 @@ function main(){
         .attr("stroke", function(d){
           return color(d.group);
         })
-        .attr("stroke-width",0.5);
+        .attr("stroke-width",1.5);
 
     linkP3 = svg.selectAll(".linksP3")
       .data(linksP2)
@@ -693,14 +693,14 @@ function main(){
         .attr("stroke", function(d){
           return color(d.group);
         })
-        .attr("stroke-width",0.5);
+        .attr("stroke-width",1);
 
     link01 = svg.selectAll(".links01")
       .data(links)
       .enter().append("line")
         .attr("class", "links01")
         .attr("stroke", function(d){ return color(d.group);})
-        .attr("stroke-width",0.5);
+        .attr("stroke-width",1);
 
     link02 = svg.selectAll(".links02")
       .data(links)
@@ -709,7 +709,7 @@ function main(){
         .attr("stroke", function(d){ return color(d.group);})
         .attr("stroke-width", function(d){
          // console.log(d.source.name);
-          return d.source.name=="Sara Sartoli" ? 0 : 0.5;
+          return d.source.name=="Sara Sartoli" ? 0 : 1;
         });
 
     link03 = svg.selectAll(".links03")
@@ -719,7 +719,7 @@ function main(){
         .attr("stroke", function(d){ return color(d.group);})
         .attr("stroke-width", function(d){
          // console.log(d.source.name);
-          return d.source.name=="Sara Sartoli" ? 0 : 0.5;
+          return d.source.name=="Sara Sartoli" ? 0 : 1;
         });
 
     node = svg.selectAll(".nodeCircle")
