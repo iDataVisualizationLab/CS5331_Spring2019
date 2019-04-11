@@ -251,8 +251,8 @@ An example github report can be found <a href="https://github.com/CreativeCoding
             <td>Team Photo</td>
             <td>Dataset</td>
             <td>Presented Date</td>
-            <td>Evaluation link</td>
-            <td>Result</td>
+            <td>Demo Link</td>
+            <td>Github</td>
         </tr>
     </table>
     <hr style="width: 100%; height: 1px;">
@@ -289,8 +289,9 @@ An example github report can be found <a href="https://github.com/CreativeCoding
 
                 $('#tbl_assiged').append('<tr><td align="center" >' + row.group + '</td><td>' + row.names + '<td style="text-align: left; width: 1000; vertical-align: middle;" >' + abstract + '</td>' + '<td style="text-align: center; vertical-align: middle;" >' + thumbnails + '</td>' + '<td style="text-align: center; vertical-align: middle; width:100" >' + photo.join('') + '</td>' + '</td><td><a href="' + row.Dataset + '" target="_blank">Link</a> </td>' +
                     '<td>' + row.presented_date + '</td>' +
-                    '<td><a href="' + row.evaluation_link + '">Evaluate</a> </td> <td><a href="' + row.response + '">Result</a></td></tr>')
+                    '<td><a href="' + row.demo_link + '">Demo</a> </td> <td><a href="' + row.github_link + '">Github</a></td></tr>')
             });
+            
 
         })
     }
