@@ -1,0 +1,3 @@
+MC2 will contain two data files spanning the entire length of the simulation, containing radiation measurements from mobile and static radiation sensors. A third file will show the locations of the static sensors. The sample data file MC2_mobile_sensor_data.csv contains a stream of about 7.5 hours of measurements from a single mobile sensor. The sample data file MC2_static_sensor_data.csv contains a stream of measurements from a single static sensor over the same time period. Each measurement includes a timestamp, a Sensor-ID, Longitude, Latitude, the radiation measurement value, the radiation measurement units, and a user-ID.
+
+Be prepared for missing and corrupted data, skipped timesteps, and other issues.
