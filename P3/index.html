@@ -171,11 +171,11 @@ An example github report can be found <a href="https://github.com/CreativeCoding
         <tr bgcolor="#aaa">
             <td>Team</td>
             <td width="15%">Members</td>
-            <td width="50%">Abstract</td>
+            <td width="50%">Topic Selection</td>
             <td>Screenshot</td>
             <td>Team Photo</td>
             <td>Dataset</td>
-            <td>Presented Date</td>
+            <!--<td>Presented Date</td>-->
             <td>Demo Link</td>
             <td>Github</td>
         </tr>
@@ -187,7 +187,7 @@ An example github report can be found <a href="https://github.com/CreativeCoding
 
 <script>
     function init() {
-        d3.csv('P2Group1.csv', function (rawdata) {
+        d3.csv('P3Group.csv', function (rawdata) {
             rawdata.forEach(function (t) {
                 t.order = +t.order;
                 t.group = +t.group;
@@ -198,7 +198,7 @@ An example github report can be found <a href="https://github.com/CreativeCoding
             });
             localdata.forEach(function (row, index) {
                 var thumbnails = row.thumbnails != ""
-                    ? '<img alt=' + row.thumbnails + ' height="100" src=' + 'thumbnails/' + row.thumbnails + '></img>' : '<img style="width:100px;height:100px;" src=" thumbnails/no-image.png"/>' + '</td>';
+                    ? '<img alt=' + row.thumbnails + ' height="100" src=' + '../P1/photos/' + row.thumbnails + '></img>' : '<img style="width:100px;height:100px;" src=" thumbnails/no-image.png"/>' + '</td>';
                 var photo = [];
                 row.Photo.split(",").forEach((data) => {
                     photo.push('<img width="100px" height="100px" src=' + '../P1/photos/' + data + '> ');
@@ -213,7 +213,7 @@ An example github report can be found <a href="https://github.com/CreativeCoding
                 abstract = abstract.join("-");
 
                 $('#tbl_assiged').append('<tr><td align="center" >' + row.group + '</td><td>' + row.names + '<td style="text-align: left; width: 1000; vertical-align: middle;" >' + abstract + '</td>' + '<td style="text-align: center; vertical-align: middle;" >' + thumbnails + '</td>' + '<td style="text-align: center; vertical-align: middle; width:100" >' + photo.join('') + '</td>' + '</td><td><a href="' + row.Dataset + '" target="_blank">Link</a> </td>' +
-                    '<td>' + row.presented_date + '</td>' +
+                    // '<td>' + row.presented_date + '</td>' +
                     '<td><a href="' + row.demo_link + '">Demo</a> </td> <td><a href="' + row.github_link + '">Github</a></td></tr>')
             });
 
