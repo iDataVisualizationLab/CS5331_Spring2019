@@ -275,12 +275,12 @@ An example github report can be found <a href="https://github.com/CreativeCoding
                 var thumbnails = row.thumbnails != ""
                     ? '<img alt=' + row.thumbnails + ' height="100" src=' + 'thumbnails/' + row.thumbnails + '></img>' : '<img style="width:100px;height:100px;" src=" thumbnails/no-image.png"/>' + '</td>';
                 var photo = [];
-                row.Photo.split(",").forEach((data) => {
-                    photo.push('<img width="100px" height="100px" src=' + '../P1/photos/' + data + '> ');
+                row.Photo.split(",").forEach(function (data)  {
+                    return photo.push('<img width="100px" height="100px" src=' + '../P1/photos/' + data + '> ');
                 })
                 var abstract = [];
-                row.abstract.split(".").forEach((data) => {
-                    abstract.push(data + '<br>')
+                row.abstract.split(".").forEach(function (data)  {
+                    return abstract.push(data + '<br>')
 
 
                 })
