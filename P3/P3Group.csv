@@ -1,20 +1,31 @@
 group,names,order,abstract,Dataset,presented_date,evaluation_link,thumbnails,demo_link,github_link,Photo
 1,"Nhat Le, Darien Sokolov, Hao Nguyen",,Mini Challenge 1,,,,no-image.png,,,nhat.hao.darien.jpg
 2,"Justin Rodriguez, Adriana Holley, Joshua Johnson",,Mini Challenge 1,,,,no-image.png,,,jaj.JPG
-3,"Kien Phan, Miranda Carrilo",,Mini Challenge 1,,,,no-image.png,,,no-image.png
+3,"Kien Phan, Miranda Carrilo",,Mini Challenge 1,,,,no-image.png,,,miranda.kien.png
 4,"David Cooper, Indiana Cooper",,Mini Challenge 1,,,,no-image.png,,,indianna.david.png
 5,"Reid Malone, Todd Robinson, Victoria Huckabee",,Mini Challenge 2,,,,no-image.png,,,reid.todd.victoria.jpg
 6,"Arturo Mora,Roberto Gomez Pomares, Mia Lyn Ward, Braden Lee",,Mini Challenge 2,,,,no-image.png,,,Mia.png
 7,"Brandon Stehling, Elizabeth Brooke Doyle,Matthew Hendrick",,Mini Challenge 2,,,,no-image.png,,,Brandon.png
-8,"Siyuang Jiang, Jie Li, Jian Guo",,Mini Challenge 2,,,,no-image.png,,,siyuan.jie.jian.jpg
+8,"Siyuang Jiang, Jie Li, Jian Guo",,Mini Challenge 2,,,,no-image.png,https://jsytim.github.io/VAST_Mini_Challenge_Two/,https://github.com/JsyTim/VAST_Mini_Challenge_Two,siyuan.jie.jian.jpg
 9,"Lino Virgen, Alexander Tesfazgi, Andrew Kennedy",,Mini Challenge 3,,,,no-image.png,,,Alexander.png
 10," Noah Gomez, Hangxi Du,Josephine Willgrubs",,Mini Challenge 3,,,,no-image.png,,,no-image.png
 11,Fei Zhou,,Mini Challenge 3,,,,no-image.png,,,no-image.png
 12,"Jason Vermillion, Pavlo Vorontsov,Chase Meyer",,No topic selection is proposed as of April 15,,,,no-image.png,,,jason.chase.pavlo.png
-13,Ghazanfar Ali,,"HPCC health status visualization. 1) Summarize all ten health services in a table format.
-2) Summarize all current users in a table format.
-3) Summarize all current jobs in a table format (ordered).
-4) Create a network of jobs, users, and hosts:  use size, shape, and color encoding.
+13,Ghazanfar Ali,,"HPCC health status visualization# 1) Summarize all ten health services in a table format#
+2) Summarize all current users in a table format#
+3) Summarize all current jobs in a table format (ordered)#
+4) Create a network of jobs, users, and hosts:  use size, shape, and color encoding#
 5) All 1) 2) 3) 4) are updated in real-time (every 10 seconds) or by user request",,,,no-image.png,,,Ghazan.png
 14,Nicholas Zulawsk,,No topic selection is proposed as of April 15,,,,no-image.png,,,no-image.png
-16,"Jordan Hudgens, Pablo Smith",,Github Visualization,,,,no-image.png,,,jordanhudgens.jpg
+16,"Jordan Hudgens, Pablo Smith",,"Github VisualizationGithub visualization#
+Corrections require for P3:#
+1) There should be a progressing bar when you loading new data (new user name), since it may take a few seconds#
+2) The bars charts have different ranges for both x (count) and y (time) axis. This makes comparisons between different users/followers difficult. You should use standard ranges for all charts#
+
+3) The chart does not need to be too long (on y-axis), You can make it more compressed so that you can fit more charts into a single screen instead of scrolling down, Comparisons and overview would be better#
+
+4) A better representation is dot plots, See http://www.myweb.ttu.edu/tnhondan/file/Stacking.pdf#
+
+5) For number of the project per languages, bar charts would be better than the listing.  It should be color-coded as well#
+
+6) This is the idea for P2: for each follower, you request the top 50 followers. The max total of people is 50*50 = 2,500 (but it will be fewer due to duplications). Then you draw the network of 2,500 nodes (this is your GitHub network. Each node can be represented by a sunburst which is a radial variation of your bar chart. https://bl.ocks.org/kerryrodden/7090426",,,,no-image.png,,,jordanhudgens.jpg
