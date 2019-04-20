@@ -201,7 +201,7 @@ An example github report can be found <a href="https://github.com/CreativeCoding
             });
             localdata.forEach(function (row, index) {
                 var thumbnails = row.thumbnails != ""
-                    ? '<img alt=' + row.thumbnails + ' height="100" src=' + '../P1/photos/' + row.thumbnails + '></img>' : '<img style="width:100px;height:100px;" src=" thumbnails/no-image.png"/>' + '</td>';
+                    ? '<img alt=' + row.thumbnails + ' height="100" src=' + 'screenshot/' + row.thumbnails + '></img>' : '<img style="width:100px;height:100px;" src=" thumbnails/no-image.png"/>' + '</td>';
                 var photo = [];
                 row.Photo.split(",").forEach(function (data)  {
                   return  photo.push('<img height="150px" src=' + 'team_photo/' + data + '> ');
