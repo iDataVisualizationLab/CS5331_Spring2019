@@ -14,7 +14,7 @@
         });
     </script>
     <style type="text/css">
-
+        table.fixed { table-layout:fixed; }
     </style>
 </head>
 <body bgcolor="white" text="black">
@@ -170,11 +170,11 @@ An example github report can be found <a href="https://github.com/CreativeCoding
 <div id="students">
     <div style="font-size:20px">Group Assigned</div>
 
-    <table style="width:98%;" border="1" cellpadding="3" cellspacing="0" id="tbl_assiged">
+    <table style="width:98% ; " border="1" cellpadding="3" cellspacing="0" id="tbl_assiged">
         <tr bgcolor="#aaa">
             <td>Team</td>
             <td width="15%">Members</td>
-            <td width="50%">Topic Selection</td>
+            <td width="15%">Topic Selection</td>
             <td>Screenshot</td>
             <td>Team Photo</td>
             <td>Dataset</td>
@@ -215,7 +215,14 @@ An example github report can be found <a href="https://github.com/CreativeCoding
 
                 abstract = abstract.join("-");
 
-                $('#tbl_assiged').append('<tr><td align="center" >' + row.group + '</td><td>' + row.names + '<td style="text-align: left; width: 1000; vertical-align: middle;" >' + abstract + '</td>' + '<td style="text-align: center; vertical-align: middle;" >' + thumbnails + '</td>' + '<td style="text-align: center; vertical-align: middle; width:100" >' + photo.join('') + '</td>' + '</td><td><a href="' + row.Dataset + '" target="blank">Dataset</a> </td>' +
+                var name = [];
+                row.names.split(",").forEach(function (data)  {
+                    return name.push(data + '<br>')
+                })
+
+                name = name.join("");
+                console.log(name);
+                $('#tbl_assiged').append('<tr><td align="center" >' + row.group + '</td><td align="left">' + name + '<td style="text-align: left; width: 1000; vertical-align: middle;" >' + abstract + '</td>' + '<td style="text-align: center; vertical-align: middle;" >' + thumbnails + '</td>' + '<td style="text-align: center; vertical-align: middle; width:100" >' + photo.join('') + '</td>' + '</td><td><a href="' + row.Dataset + '" target="blank">Dataset</a> </td>' +
                     // '<td>' + row.presented_date + '</td>' +
                     '<td><a href="' + row.demo_link + '"target="blank">Demo</a> </td> <td><a href="' + row.github_link + '"target="blank">Github</a></td>' + '<td><a href="'+row.evaluation_link+'">Evaluate</a> </td>' +
                     '</tr>')
