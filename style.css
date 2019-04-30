@@ -30,6 +30,7 @@ nav {
 
 nav ul ul {
     display: none;
+    font-size: 16px;  
     text-align: left
 }
 
@@ -72,7 +73,7 @@ nav ul:after {
             
         
     nav ul ul {
-        background: #885500; border-radius: 2px; padding: 0;
+        background: #996600; border-radius: 2px; padding: 0;
         position: absolute; top: 100%;
     }
         nav ul ul li {
