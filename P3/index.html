@@ -203,9 +203,9 @@ An example github report can be found <a href="https://github.com/CreativeCoding
                 var thumbnails = row.thumbnails != ""
                     ? '<img alt=' + row.thumbnails + ' height="100" src=' + 'screenshot/' + row.thumbnails + '></img>' : '<img style="width:100px;height:100px;" src=" thumbnails/no-image.png"/>' + '</td>';
                 var photo = [];
-                row.Photo.split(",").forEach(function (data)  {
-                  return  photo.push('<img height="150px" width="200px" src=' + 'team_photo/' + data + '> ');
-                })
+
+                photo.push('<img height="150px" width="200px" src=' + 'team_photo/' + row.Photo + '> ');
+
                 var abstract = [];
                 row.abstract.split("#").forEach(function (data)  {
                     return abstract.push(data + '<br>')
