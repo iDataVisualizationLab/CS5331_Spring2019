@@ -122,10 +122,10 @@ var simulationP2 = d3.forceSimulation()
     .force("link", d3.forceLink().id(function(d) { return d.id; }))
     .force("link", d3.forceLink().distance(1).strength(1))
     .force("charge", d3.forceManyBody().strength(-0.1));
-// var simulationP3 = d3.forceSimulation()
-//     .force("link", d3.forceLink().id(function(d) { return d.id; }))
-//     .force("link", d3.forceLink().distance(1).strength(1))
-//     .force("charge", d3.forceManyBody().strength(-0.1));
+var simulationP3 = d3.forceSimulation()
+    .force("link", d3.forceLink().id(function(d) { return d.id; }))
+    .force("link", d3.forceLink().distance(1).strength(1))
+    .force("charge", d3.forceManyBody().strength(-0.1));
 
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 var radius = 9;
@@ -339,12 +339,12 @@ function main(){
             .attr("fill-opacity", function (d2){
               return getCategoty(d1.program)==d2.group ? 1 : 0.1; });
 
-          // svg.selectAll(".nodeP3")
-          //   .transition().duration(dur)
-          //   .attr("stroke-opacity", function (d2){
-          //     return getCategoty(d1.program)==d2.group ? 1 : 0.05; })
-          //   .attr("fill-opacity", function (d2){
-          //     return getCategoty(d1.program)==d2.group ? 1 : 0.1; });
+          svg.selectAll(".nodeP3")
+            .transition().duration(dur)
+            .attr("stroke-opacity", function (d2){
+              return getCategoty(d1.program)==d2.group ? 1 : 0.05; })
+            .attr("fill-opacity", function (d2){
+              return getCategoty(d1.program)==d2.group ? 1 : 0.1; });
         }
         else{
            svg.selectAll(".nodeP1")
@@ -354,9 +354,9 @@ function main(){
             .transition().duration(dur)
             .attr("fill-opacity", 0);
 
-            // svg.selectAll(".nodeP3")
-            // .transition().duration(dur)
-            // .attr("fill-opacity", 0);
+            svg.selectAll(".nodeP3")
+            .transition().duration(dur)
+            .attr("fill-opacity", 0);
         }
         svg.selectAll(".links")
           .transition().duration(dur)
@@ -370,15 +370,15 @@ function main(){
         svg.selectAll(".linksP2")
           .transition().duration(dur)
           .attr("stroke-opacity", function (d2){ return getCategoty(d1.program)==d2.source.group ? 1 : 0.1; });
-        // svg.selectAll(".links02")
-        //   .transition().duration(dur)
-        //   .attr("stroke-opacity", function (d2){ return getCategoty(d1.program)==d2.source.group ? 1 : 0.1; });
-        // svg.selectAll(".linksP3")
-        //   .transition().duration(dur)
-        //   .attr("stroke-opacity", function (d2){ return getCategoty(d1.program)==d2.source.group ? 1 : 0.1; });
-        // svg.selectAll(".links03")
-        //   .transition().duration(dur)
-        //   .attr("stroke-opacity", function (d2){ return getCategoty(d1.program)==d2.source.group ? 1 : 0.1; });
+        svg.selectAll(".links02")
+          .transition().duration(dur)
+          .attr("stroke-opacity", function (d2){ return getCategoty(d1.program)==d2.source.group ? 1 : 0.1; });
+        svg.selectAll(".linksP3")
+          .transition().duration(dur)
+          .attr("stroke-opacity", function (d2){ return getCategoty(d1.program)==d2.source.group ? 1 : 0.1; });
+        svg.selectAll(".links03")
+          .transition().duration(dur)
+          .attr("stroke-opacity", function (d2){ return getCategoty(d1.program)==d2.source.group ? 1 : 0.1; });
 
     }
     function mouseoutLegend(d1){
@@ -428,24 +428,24 @@ function main(){
           svg.selectAll(".linksP2")
             .transition().duration(dur)
             .attr("stroke-opacity", 1);
-          // svg.selectAll(".links02")
-          //   .transition().duration(dur)
-          //   .attr("stroke-opacity", 1);
+          svg.selectAll(".links02")
+            .transition().duration(dur)
+            .attr("stroke-opacity", 1);
 
-          // svg.selectAll(".nodeImageP3")
-          //   .transition().duration(dur)
-          //   .attr("stroke-opacity", 1)
-          //   .attr("fill-opacity", 1);
-          // svg.selectAll(".nodeP3")
-          //   .transition().duration(dur)
-          //   .attr("stroke-opacity", 1)
-          //   .attr("fill-opacity", 1);
-          // svg.selectAll(".linksP3")
-          //   .transition().duration(dur)
-          //   .attr("stroke-opacity", 1);
-          // svg.selectAll(".links03")
-          //   .transition().duration(dur)
-          //   .attr("stroke-opacity", 1);
+          svg.selectAll(".nodeImageP3")
+            .transition().duration(dur)
+            .attr("stroke-opacity", 1)
+            .attr("fill-opacity", 1);
+          svg.selectAll(".nodeP3")
+            .transition().duration(dur)
+            .attr("stroke-opacity", 1)
+            .attr("fill-opacity", 1);
+          svg.selectAll(".linksP3")
+            .transition().duration(dur)
+            .attr("stroke-opacity", 1);
+          svg.selectAll(".links03")
+            .transition().duration(dur)
+            .attr("stroke-opacity", 1);
         }
     }
     // Draw title *******************************
@@ -645,21 +645,21 @@ function main(){
                 +nodesP3[i].P3_review;
       var sum= p0+p1+p2+p3;
       var finalGrade = " ";
-      if (sum>=80){
+      if (sum>=85){
         countA++;
         finalGrade = "A";
       }
-      else if (sum>=60){
+      else if (sum>=70){
         finalGrade = "B";
         countB++;
       }
-      else if (sum>=40){
+      else if (sum>=55){
         countC++;
         finalGrade = "C";
       }
-    //  console.log( finalGrade+ " name="+nodesP1[i].name+" sum="+sum);
+     console.log( finalGrade+ " name="+nodesP1[i].name+" sum="+sum);
     }
-    //console.log("countA="+countA+" countB="+countB +" countC="+countC);
+    console.log("countA="+countA+" countB="+countB +" countC="+countC);
     link = svg.selectAll(".links")
       .data(links)
       .enter().append("line")
@@ -712,15 +712,15 @@ function main(){
           return d.source.name=="Sara Sartoli" ? 0 : 1;
         });
 
-    // link03 = svg.selectAll(".links03")
-    //   .data(links)
-    //   .enter().append("line")
-    //     .attr("class", "links03")
-    //     .attr("stroke", function(d){ return color(d.group);})
-    //     .attr("stroke-width", function(d){
-    //      // console.log(d.source.name);
-    //       return d.source.name=="Sara Sartoli" ? 0 : 1;
-    //     });
+    link03 = svg.selectAll(".links03")
+      .data(links)
+      .enter().append("line")
+        .attr("class", "links03")
+        .attr("stroke", function(d){ return color(d.group);})
+        .attr("stroke-width", function(d){
+         // console.log(d.source.name);
+          return d.source.name=="Sara Sartoli" ? 0 : 1;
+        });
 
     node = svg.selectAll(".nodeCircle")
           .data(nodes)
@@ -791,28 +791,28 @@ function main(){
               .on("drag", dragged)
               .on("end", dragended));
 
-      // nodeP3 = svg.selectAll(".nodeP3")
-      //     // .data(nodesP3)
-      //     .enter().append("circle")
-      //       .attr("class","nodeP3")
-      //       .attr("r", function(d,i) {
-      //         if (i%2==0)
-      //           return 0;
-      //         else
-      //           return radius+1;
-      //       })
-      //       .attr("fill", function(d,i) {
-      //         if (i%2==0)
-      //           return "#110";
-      //         else
-      //           return color(d.group);
-      //       })
-      //       .on("mouseover", mouseoverNode)
-      //       .on("mouseout", mouseoutNode)
-      //       .call(d3.drag()
-      //         .on("start", dragstarted)
-      //         .on("drag", dragged)
-      //         .on("end", dragended));
+      nodeP3 = svg.selectAll(".nodeP3")
+          .data(nodesP3)
+          .enter().append("circle")
+            .attr("class","nodeP3")
+            .attr("r", function(d,i) {
+              if (i%2==0)
+                return 0;
+              else
+                return radius+1;
+            })
+            .attr("fill", function(d,i) {
+              if (i%2==0)
+                return "#110";
+              else
+                return color(d.group);
+            })
+            .on("mouseover", mouseoverNode)
+            .on("mouseout", mouseoutNode)
+            .call(d3.drag()
+              .on("start", dragstarted)
+              .on("drag", dragged)
+              .on("end", dragended));
 
   for (var i=0;i<nodes.length;i++){
     var imgurl = "http://wallpapers.androlib.com/wallicons/wallpaper.big-pqC.cs.png"
@@ -889,21 +889,15 @@ function main(){
     }
     else {
         node.append("title")
-            .text(function (d) {
-                return d.nickname;
-            });
+            .text(function(d) { return d.nickname; });
         nodeP1.append("title")
-            .text(function (d) {
-                return d.nickname;
-            });
+            .text(function(d) { return d.nickname; });
         nodeP2.append("title")
-            .text(function (d) {
-                return d.nickname;
-            });
+            .text(function(d) { return d.nickname; });
+        nodeP3.append("title")
+            .text(function(d) { return d.nickname; });
     }
-    //   nodeP3.append("title")
-    //     .text(function(d) { return d.nickname; });
-    // }
+
 
 
 
@@ -952,17 +946,17 @@ function main(){
         return radius+1;
     }));
 
-    // simulationP3
-    //   .nodes(nodesP3)
-    //   .on("tick", tickedP3);
-    // simulationP3.force("link")
-    //     .links(linksP3);
-    // simulationP3.force("collide", d3.forceCollide(function(d,i){
-    //   if (i%2==0)
-    //     return 0;
-    //   else
-    //     return radius+1;
-    // }));
+    simulationP3
+      .nodes(nodesP3)
+      .on("tick", tickedP3);
+    simulationP3.force("link")
+        .links(linksP3);
+    simulationP3.force("collide", d3.forceCollide(function(d,i){
+      if (i%2==0)
+        return 0;
+      else
+        return radius+1;
+    }));
 
   });
 }
@@ -1047,45 +1041,44 @@ function textP1(index){
       .attr("x", radius+nodesP2[index].x+5)
       .attr("y", nodesP2[index].y+33)
       .text("Teammate-Review: "+nodesP2[index].P2_review+"%");
-    //
-    //
-    //  // Project 3
-    //  svg.append("text")
-    //   .attr("class", "textP3")
-    //   .style("font-size", "13px")
-    //   .attr("text-anchor", "left")
-    //   .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
-    //   .attr("fill", "#000")
-    //   .attr("x", radius+nodesP3[index].x+12)
-    //   .attr("y", nodesP3[index].y-12)
-    //   .text("Code: "+nodesP3[index].P3_code+"%");
-    // svg.append("text")
-    //   .attr("class", "textP3")
-    //   .style("font-size", "13px")
-    //   .attr("text-anchor", "left")
-    //   .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
-    //   .attr("fill", "#000")
-    //   .attr("x", radius+nodesP3[index].x+20)
-    //   .attr("y", nodesP3[index].y+3)
-    //   .text("Talk: "+nodesP3[index].P3_talk+"%");
-    // svg.append("text")
-    //   .attr("class", "textP3")
-    //   .style("font-size", "13px")
-    //   .attr("text-anchor", "left")
-    //   .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
-    //   .attr("fill", "#000")
-    //   .attr("x", radius+nodesP3[index].x+5)
-    //   .attr("y", nodesP3[index].y+18)
-    //   .text("Report: "+nodesP3[index].P3_report+"%");
-    // svg.append("text")
-    //   .attr("class", "textP3")
-    //   .style("font-size", "13px")
-    //   .attr("text-anchor", "left")
-    //   .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
-    //   .attr("fill", "#000")
-    //   .attr("x", radius+nodesP3[index].x+5)
-    //   .attr("y", nodesP3[index].y+33)
-    //   .text("Review: "+nodesP3[index].P3_review+"%");
+
+     // Project 3
+     svg.append("text")
+      .attr("class", "textP3")
+      .style("font-size", "13px")
+      .attr("text-anchor", "left")
+      .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
+      .attr("fill", "#000")
+      .attr("x", radius+nodesP3[index].x+12)
+      .attr("y", nodesP3[index].y-12)
+      .text("Code: "+nodesP3[index].P3_code+"%");
+    svg.append("text")
+      .attr("class", "textP3")
+      .style("font-size", "13px")
+      .attr("text-anchor", "left")
+      .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
+      .attr("fill", "#000")
+      .attr("x", radius+nodesP3[index].x+20)
+      .attr("y", nodesP3[index].y+3)
+      .text("Talk: "+nodesP3[index].P3_talk+"%");
+    svg.append("text")
+      .attr("class", "textP3")
+      .style("font-size", "13px")
+      .attr("text-anchor", "left")
+      .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
+      .attr("fill", "#000")
+      .attr("x", radius+nodesP3[index].x+5)
+      .attr("y", nodesP3[index].y+18)
+      .text("Report: "+nodesP3[index].P3_report+"%");
+    svg.append("text")
+      .attr("class", "textP3")
+      .style("font-size", "13px")
+      .attr("text-anchor", "left")
+      .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
+      .attr("fill", "#000")
+      .attr("x", radius+nodesP3[index].x+5)
+      .attr("y", nodesP3[index].y+33)
+      .text("Review: "+nodesP3[index].P3_review+"%");
 }
 
 function searchNode() {
@@ -1157,14 +1150,14 @@ function mouseoverNode(d1){
                     return d1.name==d2.name ? 1 : 0.1; });
 
             // Project 3
-            // svg.selectAll(".nodeP3")
-            //     .transition().duration(dur)
-            //     .attr("stroke-opacity", function (d2){
-            //         //  if (!document.getElementById("checkboxP1").checked) return 0;
-            //         return d1.name==d2.name ? 1 : 0.05; })
-            //     .attr("fill-opacity", function (d2){
-            //         //  if (!document.getElementById("checkboxP1").checked) return 0;
-            //         return d1.name==d2.name ? 1 : 0.1; });
+            svg.selectAll(".nodeP3")
+                .transition().duration(dur)
+                .attr("stroke-opacity", function (d2){
+                     // if (!document.getElementById("checkboxP1").checked) return 0;
+                    return d1.name==d2.name ? 1 : 0.05; })
+                .attr("fill-opacity", function (d2){
+                     // if (!document.getElementById("checkboxP1").checked) return 0;
+                    return d1.name==d2.name ? 1 : 0.1; });
         }
 
     }
@@ -1188,21 +1181,21 @@ function mouseoverNode(d1){
         .attr("stroke-opacity", function (d2){
             if (!document.getElementById("checkboxP1").checked) return 0;
             return d1.name==d2.source.name ? 1 : 0.1; });
-    // svg.selectAll(".linksP3")
-    //     .transition().duration(dur)
-    //     .attr("stroke-opacity", function (d2){
-    //         if (!document.getElementById("checkboxP1").checked) return 0;
-    //         return d1.name==d2.source.name ? 1 : 0.1; });
+    svg.selectAll(".linksP3")
+        .transition().duration(dur)
+        .attr("stroke-opacity", function (d2){
+            if (!document.getElementById("checkboxP1").checked) return 0;
+            return d1.name==d2.source.name ? 1 : 0.1; });
     svg.selectAll(".links02")
         .transition().duration(dur)
         .attr("stroke-opacity", function (d2){
             if (!document.getElementById("checkboxP1").checked) return 0;
             return d1.name==d2.source.name ? 1 : 0.1; });
-    // svg.selectAll(".links03")
-    //     .transition().duration(dur)
-    //     .attr("stroke-opacity", function (d2){
-    //         if (!document.getElementById("checkboxP1").checked) return 0;
-    //         return d1.name==d2.source.name ? 1 : 0.1; });
+    svg.selectAll(".links03")
+        .transition().duration(dur)
+        .attr("stroke-opacity", function (d2){
+            if (!document.getElementById("checkboxP1").checked) return 0;
+            return d1.name==d2.source.name ? 1 : 0.1; });
 
     if (document.getElementById("checkboxP1").checked){
         textP1(d1.index);
@@ -1232,10 +1225,10 @@ function mouseoutNode(d1){
             .transition().duration(dur)
             .attr("stroke-opacity", 1)
             .attr("fill-opacity", 1);
-        // svg.selectAll(".nodeP3")
-        //     .transition().duration(dur)
-        //     .attr("stroke-opacity", 1)
-        //     .attr("fill-opacity", 1);
+        svg.selectAll(".nodeP3")
+            .transition().duration(dur)
+            .attr("stroke-opacity", 1)
+            .attr("fill-opacity", 1);
     }
     svg.selectAll(".links")
         .transition().duration(dur)
@@ -1247,9 +1240,9 @@ function mouseoutNode(d1){
         svg.selectAll(".linksP2")
             .transition().duration(dur)
             .attr("stroke-opacity", 1);
-        // svg.selectAll(".linksP3")
-        //     .transition().duration(dur)
-        //     .attr("stroke-opacity", 1);
+        svg.selectAll(".linksP3")
+            .transition().duration(dur)
+            .attr("stroke-opacity", 1);
 
         svg.selectAll(".nodeImageP1")
             .transition().duration(400)
@@ -1267,15 +1260,15 @@ function mouseoutNode(d1){
             .attr("stroke-opacity",function(d){
                 return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
             });
-        // svg.selectAll(".links03")
-        //     .transition().duration(400)
-        //     .attr("stroke-opacity",function(d){
-        //         return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
-        //     });
+        svg.selectAll(".links03")
+            .transition().duration(400)
+            .attr("stroke-opacity",function(d){
+                return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
+            });
     }
     svg.selectAll(".textP1").remove();
     svg.selectAll(".textP2").remove();
-    // svg.selectAll(".textP3").remove();
+    svg.selectAll(".textP3").remove();
     svg.selectAll(".textContribution").remove();
 }
 
@@ -1342,26 +1335,87 @@ function tickedP1() {
     }
 }
 
+//
+// function tickedP2() {
+//     for (var i=0;i<nodesP2.length;i=i+2){
+//       if (document.getElementById("checkboxP1").checked){
+//         nodesP2[i].x = width*0.8;
+//         var yy = nodesP2[i].P2_code+nodesP2[i].P2_talk+nodesP2[i].P2_report + nodesP2[i].P2_review;
+//         nodesP2[i].y = yP1(yy*26/35);  // 35% compared to 20%
+//      //   nodesP2[i].y = (nodesP2[i].y)/3;
+//       }
+//       else{
+//         nodesP2[i].x = x(nodesP2[i].date);
+//         nodesP2[i].y = y(nodesP2[i].score);
+//       }
+//
+//     }
+//     linkP2
+//         .attr("x1", function(d) { return d.source.x; })
+//         .attr("y1", function(d) { return d.source.y; })
+//         .attr("x2", function(d) { return d.target.x; })
+//         .attr("y2", function(d) { return d.target.y; });
+//     link02
+//         .attr("x1", function(d,i) { return nodesP1[i*2+1].x; })
+//         .attr("y1", function(d,i) { return nodesP1[i*2+1].y; })
+//         .attr("x2", function(d,i) { return nodesP2[i*2+1].x; })
+//         .attr("y2", function(d,i) { return nodesP2[i*2+1].y; });
+//
+//     nodeP2
+//         .attr("cx", function(d) { return d.x; })
+//         .attr("cy", function(d) { return d.y; });
+// }
+//
+// function tickedP3() {
+//     for (var i=0;i<nodesP3.length;i=i+2){
+//       if (document.getElementById("checkboxP1").checked){
+//         nodesP3[i].x = width*0.95;
+//         var yy = nodesP3[i].P3_code+nodesP3[i].P3_talk+nodesP3[i].P3_report
+//                 +nodesP3[i].P3_review;
+//         nodesP3[i].y = yP1(yy*20/35);  // 35% compared to 20%
+//      //   nodesP2[i].y = (nodesP2[i].y)/3;
+//       }
+//       else{
+//         nodesP3[i].x = x(nodesP3[i].date);
+//         nodesP3[i].y = y(nodesP3[i].score);
+//       }
+//
+//     }
+//     linkP3
+//         .attr("x1", function(d) { return d.source.x; })
+//         .attr("y1", function(d) { return d.source.y; })
+//         .attr("x2", function(d) { return d.target.x; })
+//         .attr("y2", function(d) { return d.target.y; });
+//     link03
+//         .attr("x1", function(d,i) { return nodesP2[i*2+1].x; })
+//         .attr("y1", function(d,i) { return nodesP2[i*2+1].y; })
+//         .attr("x2", function(d,i) { return nodesP3[i*2+1].x; })
+//         .attr("y2", function(d,i) { return nodesP3[i*2+1].y; });
+//
+//     nodeP3
+//         .attr("cx", function(d) { return d.x; })
+//         .attr("cy", function(d) { return d.y; });
+// }
 
 function tickedP2() {
     for (var i=0;i<nodesP2.length;i=i+2){
-      if (document.getElementById("checkboxP1").checked){
-        nodesP2[i].x = width*0.8;
-        var yy = nodesP2[i].P2_code+nodesP2[i].P2_talk+nodesP2[i].P2_report;
-        nodesP2[i].y = yP1(yy*26/35);  // 35% compared to 20%
-     //   nodesP2[i].y = (nodesP2[i].y)/3;
-      }
-      else{
-        nodesP2[i].x = x(nodesP2[i].date);
-        nodesP2[i].y = y(nodesP2[i].score);
-      }
+        if (document.getElementById("checkboxP1").checked){
+            nodesP2[i].x = width*0.8;
+            var yy = nodesP2[i].P2_code+nodesP2[i].P2_talk+nodesP2[i].P2_report
+                +nodesP2[i].P2_review;
+            nodesP2[i].y = yP1(yy*22/27);  // 35% compared to 20%
+        }
+        else{
+            nodesP2[i].x = x(nodesP2[i].date);
+            nodesP2[i].y = y(nodesP2[i].score);
+        }
 
     }
-    // linkP2
-    //     .attr("x1", function(d) { return d.source.x; })
-    //     .attr("y1", function(d) { return d.source.y; })
-    //     .attr("x2", function(d) { return d.target.x; })
-    //     .attr("y2", function(d) { return d.target.y; });
+    linkP2
+        .attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
     link02
         .attr("x1", function(d,i) { return nodesP1[i*2+1].x; })
         .attr("y1", function(d,i) { return nodesP1[i*2+1].y; })
@@ -1375,17 +1429,16 @@ function tickedP2() {
 
 function tickedP3() {
     for (var i=0;i<nodesP3.length;i=i+2){
-      if (document.getElementById("checkboxP1").checked){
-        nodesP3[i].x = width*0.95;
-        var yy = nodesP3[i].P3_code+nodesP3[i].P3_talk+nodesP3[i].P3_report
+        if (document.getElementById("checkboxP1").checked){
+            nodesP3[i].x = width*0.95;
+            var yy = nodesP3[i].P3_code+nodesP3[i].P3_talk+nodesP3[i].P3_report
                 +nodesP3[i].P3_review;
-        nodesP3[i].y = yP1(yy*20/35);  // 35% compared to 20%
-     //   nodesP2[i].y = (nodesP2[i].y)/3;
-      }
-      else{
-        nodesP3[i].x = x(nodesP3[i].date);
-        nodesP3[i].y = y(nodesP3[i].score);
-      }
+            nodesP3[i].y = yP1(yy*21.5/27);  // 35% compared to 20%
+        }
+        else{
+            nodesP3[i].x = x(nodesP3[i].date);
+            nodesP3[i].y = y(nodesP3[i].score);
+        }
 
     }
     linkP3
@@ -1403,7 +1456,6 @@ function tickedP3() {
         .attr("cx", function(d) { return d.x; })
         .attr("cy", function(d) { return d.y; });
 }
-
 
 function showP1(){
     // This is to make sure that all object are reset to opacity =1
@@ -1450,11 +1502,11 @@ function showP1(){
       });
 
     // Project 3
-    // svg.selectAll(".links03")
-    //   .transition().duration(400)
-    //   .attr("stroke-opacity",function(d){
-    //     return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
-    //   });
+    svg.selectAll(".links03")
+      .transition().duration(400)
+      .attr("stroke-opacity",function(d){
+        return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
+      });
 
 
 
@@ -1465,9 +1517,9 @@ function showP1(){
       svg.selectAll(".nodeP2")
         .transition().duration(400)
         .attr("fill-opacity",1);
-      // svg.selectAll(".nodeP3")
-      //   .transition().duration(400)
-      //   .attr("fill-opacity",1);
+      svg.selectAll(".nodeP3")
+        .transition().duration(400)
+        .attr("fill-opacity",1);
     }
 
 
@@ -1520,8 +1572,8 @@ function showP1(){
   simulationP1.alpha(0.3);
   simulationP2.restart();
   simulationP2.alpha(0.3);
-  // simulationP3.restart();
-  // simulationP3.alpha(0.3);
+  simulationP3.restart();
+  simulationP3.alpha(0.3);
     svg.selectAll(".lineGraph")
       .transition().duration(300)
       .attr("d", function(d) {
@@ -1574,19 +1626,19 @@ function fadeP1(){
         .remove();
 
     // Project 3
-    // svg.selectAll(".nodeImageP3")
-    //     .transition().duration(1500)
-    //     .attr("fill-opacity",0)
-    //     .attr("stroke-opacity",0);
-    // svg.selectAll(".nodeP3")
-    //     .transition().duration(1500)
-    //     .attr("fill-opacity",0);
-    // svg.selectAll(".linksP3")
-    //     .transition().duration(1500)
-    //     .attr("stroke-opacity",0);
-    // svg.selectAll(".lineGradeP3")
-    //     .transition().duration(1500)
-    //     .remove();
+    svg.selectAll(".nodeImageP3")
+        .transition().duration(1500)
+        .attr("fill-opacity",0)
+        .attr("stroke-opacity",0);
+    svg.selectAll(".nodeP3")
+        .transition().duration(1500)
+        .attr("fill-opacity",0);
+    svg.selectAll(".linksP3")
+        .transition().duration(1500)
+        .attr("stroke-opacity",0);
+    svg.selectAll(".lineGradeP3")
+        .transition().duration(1500)
+        .remove();
 }
 
 
