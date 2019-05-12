@@ -160,7 +160,7 @@ function getCategoty(str){
 
 function main(){
   d3.tsv("data/participations.csv", function(error, data_) {
-      console.log(data);
+      // console.log(data);
     data_.forEach(function(d) {
       if (data[d.Students]==undefined)
           data[d.Students] = {};
@@ -213,7 +213,7 @@ function main(){
       groupCount[arr.group].count++;
       groupCount[arr.group].program = data2[key].Program;
     }
-    console.log(aData)
+    // console.log(aData)
 
      // Scale the range of the data
       x.domain([aData[0][0].date,today]);
@@ -511,7 +511,7 @@ function main(){
       nod1.image = aData[i].image;
       nodes.push(nod1);
       nodes_search.push({'value':nod1.nickname,'data':nod1.score,'code':aData[i].P1_code,'talk':aData[i].P1_talk, 'report':aData[i].P1_report});
-      console.log(nodes_search);
+      // console.log(nodes_search);
 
 
       var nod2 = {};
