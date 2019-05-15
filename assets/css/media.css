@@ -1,0 +1,30 @@
+/* 
+   Created on :
+     Author : Azhar Hussain
+     Email: azharhussain4647@gmail.com
+     Website:
+     Facebook: https://www.facebook.com/azhar.hussainmasum
+*/
+
+
+/*--Extra-Small Device---*/
+@media (max-width:767px){
+
+}
+
+/* --Small Device-- */
+@media (min-width:768px) and (max-width: 991px){
+
+}
+
+/* Medium Device */
+@media (min-width:992px) and (max-width:1199px){
+
+}
+
+/*---Large Device---*/
+@media (min-width:1200px){
+
+}
+
+

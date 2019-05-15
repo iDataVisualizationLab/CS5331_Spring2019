@@ -9,6 +9,7 @@
     margin:0 auto; /*center-aligned*/
 }
 
+
 #slider, #slider .sliderInner {
     width:700px;height:306px;/* Must be the same size as the slider images */
     border-radius:3px;
