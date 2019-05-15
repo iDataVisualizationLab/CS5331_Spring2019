@@ -127,6 +127,11 @@ var simulationP3 = d3.forceSimulation()
     .force("link", d3.forceLink().distance(1).strength(1))
     .force("charge", d3.forceManyBody().strength(-0.1));
 
+var simulationP4 = d3.forceSimulation()
+    .force("link", d3.forceLink().id(function(d) { return d.id; }))
+    .force("link", d3.forceLink().distance(1).strength(1))
+    .force("charge", d3.forceManyBody().strength(-0.1));
+
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 var radius = 9;
 
@@ -146,6 +151,8 @@ var nodesP2=[];
 var linksP2=[];
 var nodesP3=[];
 var linksP3=[];
+var nodesP4=[];
+var linksP4=[];
 var today = new Date();
 var data = {};
 
@@ -187,7 +194,7 @@ function main(){
       data[d.Students].array.P3_talk = parseFloat(data2[d.Students].P3_talk);
       data[d.Students].array.P3_report = parseFloat(data2[d.Students].P3_report);
       data[d.Students].array.P3_review = parseFloat(data2[d.Students].P3_review);
-      data[d.Students].array.P3_group_score = parseFloat(data2[d.Students].P3_group_score);
+      data[d.Students].array.Final = parseFloat(data2[d.Students].Final);
       data[d.Students].array.index = data[d.Students].array.length-1;
     });
 
@@ -446,6 +453,21 @@ function main(){
           svg.selectAll(".links03")
             .transition().duration(dur)
             .attr("stroke-opacity", 1);
+
+            svg.selectAll(".nodeImageP4")
+                .transition().duration(dur)
+                .attr("stroke-opacity", 1)
+                .attr("fill-opacity", 1);
+            svg.selectAll(".nodeP4")
+                .transition().duration(dur)
+                .attr("stroke-opacity", 1)
+                .attr("fill-opacity", 1);
+            svg.selectAll(".linksP4")
+                .transition().duration(dur)
+                .attr("stroke-opacity", 1);
+            svg.selectAll(".links04")
+                .transition().duration(dur)
+                .attr("stroke-opacity", 1);
         }
     }
     // Draw title *******************************
@@ -628,6 +650,34 @@ function main(){
       linP3.target = nodeP32;
       linP3.group = nodeP31.group;
       linksP3.push(linP3);
+
+
+      //Final
+        var nodeP41 = {};
+        nodeP41.name = aData[i].name;
+        nodeP41.nickname = aData[i].nickname;
+        nodeP41.group = aData[i].group;
+        nodeP41.score = aData[i].score;
+        nodeP41.Final = aData[i].Final;
+        nodeP41.date = aData[i].date;
+        nodeP41.image = aData[i].image;
+        nodesP4.push(nodeP41);
+
+        var nodeP42 = {};
+        nodeP42.name = aData[i].name;
+        nodeP42.nickname = aData[i].nickname;
+        nodeP42.group = aData[i].group;
+        nodeP42.score = aData[i].score;
+        nodeP42.Final = aData[i].Final;
+        nodeP42.date = aData[i].date;
+        nodeP42.image = aData[i].image;
+        nodesP4.push(nodeP42);
+
+        var linP4 = {};
+        linP4.source = nodeP41;
+        linP4.target = nodeP42;
+        linP4.group = nodeP41.group;
+        linksP4.push(linP4);
     }
 
     // Compute the summary
@@ -643,6 +693,7 @@ function main(){
                 +nodesP2[i].P2_review;
       var p3 = nodesP3[i].P3_code+nodesP3[i].P3_talk+nodesP3[i].P3_report
                 +nodesP3[i].P3_review;
+      var final = nodesP4[i].Final;
       var sum= p0+p1+p2+p3+3;
       var finalGrade = " ";
       if (sum>=85){
@@ -695,7 +746,16 @@ function main(){
         })
         .attr("stroke-width",1);
 
-    link01 = svg.selectAll(".links01")
+      linkP4 = svg.selectAll(".linksP4")
+          .data(linksP2)
+          .enter().append("line")
+          .attr("class", "linksP4")
+          .attr("stroke", function(d){
+              return color(d.group);
+          })
+          .attr("stroke-width",1);
+
+      link01 = svg.selectAll(".links01")
       .data(links)
       .enter().append("line")
         .attr("class", "links01")
@@ -721,6 +781,16 @@ function main(){
          // console.log(d.source.name);
           return d.source.name=="Sara Sartoli" ? 0 : 1;
         });
+
+      link04 = svg.selectAll(".links04")
+          .data(links)
+          .enter().append("line")
+          .attr("class", "links04")
+          .attr("stroke", function(d){ return color(d.group);})
+          .attr("stroke-width", function(d){
+              // console.log(d.source.name);
+              return d.source.name=="Sara Sartoli" ? 0 : 1;
+          });
 
     node = svg.selectAll(".nodeCircle")
           .data(nodes)
@@ -814,6 +884,29 @@ function main(){
               .on("drag", dragged)
               .on("end", dragended));
 
+      nodeP4 = svg.selectAll(".nodeP4")
+          .data(nodesP4)
+          .enter().append("circle")
+          .attr("class","nodeP4")
+          .attr("r", function(d,i) {
+              if (i%2==0)
+                  return 0;
+              else
+                  return radius+1;
+          })
+          .attr("fill", function(d,i) {
+              if (i%2==0)
+                  return "#110";
+              else
+                  return color(d.group);
+          })
+          .on("mouseover", mouseoverNode)
+          .on("mouseout", mouseoutNode)
+          .call(d3.drag()
+              .on("start", dragstarted)
+              .on("drag", dragged)
+              .on("end", dragended));
+
   for (var i=0;i<nodes.length;i++){
     var imgurl = "http://wallpapers.androlib.com/wallicons/wallpaper.big-pqC.cs.png"
     var defs = svg.append("defs").attr("id", "imgdefs")
@@ -896,6 +989,8 @@ function main(){
             .text(function(d) { return d.nickname; });
         nodeP3.append("title")
             .text(function(d) { return d.nickname; });
+        nodeP4.append("title")
+            .text(function(d) { return d.nickname; });
     }
 
 
@@ -957,6 +1052,18 @@ function main(){
       else
         return radius+1;
     }));
+
+      simulationP4
+          .nodes(nodesP4)
+          .on("tick", tickedP4);
+      simulationP4.force("link")
+          .links(linksP4);
+      simulationP4.force("collide", d3.forceCollide(function(d,i){
+          if (i%2==0)
+              return 0;
+          else
+              return radius+1;
+      }));
 
   });
 }
@@ -1079,6 +1186,17 @@ function textP1(index){
       .attr("x", radius+nodesP3[index].x+5)
       .attr("y", nodesP3[index].y+33)
       .text("Review: "+nodesP3[index].P3_review+"%");
+
+    //Final
+    svg.append("text")
+        .attr("class", "textP4")
+        .style("font-size", "13px")
+        .attr("text-anchor", "left")
+        .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.9")
+        .attr("fill", "#000")
+        .attr("x", radius+nodesP4[index].x+12)
+        .attr("y", nodesP4[index].y-12)
+        .text("Final Grade: "+ nodesP4[index].Final +"%");
 }
 
 function searchNode() {
@@ -1158,6 +1276,16 @@ function mouseoverNode(d1){
                 .attr("fill-opacity", function (d2){
                      // if (!document.getElementById("checkboxP1").checked) return 0;
                     return d1.name==d2.name ? 1 : 0.1; });
+
+            // Project 3
+            svg.selectAll(".nodeP4")
+                .transition().duration(dur)
+                .attr("stroke-opacity", function (d2){
+                    // if (!document.getElementById("checkboxP1").checked) return 0;
+                    return d1.name==d2.name ? 1 : 0.05; })
+                .attr("fill-opacity", function (d2){
+                    // if (!document.getElementById("checkboxP1").checked) return 0;
+                    return d1.name==d2.name ? 1 : 0.1; });
         }
 
     }
@@ -1186,12 +1314,23 @@ function mouseoverNode(d1){
         .attr("stroke-opacity", function (d2){
             if (!document.getElementById("checkboxP1").checked) return 0;
             return d1.name==d2.source.name ? 1 : 0.1; });
+
+    svg.selectAll(".linksP4")
+        .transition().duration(dur)
+        .attr("stroke-opacity", function (d2){
+            if (!document.getElementById("checkboxP1").checked) return 0;
+            return d1.name==d2.source.name ? 1 : 0.1; });
     svg.selectAll(".links02")
         .transition().duration(dur)
         .attr("stroke-opacity", function (d2){
             if (!document.getElementById("checkboxP1").checked) return 0;
             return d1.name==d2.source.name ? 1 : 0.1; });
     svg.selectAll(".links03")
+        .transition().duration(dur)
+        .attr("stroke-opacity", function (d2){
+            if (!document.getElementById("checkboxP1").checked) return 0;
+            return d1.name==d2.source.name ? 1 : 0.1; });
+    svg.selectAll(".links04")
         .transition().duration(dur)
         .attr("stroke-opacity", function (d2){
             if (!document.getElementById("checkboxP1").checked) return 0;
@@ -1229,6 +1368,11 @@ function mouseoutNode(d1){
             .transition().duration(dur)
             .attr("stroke-opacity", 1)
             .attr("fill-opacity", 1);
+
+        svg.selectAll(".nodeP4")
+            .transition().duration(dur)
+            .attr("stroke-opacity", 1)
+            .attr("fill-opacity", 1);
     }
     svg.selectAll(".links")
         .transition().duration(dur)
@@ -1243,6 +1387,10 @@ function mouseoutNode(d1){
         svg.selectAll(".linksP3")
             .transition().duration(dur)
             .attr("stroke-opacity", 1);
+        svg.selectAll(".linksP4")
+            .transition().duration(dur)
+            .attr("stroke-opacity", 1);
+
 
         svg.selectAll(".nodeImageP1")
             .transition().duration(400)
@@ -1265,10 +1413,16 @@ function mouseoutNode(d1){
             .attr("stroke-opacity",function(d){
                 return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
             });
+        svg.selectAll(".links04")
+            .transition().duration(400)
+            .attr("stroke-opacity",function(d){
+                return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
+            });
     }
     svg.selectAll(".textP1").remove();
     svg.selectAll(".textP2").remove();
     svg.selectAll(".textP3").remove();
+    svg.selectAll(".textP4").remove();
     svg.selectAll(".textContribution").remove();
 }
 
@@ -1299,7 +1453,7 @@ function ticked() {
 function tickedP1() {
     for (var i=0;i<nodesP1.length;i=i+2){
         if (document.getElementById("checkboxP1").checked){
-            nodesP1[i].x = width*0.63;
+            nodesP1[i].x = width*0.45;
             if ((nodesP1[i].P1_code+nodesP1[i].P1_talk+nodesP1[i].P1_report)){
                 nodesP1[i].y = yP1((nodesP1[i].P1_code+nodesP1[i].P1_talk+nodesP1[i].P1_report))
             }
@@ -1335,72 +1489,12 @@ function tickedP1() {
     }
 }
 
-//
-// function tickedP2() {
-//     for (var i=0;i<nodesP2.length;i=i+2){
-//       if (document.getElementById("checkboxP1").checked){
-//         nodesP2[i].x = width*0.8;
-//         var yy = nodesP2[i].P2_code+nodesP2[i].P2_talk+nodesP2[i].P2_report + nodesP2[i].P2_review;
-//         nodesP2[i].y = yP1(yy*26/35);  // 35% compared to 20%
-//      //   nodesP2[i].y = (nodesP2[i].y)/3;
-//       }
-//       else{
-//         nodesP2[i].x = x(nodesP2[i].date);
-//         nodesP2[i].y = y(nodesP2[i].score);
-//       }
-//
-//     }
-//     linkP2
-//         .attr("x1", function(d) { return d.source.x; })
-//         .attr("y1", function(d) { return d.source.y; })
-//         .attr("x2", function(d) { return d.target.x; })
-//         .attr("y2", function(d) { return d.target.y; });
-//     link02
-//         .attr("x1", function(d,i) { return nodesP1[i*2+1].x; })
-//         .attr("y1", function(d,i) { return nodesP1[i*2+1].y; })
-//         .attr("x2", function(d,i) { return nodesP2[i*2+1].x; })
-//         .attr("y2", function(d,i) { return nodesP2[i*2+1].y; });
-//
-//     nodeP2
-//         .attr("cx", function(d) { return d.x; })
-//         .attr("cy", function(d) { return d.y; });
-// }
-//
-// function tickedP3() {
-//     for (var i=0;i<nodesP3.length;i=i+2){
-//       if (document.getElementById("checkboxP1").checked){
-//         nodesP3[i].x = width*0.95;
-//         var yy = nodesP3[i].P3_code+nodesP3[i].P3_talk+nodesP3[i].P3_report
-//                 +nodesP3[i].P3_review;
-//         nodesP3[i].y = yP1(yy*20/35);  // 35% compared to 20%
-//      //   nodesP2[i].y = (nodesP2[i].y)/3;
-//       }
-//       else{
-//         nodesP3[i].x = x(nodesP3[i].date);
-//         nodesP3[i].y = y(nodesP3[i].score);
-//       }
-//
-//     }
-//     linkP3
-//         .attr("x1", function(d) { return d.source.x; })
-//         .attr("y1", function(d) { return d.source.y; })
-//         .attr("x2", function(d) { return d.target.x; })
-//         .attr("y2", function(d) { return d.target.y; });
-//     link03
-//         .attr("x1", function(d,i) { return nodesP2[i*2+1].x; })
-//         .attr("y1", function(d,i) { return nodesP2[i*2+1].y; })
-//         .attr("x2", function(d,i) { return nodesP3[i*2+1].x; })
-//         .attr("y2", function(d,i) { return nodesP3[i*2+1].y; });
-//
-//     nodeP3
-//         .attr("cx", function(d) { return d.x; })
-//         .attr("cy", function(d) { return d.y; });
-// }
+
 
 function tickedP2() {
     for (var i=0;i<nodesP2.length;i=i+2){
         if (document.getElementById("checkboxP1").checked){
-            nodesP2[i].x = width*0.8;
+            nodesP2[i].x = width*0.60;
             var yy = nodesP2[i].P2_code+nodesP2[i].P2_talk+nodesP2[i].P2_report
                 +nodesP2[i].P2_review;
             nodesP2[i].y = yP1(yy*22/27);  // 35% compared to 20%
@@ -1430,7 +1524,7 @@ function tickedP2() {
 function tickedP3() {
     for (var i=0;i<nodesP3.length;i=i+2){
         if (document.getElementById("checkboxP1").checked){
-            nodesP3[i].x = width*0.95;
+            nodesP3[i].x = width*0.75;
             var yy = nodesP3[i].P3_code+nodesP3[i].P3_talk+nodesP3[i].P3_report
                 +nodesP3[i].P3_review;
             nodesP3[i].y = yP1(yy*21.5/27);  // 35% compared to 20%
@@ -1453,6 +1547,43 @@ function tickedP3() {
         .attr("y2", function(d,i) { return nodesP3[i*2+1].y; });
 
     nodeP3
+        .attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+}
+
+function tickedP4() {
+    for (var i=0;i<nodesP4.length;i=i+2){
+        if (document.getElementById("checkboxP1").checked){
+            nodesP4[i].x = width*0.90;
+            var yy = (nodesP4[i].Final)/3.33
+            if (yy<21){
+                nodesP4[i].y = yP1(yy*21.5/32);
+            }
+            else if ( yy> 25.5) {
+                nodesP4[i].y = yP1(yy * 21.5 / 26)
+            }
+            else {
+                nodesP4[i].y = yP1(yy * 21.5 / 28);
+            }// 35% compared to 20%
+        }
+        else{
+            nodesP4[i].x = x(nodesP4[i].date);
+            nodesP4[i].y = y(nodesP4[i].score);
+        }
+
+    }
+    linkP4
+        .attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+    link04
+        .attr("x1", function(d,i) { return nodesP3[i*2+1].x; })
+        .attr("y1", function(d,i) { return nodesP3[i*2+1].y; })
+        .attr("x2", function(d,i) { return nodesP4[i*2+1].x; })
+        .attr("y2", function(d,i) { return nodesP4[i*2+1].y; });
+
+    nodeP4
         .attr("cx", function(d) { return d.x; })
         .attr("cy", function(d) { return d.y; });
 }
@@ -1508,6 +1639,13 @@ function showP1(){
         return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
       });
 
+      // Final
+      svg.selectAll(".links04")
+          .transition().duration(400)
+          .attr("stroke-opacity",function(d){
+              return (d.source.name.indexOf("Manasa")<0 && d.source.name.indexOf("Paul")<0)? 1 : 0;
+          });
+
 
 
     if (!revealIdentity){
@@ -1520,6 +1658,9 @@ function showP1(){
       svg.selectAll(".nodeP3")
         .transition().duration(400)
         .attr("fill-opacity",1);
+        svg.selectAll(".nodeP4")
+            .transition().duration(400)
+            .attr("fill-opacity",1);
     }
 
 
@@ -1533,25 +1674,25 @@ function showP1(){
             .attr("stroke", "#000")
             .attr("stroke-width", 1)
             .attr("x1", width*0.99)
-            .attr("y1", yP1(aGrades[i])-80)
+            .attr("y1", yP1(aGrades[i])-85)
             .attr("x2", width*0.99)
-            .attr("y2", yP1(aGrades[i+1]+0.3)-80);
+            .attr("y2", yP1(aGrades[i+1]+0.3)-85);
         svg.append("line")
             .attr("class", "lineGradeP1")
             .attr("stroke", "#000")
             .attr("stroke-width", 1)
             .attr("x1", width*0.98)
-            .attr("y1", yP1(aGrades[i])-80)
+            .attr("y1", yP1(aGrades[i])-85)
             .attr("x2", width*0.99)
-            .attr("y2", yP1(aGrades[i])-80);
+            .attr("y2", yP1(aGrades[i])-85);
         svg.append("line")
             .attr("class", "lineGradeP1")
             .attr("stroke", "#000")
             .attr("stroke-width", 1)
             .attr("x1", width*0.98)
-            .attr("y1", yP1(aGrades[i+1]+0.3)-80)
+            .attr("y1", yP1(aGrades[i+1]+0.3)-85)
             .attr("x2", width*0.99)
-            .attr("y2", yP1(aGrades[i+1]+0.3)-80);
+            .attr("y2", yP1(aGrades[i+1]+0.3)-85);
         svg.append("text")
             .attr("class", "textGradeP1")
             .style("font-size", "18px")
@@ -1574,6 +1715,8 @@ function showP1(){
   simulationP2.alpha(0.3);
   simulationP3.restart();
   simulationP3.alpha(0.3);
+    simulationP4.restart();
+    simulationP4.alpha(0.3);
     svg.selectAll(".lineGraph")
       .transition().duration(300)
       .attr("d", function(d) {
@@ -1637,6 +1780,20 @@ function fadeP1(){
         .transition().duration(1500)
         .attr("stroke-opacity",0);
     svg.selectAll(".lineGradeP3")
+        .transition().duration(1500)
+        .remove();
+    //Final
+    svg.selectAll(".nodeImageP4")
+        .transition().duration(1500)
+        .attr("fill-opacity",0)
+        .attr("stroke-opacity",0);
+    svg.selectAll(".nodeP4")
+        .transition().duration(1500)
+        .attr("fill-opacity",0);
+    svg.selectAll(".linksP4")
+        .transition().duration(1500)
+        .attr("stroke-opacity",0);
+    svg.selectAll(".lineGradeP4")
         .transition().duration(1500)
         .remove();
 }
