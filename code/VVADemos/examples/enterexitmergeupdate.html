@@ -49,6 +49,9 @@
         {x: 15, y: 100, r: 4, id: 3}
     ];
 
+    update(newData1)
+    update(newData2)
+    update(newData3)
     function update(newData) {
         let newSelection = g.selectAll("circle").data(newData);
         let enter = newSelection.enter();
